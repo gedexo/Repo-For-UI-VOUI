@@ -1,0 +1,42 @@
+header {
+    background-color: #1E3354;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    
+    .toolbar_main, .toolbar_nav {
+        background: #FFFAF3;
+        border: 0.15px solid #f3e4d8;
+        box-sizing: border-box;
+        border: none;
+    }
+    .toolbar_main{
+        height: 2.5em;
+    }
+    .toolbar_nav{
+        height: 4em;
+    }
+  }
+
+    
+
+  @media only screen and (max-width: 768px) {
+    header {
+      .toolbar {
+        border-top-left-radius: 0px;
+      }
+    }
+  
+    .menu-icon-large-screen {
+      display: none;
+    }
+    .menu-icon-mobile-screen{
+      display: inline-block;
+    }
+    .header-search{
+      display: none;
+    }
+    .user{
+      display: none;
+    }
+  }

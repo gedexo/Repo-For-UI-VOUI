@@ -1,1 +1,21 @@
-<p>header works!</p>
+<header>
+    <mat-toolbar class="toolbar_main">
+        <mat-form-field >
+            <mat-select >
+              <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+                {{currency.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>VOUI</div>
+          <div>
+            <button>FR</button>
+          <button>En</button>
+        </div>
+    </mat-toolbar>
+    <mat-divider class="header-divider"></mat-divider>
+    <mat-toolbar class="toolbar_nav">
+    
+    </mat-toolbar>
+    <mat-divider class="header-divider"></mat-divider>
+  </header>
