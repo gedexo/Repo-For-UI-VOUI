@@ -14,7 +14,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 
@@ -28,7 +30,8 @@ import {MatSelectModule} from '@angular/material/select';
     CommonModule,
     MainRoutingModule, MatSidenavModule, MatToolbarModule ,MatMenuModule,
     MatDividerModule, MatListModule ,MatIconModule, MatButtonModule ,MatFormFieldModule,
-    MatInputModule, MatSelectModule
+    MatInputModule, MatSelectModule, MatButtonToggleModule, ReactiveFormsModule, FormsModule,
+ 
 
   ]
 })

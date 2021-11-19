@@ -1,42 +1,155 @@
+
+@media screen and (min-width: 1200px) {
 header {
-    background-color: #1E3354;
+    background-color: var(--backgroud-color);;
     position: sticky;
     top: 0;
     z-index: 999;
-    
+   
+    a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #000000;
+      }
     .toolbar_main, .toolbar_nav {
         background: #FFFAF3;
         border: 0.15px solid #f3e4d8;
         box-sizing: border-box;
         border: none;
+        display: flex;
+        padding: 0 3%;
     }
     .toolbar_main{
         height: 2.5em;
+        justify-content: center;
     }
-    .toolbar_nav{
+    .toolbar_nav, .nav_list{
         height: 4em;
+        display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    padding: 0 3%;
+
     }
-  }
-
-    
-
-  @media only screen and (max-width: 768px) {
-    header {
-      .toolbar {
-        border-top-left-radius: 0px;
+    .header-divider{
+        color: #763301;
+      }
+    .first_toolbar_left{
+        display: flex;
+        float: left;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 1em;
+    }
+    .first_toolbar_right{
+        display: flex;
+        float: right;
+        align-items: center;
+    }
+    .example-spacer {
+        flex: 1 1 auto;
+      }
+      .lang_toggle{
+          column-gap: 1%;
+      }
+      .spacer{
+          width: 1%;
       }
     }
+
+:host ::ng-deep.mat-button-toggle-group-appearance-standard {
+
+        border-radius: 4px;
+        border: none !important;
+        background-color: transparent;
+    }
+:host ::ng-deep.mat-button-toggle-appearance-standard {
+         color: rgba(0,0,0,.87); 
+         background: none; 
+         font-size: 15px;
+         font-weight: 500;
+    }
+:host ::ng-deep .mat-button-toggle-group-appearance-standard .mat-button-toggle+.mat-button-toggle {
+        border-left:none;
+        font-weight: 500;
+    }
+:host ::ng-deep.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+        padding: 0 5px;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 0;
+    }
+    
+:host ::ng-deep.mat-form-field-infix {
+       
+        width: 5em;
+    }
+:host ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
+     display: none;
+    }
+
+:host ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        padding-bottom: 0.8em;
+        font-size: 15px;
+    }
+    :host ::ng-deep.mat-select-value {
+   color: var(--black-color);
+        font-weight: 500;
+    }
+:host ::ng-deep.mat-mini-fab{
+    width: 25px;
+    height: 25px;
+    line-height: 0;
+    background-color: var(--black-color);
+    font-size: 13px;
+} 
+:host ::ng-deep.mat-mini-fab .mat-button-wrapper {
+    padding: 13px 0;
+    display: inline-block;
+   line-height: 0; 
+}
+.form{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+}
+
+.card_list_number{
+    color: var(--white-color);
+    border-radius: 59px;
+    background-color: var(--black-color);
+    font-size: 10px;
+    padding: 3px 8px;
+    top: 2px;
+}
+
+.mat-button{
+    font-weight: 500;
+    font-size: 13px;
+     color: #000000;
+}
+.mat-button:hover{
+
+    color: var(--main-color);
+    background-color: transparent !important;
+    font-weight: 500;
+}
+
+.mat-badge-content {
+    color: #fff;
+    background: var(--black-color);
+}
+.nav_items {
+    position: relative;
+    margin:0 1%;
+    justify-content: space-between;
+  }
+  .logo_container img{
+      padding: 2px 0;
+  }
+
+}
+  @media only screen and (max-width: 768px) {
   
-    .menu-icon-large-screen {
-      display: none;
-    }
-    .menu-icon-mobile-screen{
-      display: inline-block;
-    }
-    .header-search{
-      display: none;
-    }
-    .user{
-      display: none;
-    }
   }

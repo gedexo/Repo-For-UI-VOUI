@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 interface currencies {
   value: string;
@@ -14,18 +15,21 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) { }
   user='murugan';
+  no_of_items = 5;
   
-  currencies: currencies[] = [
-    {value: 'Euro', name:'€ Euro'},
-    {value: 'dollar', name:'$ doller'},
-    {value: 'Sterling', name:'£ doller'},
-    {value: 'UAE Dirham', name:'د.إ doller'},
-    {value: 'Saudi Riyal', name:'SR doller'},
 
-  ];
+
+  form:FormGroup = new FormGroup({
+       currency: new FormControl('Euro'),
+  });
+
 
 
   ngOnInit(): void {
-  }
 
+  }
+  selectCar():void{
+    console.log('hi');
+    
+  }
 }
