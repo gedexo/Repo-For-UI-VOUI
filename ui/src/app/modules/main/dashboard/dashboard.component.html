@@ -11,7 +11,7 @@
                 </div>
                 <div class="flex-container">
                     <img src="../../../../assets/images/banner-1.jpg" alt="banner_img-1" class="inner-image portrait">
-               
+
                     <img src="{{url}}" alt="banner_img-2" class="inner-image landscape">
                     <img src="../../../../assets/images/banner-3.jpg" alt="banner_img-3" class="inner-image portrait">
                 </div>
@@ -34,43 +34,43 @@
                     <span>OUR CATEGORIES</span>
 
                     <div class="categories_links">
-                        <ul class="nav_list" id="nav_menu">
-                            <li class="nav_items "><a mat-button [routerLink]="" [ngClass]="beauty"
-                                    (mouseover)="hoverBeauty($event)" (mouseout)="hoverBeauty($event)">BEAUTY</a>
+                        <ul class="nav_list" id="nav_menu"  >
+                            <li class="nav_items "><a [routerLink]="" [ngClass]="beauty"
+                                    (mouseover)="hoverBeauty($event)" (mouseout)="hoverBeauty($event)" (mouseleave)="mouseLeave($event)"  >BEAUTY</a>
                                 <mat-icon [ngClass]="beauty_arrow">arrow_forward</mat-icon>
                             </li>
 
-                            <li class="nav_items" id="category"> <a mat-button [routerLink]="" [ngClass]="sports"
-                                    (mouseover)="hoverSports($event)" (mouseout)="hoverSports($event)">SPORT</a>
+                            <li class="nav_items" id="category"> <a [routerLink]="" [ngClass]="sports"
+                                    (mouseover)="hoverSports($event)" (mouseout)="hoverSports($event)"  (mouseleave)="mouseLeave($event)"  >SPORT</a>
                                 <mat-icon [ngClass]="sports_arrow">arrow_forward</mat-icon>
                             </li>
 
-                            <li class="nav_items" id="category"><a mat-button [routerLink]="" [ngClass]="electronics"
+                            <li class="nav_items" id="category"><a [routerLink]="" [ngClass]="electronics"
                                     (mouseover)="hoverElectronics($event)"
-                                    (mouseout)="hoverElectronics($event)">ELECTRONICS</a>
+                                    (mouseout)="hoverElectronics($event)"  (mouseleave)="mouseLeave($event)"  >ELECTRONICS</a>
                                 <mat-icon [ngClass]="electronics_arrow">arrow_forward</mat-icon>
                             </li>
 
-                            <li class="nav_items" id="category"> <a mat-button [routerLink]="" [ngClass]="fashion"
-                                    (mouseover)="hoverFashion($event)" (mouseout)="hoverFashion($event)"
-                                    class="nav_link active">FASHION</a>
+                            <li class="nav_items" id="category"> <a [routerLink]="" [ngClass]="fashion"
+                                    (mouseover)="hoverFashion($event)" (mouseout)="hoverFashion($event)"  (mouseleave)="mouseLeave($event)"   
+                                    >FASHION</a>
                                 <mat-icon [ngClass]="fashion_arrow">arrow_forward</mat-icon>
                             </li>
 
-                            <li class="nav_items" id="category"> <a mat-button [routerLink]="" [ngClass]="household"
+                            <li class="nav_items" id="category"> <a [routerLink]="" [ngClass]="household"
                                     (mouseover)="hoverHousehold($event)"
-                                    (mouseout)="hoverHousehold($event)">HOUSEHOLD</a>
+                                    (mouseout)="hoverHousehold($event)"  (mouseleave)="mouseLeave($event)"  >HOUSEHOLD</a>
                                 <mat-icon [ngClass]="household_arrow">arrow_forward</mat-icon>
                             </li>
 
-                            <li class="nav_items" id="category"><a mat-button [routerLink]="" [ngClass]="petsupply"
-                                    (mouseover)="hoverPetSupplies($event)" (mouseout)="hoverPetSupplies($event)">PET
+                            <li class="nav_items" id="category"><a [routerLink]="" [ngClass]="petsupply"
+                                    (mouseover)="hoverPetSupplies($event)" (mouseout)="hoverPetSupplies($event)"  (mouseleave)="mouseLeave($event)"  >PET
                                     SUPPLIES</a>
                                 <mat-icon [ngClass]="petsupply_arrow">arrow_forward</mat-icon>
                             </li>
 
-                            <li class="nav_items" id="category"> <a mat-button [routerLink]="" [ngClass]="auto_moto"
-                                    (mouseover)="hoverAutoMoto($event)" (mouseout)="hoverAutoMoto($event)">AUTO-MOTO</a>
+                            <li class="nav_items" id="category"> <a [routerLink]="" [ngClass]="auto_moto"
+                                    (mouseover)="hoverAutoMoto($event)" (mouseout)="hoverAutoMoto($event)"  (mouseleave)="mouseLeave($event)"  >AUTO-MOTO</a>
                                 <mat-icon [ngClass]="auto_moto_arrow">arrow_forward</mat-icon>
                             </li>
                         </ul>
@@ -78,40 +78,68 @@
 
 
                 </div>
+
                 <div class="img_categories">
-                    <div class="grid">
-                        <div class="col-sm-5 grid-item y-2 mb-4" style="height: 650px;padding-top: 155px; ">
-                            <img src="../../../../assets/images/category-1.jpg" alt="" class="img-fluid landscape">
-                        </div>
-                        <div class="col-sm-6 grid-item">
-                            <img src="../../../../assets//images/category-2.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="col-sm-6 grid-item y-2" style="padding-top: 90px;">
-                            <img src="../../../../assets//images/category-3.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="grid-sizer col-1"></div>
-                    </div>
+
+                    <mat-grid-list cols="2" rowHeight="200px" style="text-align: end;">
+                        <mat-grid-tile [colspan]="1" [rowspan]="4" >
+                            <img src="{{category1}}" alt="" class="category_img1" >
+                
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="2" >
+                            <img src="{{category2}}" alt=""   class="category_img2">
+                
+                        </mat-grid-tile>
+                
+                        <mat-grid-tile [colspan]="1" [rowspan]="2" >
+                            <img src="{{category3}}" alt=""   class="category_img3" >
+                
+                        </mat-grid-tile>
+                    </mat-grid-list>
                 </div>
+
+
+
             </div>
         </div>
     </section>
-<!-- offer-section -->
-<section class="offer_section">
 
-    <div class="main_container">
-        
 
-    <owl-carousel-o [options]="cofferOptions">
-        <ng-template carouselSlide *ngFor ="let img of offerImages">
-            <img src="{{img.imgUrl}}" alt="{{img.alt}}"  class="inner-image offer">
-        </ng-template>
-        
-      </owl-carousel-o>
+    <!-- offer-section -->
 
-<!-- </div> -->
 
-</div>
-</section>
+    <section class="offer_section" id="offer_section">
+
+        <div class="main_container ">
+
+            <span>WE RECCOMENDED</span>
+            <h1>Offer Sale</h1>
+
+            <owl-carousel-o [options]="offerOptions" #owlCat>
+                <ng-container *ngFor="let img of offerSale">
+                    <ng-template carouselSlide let-owlItem class="offer_curousal_imgs">
+                        <img src="{{img.imgUrl}}" alt="{{img.alt}}">
+
+                        <div class="offer_details">
+                            <p>{{img.imgName}}</p>
+                            <span>{{img.price}}</span>
+                        </div>
+                    </ng-template>
+                </ng-container>
+
+            </owl-carousel-o>
+
+
+
+
+            <button class="offer_explore_button">
+                Explore all
+                <mat-icon>trending_flat</mat-icon>
+            </button>
+
+        </div>
+    </section>
+
     <!-- collections section -->
     <section class='collections_section'>
         <div class="main_container">
@@ -122,7 +150,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sit consectetur nisi, donec quis. Lorem ipsum dolor sit amet,</p>
                     <button class="collection_explore_button">
-                        Explore all &nbsp;
+                        Explore all
                         <mat-icon>trending_flat</mat-icon>
                     </button>
                 </div>
@@ -136,48 +164,57 @@
         </div>
     </section>
 
-    <section class="categories_section">
+
+    <!-- new Arrivals section -->
+    <section class="new_arrivals_section">
 
         <div class="main_container">
-            
-    <!-- <div class="row"> -->
-        <owl-carousel-o [options]="customOptions">
-            <ng-template carouselSlide><img src="../../../../assets/images/category-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>  
-            <ng-template carouselSlide><img src="../../../../assets/images/offer-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>  
-            <ng-template carouselSlide><img src="../../../../assets/images/category-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>  
-            <ng-template carouselSlide><img src="../../../../assets/images/category-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>  
-            <ng-template carouselSlide><img src="../../../../assets/images/category-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>  
-            <ng-template carouselSlide><img src="../../../../assets/images/category-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>
-          </owl-carousel-o>
-    
-    <!-- </div> -->
-    
-    </div>
+            <h1>New Arrivals</h1>
+            <owl-carousel-o [options]="customOptions">
+
+                <ng-template carouselSlide *ngFor="let img of newArraivals">
+
+                    <img src="{{img.imgUrl}}" alt="{{img.alt}}" class="inner-image arrival_img">
+
+                    <div class="offer_details">
+                        <p>{{img.imgName}}</p>
+                        <span>{{img.price}}</span>
+                    </div>
+                </ng-template>
+
+            </owl-carousel-o>
+            <button class="collection_explore_button">
+                Explore all
+                <mat-icon>trending_flat</mat-icon>
+            </button>
+
+        </div>
     </section>
+
+
     <!-- winter collection section -->
     <section class='session_collections_section'>
         <div class="main_container">
             <div class="align-categories">
-                <div class="Collections_winter_container">
+                <div class=" Collections_img_container">
                     <div>
                         <img src="../../../../assets/images/winter_collection-1.jpg" alt="winter_collections-1"
                             class="inner-image collection">
                     </div>
                 </div>
-                <div class="Collections_img_container">
+                <div class="Collections_winter_container">
                     <h1 class="collection_title">VOUI Winter Collection</h1>
                     <h2>Lorem ipsum doler amet</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sit consectetur nisi, donec quis. Lorem ipsum dolor sit amet,</p>
                     <button class="collection_explore_button">
-                        Explore all &nbsp;
+                        Explore all
                         <mat-icon>trending_flat</mat-icon>
                     </button>
                 </div>
             </div>
         </div>
     </section>
-
 
 
     <!-- free collection -->
@@ -199,49 +236,60 @@
             </div>
         </div>
     </section>
-    <section class="categories_section">
+
+
+
+    <!-- bags trend section -->
+    <section class="bags_section" id="bags_section">
 
         <div class="main_container">
-            
-    <!-- <div class="row"> -->
-        <owl-carousel-o [options]="customOptions">
-            <ng-template carouselSlide><img src="../../../../assets/images/category-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>  
-            <ng-template carouselSlide><img src="../../../../assets/images/offer-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>  
-            <ng-template carouselSlide><img src="../../../../assets/images/category-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>  
-            <ng-template carouselSlide><img src="../../../../assets/images/category-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>  
-            <ng-template carouselSlide><img src="../../../../assets/images/category-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>  
-            <ng-template carouselSlide><img src="../../../../assets/images/category-1.jpg" alt="offer-1"  class="inner-image offer"></ng-template>
-          </owl-carousel-o>
-    
-    <!-- </div> -->
-    
-    </div>
+
+            <span>WE RECCOMENDED</span>
+            <h1>Bags on Trend</h1>
+            <owl-carousel-o [options]="customOptions">
+
+                <ng-template carouselSlide *ngFor="let img of bagsTrends">
+
+                    <img src="{{img.imgUrl}}" alt="{{img.alt}}" class="inner-image arrival_img">
+
+                    <div class="offer_details">
+                        <p>{{img.imgName}}</p>
+                        <span>{{img.price}}</span>
+                    </div>
+                </ng-template>
+
+            </owl-carousel-o>
+            <button class="collection_explore_button">
+                Explore all
+                <mat-icon>trending_flat</mat-icon>
+            </button>
+
+        </div>
     </section>
 
     <!-- contact section -->
     <section class='contact_section'>
         <div class="main_container">
             <div class="align-items-center">
+                <h1>Enter the world of VOUI</h1>
+                <div class="contact_form">
+                    <form [formGroup]="contactForm" (submit)='submitContact()'>
 
-                <form [formGroup]="contactForm" class="contact_form" (submit)='submitContact()'>
+                        <mat-form-field class="contact">
+                            <mat-label>Enter the Email</mat-label>
+                            <input type="text" matInput formControlName="Email">
+                            <!-- <mat-error *ngIf="contactForm.controls['Email'].hasError('required')">Email Address is required</mat-error> -->
+                            <button mat-button class="form_submit_button">Send &nbsp; <mat-icon>trending_flat</mat-icon>
+                            </button>
 
-                    <mat-form-field class="contact">
-                        <mat-label>Enter the Email</mat-label>
-                        <input type="text" matInput formControlName="Email">
-                        <mat-error *ngIf="contactForm.controls['Email'].hasError('required')"> Email Address should not
-                            be empty</mat-error>
-                        <button mat-button class="form_submit_button">Send &nbsp; <mat-icon>trending_flat</mat-icon>
-                        </button>
+                        </mat-form-field>
 
-                    </mat-form-field>
-
-                </form>
-
-                <h4 *ngIf='error'>{{error}}</h4>
-
-
-
+                    </form>
+                    <h4 *ngIf='error'>{{error}}</h4>
+                    <span>Hear about exclusive events, collections and news</span>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -285,11 +333,14 @@
                         <h3>FOLLOW US</h3>
                         <ul class="nav_list" id="nav_menu">
 
-                            <li class="footer_nav_items "><a mat-button [routerLink]="">FACEBOOK</a> </li>
+                            <li class="footer_nav_items "> <a target="_blank" href="https://gedexo.com/">FACEBOOK</a>
+                            </li>
 
-                            <li class="footer_nav_items" id="category"> <a mat-button [routerLink]="">INSTAGRAM</a></li>
+                            <li class="footer_nav_items" id="category"> <a target="_blank"
+                                    href="https://gedexo.com/">INSTAGRAM</a></li>
 
-                            <li class="footer_nav_items" id="category"><a mat-button [routerLink]="">TWITTER</a></li>
+                            <li class="footer_nav_items" id="category"><a target="_blank"
+                                    href="https://gedexo.com/">TWITTER</a></li>
 
                         </ul>
                     </div>
@@ -298,7 +349,7 @@
                 <div class="footer_right_container">
 
                     <div class="email_container">
-                        <a [routerLink]=""> Vouifashion@gmail.com</a>
+                        <a href="mailto:muruganck4you@gmail.com">Vouifashion@gmail.com</a>
                     </div>
 
                     <div class="logo_container">
@@ -310,7 +361,6 @@
             </div>
         </div>
     </section>
-
 
 
 </main>

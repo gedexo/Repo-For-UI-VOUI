@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NguCarouselModule } from '@ngu/carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
+import { SwiperModule } from 'swiper/angular';
 
 
 
@@ -19,7 +19,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NguCarouselModule, CarouselModule
+    NguCarouselModule, CarouselModule,SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

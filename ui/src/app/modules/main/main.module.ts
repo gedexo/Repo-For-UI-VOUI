@@ -17,6 +17,13 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { SwiperModule } from 'swiper/angular';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTreeModule} from '@angular/material/tree';
+
+
+
+
 
 
 
@@ -25,12 +32,15 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MainComponent,
     HeaderComponent,
 
+
+
   ],
   imports: [
     CommonModule,
     MainRoutingModule, MatSidenavModule, MatToolbarModule ,MatMenuModule,
     MatDividerModule, MatListModule ,MatIconModule, MatButtonModule ,MatFormFieldModule,
     MatInputModule, MatSelectModule, MatButtonToggleModule, ReactiveFormsModule, FormsModule,
+    SwiperModule,MatGridListModule, MatTreeModule
  
 
   ]

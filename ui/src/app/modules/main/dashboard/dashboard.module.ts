@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { SwiperModule } from 'swiper/angular';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   imports: [
     CommonModule,
     DashboardRoutingModule, MatIconModule, MatFormFieldModule, MatButtonModule,
-    MatInputModule, ReactiveFormsModule, FormsModule, CarouselModule
+    MatInputModule, ReactiveFormsModule, FormsModule, CarouselModule,
+    SwiperModule, MatGridListModule
 
   ]
 })

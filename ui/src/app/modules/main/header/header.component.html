@@ -2,7 +2,7 @@
   <mat-toolbar class="toolbar_main">
     <div class="first_toolbar_left">
       <form [formGroup]="form" class="form">
-        <mat-form-field> 
+        <mat-form-field>
           <mat-select formControlName="currency">
             <mat-option value="Euro">€ EUR</mat-option>
             <mat-option value="doller">$ USD</mat-option>
@@ -12,25 +12,25 @@
           </mat-select>
         </mat-form-field>
       </form>
-          <span class="example-spacer"></span>
-            <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
-                <mat-button-toggle value="France">FR</mat-button-toggle>
-                <mat-button-toggle value="English">EN</mat-button-toggle>
-            </mat-button-toggle-group>
-          
+      <span class="example-spacer"></span>
+      <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
+        <mat-button-toggle value="France">FR</mat-button-toggle>
+        <mat-button-toggle value="English">EN</mat-button-toggle>
+      </mat-button-toggle-group>
+
     </div>
     <span class="example-spacer"></span>
     <div class="first_toolbar_right">
-           <button mat-button>SEARCH</button>
-           <button mat-button>LOGIN</button>
-           <button  mat-icon-button class="banner_explore_button">
-              <mat-icon>favorite_border</mat-icon>
-           </button>
-          <button mat-button >CART</button>
-          <button mat-mini-fab>
-            {{no_of_items}}
-          </button>
- 
+      <button mat-button>SEARCH</button>
+      <button mat-button>LOGIN</button>
+      <button mat-icon-button class="banner_explore_button">
+        <mat-icon>favorite_border</mat-icon>
+      </button>
+      <button mat-button>CART</button>
+      <button mat-mini-fab>
+        {{no_of_items}}
+      </button>
+
     </div>
   </mat-toolbar>
   <mat-divider class="header-divider"></mat-divider>
@@ -38,40 +38,62 @@
     <div class="logo_container"><img src="../../../../assets/images/Logo_VOUI.svg" alt="Logo_VOUI"></div>
   </mat-toolbar>
   <mat-divider class="header-divider"></mat-divider>
+  <!-- (click)="ClosePanel()" -->
+  <div class="nav_menu " >
+    <ul class="nav_list " id="nav_menu">
 
-  <nav class="nav_menu">
-    <ul class="nav_list" id="nav_menu">
+<li class="nav_items"><a  (click)="openBrandMenu($event,'offer')">OFFERS</a></li>
 
-        <li class="nav_items"><a  mat-button [routerLink]="'/accounts'"
-                class="nav_link ">OFFERS</a></li>
+<li class="nav_items"><a (click)="openBrandMenu($event,'brand')">BRANDS</a></li>
 
-        <li class="nav_items"><a mat-button [routerLink]="'/accounts'"
-                class="nav_link ">BRANDS</a> </li>
+<li class="nav_items"><a (click)="openBrandMenu($event,'beauty')">BEAUTY</a></li>
 
-        <li class="nav_items"><a  mat-button [routerLink]="'/accounts'"
-                class="nav_link ">BEAUTY</a> </li>
+<li class="nav_items"><a (click)="openBrandMenu($event,'fashion')">FASHION</a> </li>
 
-        <li class="nav_items"> <a  mat-button [routerLink]="'/accounts'"
-                class="nav_link ">FASHION</a> </li>
+<li class="nav_items"><a (click)="openBrandMenu($event,'sports')">SPORT</a></li>
 
-        <li class="nav_items"> <a  mat-button [routerLink]="'/accounts'"
-                class="nav_link ">SPORT</a> </li>
+<li class="nav_items"><a (click)="openBrandMenu($event,'electronics')">ELECTRONICS</a> </li>
 
-        <li class="nav_items"><a mat-button [routerLink]="'/accounts'"
-                class="nav_link ">ELECTRONICS</a> </li>
+<li class="nav_items"><a (click)="openBrandMenu($event,'houshold')">HOUSEHOLD</a> </li>
 
-        <li class="nav_items"> <a  mat-button [routerLink]="'/accounts'"
-                class="nav_link ">HOUSEHOLD</a> </li>
+<li class="nav_items"><a (click)="openBrandMenu($event,'petSupplies')">PET SUPPLIES</a> </li>
 
-        <li class="nav_items"><a  mat-button [routerLink]="'/accounts'"
-                  class="nav_link ">PET SUPPLIES</a> </li>
-  
-        <li class="nav_items"> <a mat-button [routerLink]="'/accounts'"
-                  class="nav_link ">AUTO-MOTO</a> </li>
+<li class="nav_items"> <a (click)="openBrandMenu($event,'autoMoto')">AUTO-MOTO</a> </li>
     </ul>
+    <mat-divider class="header-divider" ></mat-divider>
 
-</nav>
 
-<mat-divider class="header-divider"></mat-divider>
+      <div  Class="show_mega_menu" *ngIf="activeNode.length !==0">
+        <div class="parent_sub_menu">
+      
+          <div *ngFor="let element of activeNode">
+           <button mat-button [routerLink]="element.path" class="nav_link" value="{{element.path}}"
+                (mouseenter)="loadChild(element.path)">{{element.path}}  <mat-icon *ngIf="showArrow === true">arrow_forward</mat-icon></button>
+
+          </div>
+        </div>
+        <div class="child_sub_menu">
+          <div  *ngFor="let child of childrenNode" >
+          <div *ngFor="let children of child.children" class="column_allign">
+      
+            <button mat-button [routerLink]="child.path" class="nav_link ">{{children.name}}</button>
+          </div>
+          </div>
+      
+          <button class="offer_explore_button" *ngIf="activeNode.length !==0">
+            shop all
+            <mat-icon>trending_flat</mat-icon>
+          </button>
+        </div>
+
+
+
+    </div>
+
+  </div>
+
+
+
+
 
 </header>

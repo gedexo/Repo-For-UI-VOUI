@@ -5,12 +5,30 @@ header {
     position: sticky;
     top: 0;
     z-index: 999;
-   
+    text-transform: uppercase;
     a {
         text-decoration: none;
         font-weight: 500;
         color: #000000;
+        cursor: pointer;
       }
+      a:hover {
+        text-decoration: none;
+        font-weight: 600;
+
+        color: #763301;
+        cursor: pointer;
+  
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+      }
+      li::marker {
+        list-style-type: none;
+    }
     .toolbar_main, .toolbar_nav {
         background: #FFFAF3;
         border: 0.15px solid #f3e4d8;
@@ -24,12 +42,13 @@ header {
         justify-content: center;
     }
     .toolbar_nav, .nav_list{
-        height: 4em;
+        height: 5em;
         display: flex;
     justify-content: space-between;
     text-align: center;
     align-items: center;
     padding: 0 3%;
+margin-bottom: 0;
 
     }
     .header-divider{
@@ -150,6 +169,95 @@ header {
   }
 
 }
-  @media only screen and (max-width: 768px) {
-  
+.hide_mega_menu{
+display: none;
+   
+}
+
+
+.hide_mega_menu{
+   display: none;
+   content: '';
+}
+.show_mega_menu{
+    padding:3em 3%;
+    display: flex;
+    background-color: #FFFAF3;
+    width: 100%;  
+    justify-content: center;
+    transform: all 2s ease;
+
+    margin: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(0,0,0,.12);;
+}
+
+.parent_sub_menu{
+    width: 30%;
+    .nav_link{
+    font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+
+margin: 8px 0;
+letter-spacing: 0.05em;
+text-transform: uppercase;
+
+color: #000000;
+    }
+    .nav_link:hover{
+        font-family: ogg;
+        color: #763301;
+        background-color: transparent;
+        font-size: 24px;
+        border-bottom: 1px solid #815F46;
+       
+    }
+
+}
+
+.child_sub_menu{
+    width: 70%;
+    column-count: 2;
+    column-fill: auto;
+
+    text-transform: uppercase;
+    .nav_link{
+        font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 5px 0;
+    padding: 0;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #000000;
+        }
+.nav_link:hover{
+    font-family: ogg;
+    color: #763301;
+    background-color: transparent;
+    font-size: 20px;
+    border-bottom: 1px solid #815F46;
+}
+}
+.offer_explore_button {
+    background:#815F46;
+    border: none;
+    font-weight: normal;
+    line-height: 24px;
+    color:#F9F3F1;
+    padding:4px 20px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .offer_explore_button .span {
+    font-size: 16px !important;
+    color:#F9F3F1;
+  }
+  .mat-icon {
+    vertical-align: middle;
   }
