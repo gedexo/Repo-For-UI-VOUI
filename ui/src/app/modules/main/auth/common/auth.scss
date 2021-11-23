@@ -5,7 +5,7 @@ p{
   margin-bottom: 0;
 }
   .main_container{
-    padding: var(--section-padding);
+    padding:100px 3em;
     background-color: var(--backgroud-color);
     h1{
       text-align: center;
@@ -24,6 +24,7 @@ line-height: 33px;
 letter-spacing: 0.02em;
 color: #B08359;
     }
+
   }
 
 :host ::ng-deep .mat-form-field {
@@ -69,11 +70,13 @@ mat-error{
   justify-self: center;
   width: 100%;
   background-color: #FFFAF3;
-border: 0.2px solid #763301;
-font-size: 20px;
+border: 0.2px solid rgba(0,0,0,.12);;
+font-size: 18px;
 line-height: 33px;
 letter-spacing: 0.05em;
 color: #000000;
+
+
 
 }
 .bottom{
@@ -85,4 +88,21 @@ line-height: 33px;
 letter-spacing: 0.05em;
 color: #000000;
 
+
+}
+.bottom_new{
+  font-family: Poppins;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 33px;
+letter-spacing: 0.05em;
+color: #000000;
+
+margin-top: 10px;
+text-align: center;
+a{
+  color: #000000;
+text-decoration: underline;
+}
 }

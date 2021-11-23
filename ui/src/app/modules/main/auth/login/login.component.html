@@ -18,7 +18,7 @@
               <p>
               <mat-form-field class="contact">
                     <mat-label>password</mat-label>
-                    <br>
+  
                     <input type="text" matInput >
                     <mat-error *ngIf="contactForm.controls['password'].hasError('required')">Password is required</mat-error>
 
@@ -33,8 +33,9 @@
               <p >
                 <button type="submit" mat-button class="submit-container">Log in &nbsp; &nbsp; <mat-icon>trending_flat</mat-icon></button>
               </p>
-              <p class="bottom">
-                Don't have an account? <a routerLink="/signup">Sign up now</a>
+        
+              <p class="bottom_new">
+                Don't have an account? <a routerLink="/signup"  >Create new one</a>
               </p>
                 </form>
 
