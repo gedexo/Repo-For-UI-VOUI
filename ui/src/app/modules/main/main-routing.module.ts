@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { DashboardComponent } from './inventory/dashboard/dashboard.component';
+
+
 import { MainComponent } from './main.component';
 
 const routes: Routes = [
@@ -9,11 +14,24 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then((mod) => mod.DashboardModule)
+       component: DashboardComponent,
       },
-      
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'dashboard',
+      },
+      {
+        path: 'login',
+       component: LoginComponent,
+      },
+      {
+        path: 'signup',
+       component: SignupComponent,
+      },
     ]
-  }
+  },
+  
 ];
 
 @NgModule({

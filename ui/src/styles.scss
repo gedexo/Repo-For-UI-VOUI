@@ -11,7 +11,9 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--heading-font-family);
 }
+
 img{
     max-width: 100%;
     display: block;
@@ -34,6 +36,7 @@ a {
     text-decoration: none;
     font-weight: 500;
     color: #000000;
+    font-family:var(--heading-font-family);
   }
 
   ul {
@@ -41,4 +44,12 @@ a {
     padding: 0;
     list-style: none;
     text-decoration: none;
+    font-family:var(--heading-font-family)
   }
+  li{
+    font-family:var(--heading-font-family);
+}
+:host ::ng-deep.mat-typography {
+    font: 400 14px/20px "Poppins", sans-serif !important;
+    letter-spacing: normal !important;
+}

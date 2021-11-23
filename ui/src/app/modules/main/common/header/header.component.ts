@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 // import {VERSION} from '@angular/material';
 
+
 interface currencies {
   value: string;
   name: string;
@@ -196,18 +197,7 @@ const BRAND_DATA: FooddNode[] = [
         path: 'Hair Coloring Products',
         name: 'Hair Coloring Products'
       },
-      {
-        path: 'Hair Cutting Tools',
-        name: 'Hair Cutting Tools'
-      },
-      {
-        path: 'Hair Extensions',
-        name: 'Hair Extensions'
-      },
-      {
-        path: 'Wigs & Accessories',
-        name: 'Wigs & Accessories'
-      },
+  
       {
         path: 'Hair Loss Products',
         name: 'Hair Loss Products'
@@ -220,21 +210,7 @@ const BRAND_DATA: FooddNode[] = [
         path: 'Relaxers & Texturizerss',
         name: 'Relaxers & Texturizerss'
       },
-      {
-        path: 'Hair Treatment Oils',
-        name: 'Hair Treatment Oils'
-      },  {
-        path: 'Hair Coloring Products',
-        name: 'Hair Coloring Products'
-      },
-      {
-        path: 'Hair Cutting Tools',
-        name: 'Hair Cutting Tools'
-      },
-      {
-        path: 'Hair Extensions',
-        name: 'Hair Extensions'
-      },
+
       {
         path: 'Wigs & Accessories',
         name: 'Wigs & Accessories'
@@ -522,6 +498,8 @@ export class HeaderComponent implements OnInit {
   new_Date: FooddNode[] = [];
 
 
+  toggle_class = false;
+
 
 
 
@@ -531,10 +509,14 @@ export class HeaderComponent implements OnInit {
     currency: new FormControl('Euro'),
   });
 
+  searchForm: FormGroup = new FormGroup({
+    inputValue: new FormControl(''),
+  });
 
 
   ngOnInit(): void {
     this.showArrow = false;
+    this.toggle_class = false;
 
   }
 
@@ -545,8 +527,8 @@ export class HeaderComponent implements OnInit {
   }
 
   openBrandMenu(event: any, value: any): void {
-    console.log(value);
-    
+  
+
 
     switch (value) {
 
@@ -558,10 +540,21 @@ export class HeaderComponent implements OnInit {
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
               const event = this.activeNode[idx].name;
-              this.loadChild(event);
+              this.new_Date = this.filterData(event);
+              this.childrenNode = this.new_Date;
+              this.toggle_class = true;
+             
+              
+              break;
 
 
             }
+            else{
+            
+              this.toggle_class = false;
+            }
+          
+
           }
 
         break;
@@ -571,13 +564,14 @@ export class HeaderComponent implements OnInit {
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
               const event = this.activeNode[idx].name;
-              this.loadChild(event);
+              this.new_Date = this.filterData(event);
+              this.childrenNode = this.new_Date;
+         
          
 
             }
         
-
-
+          
         }
 
         break;
@@ -589,7 +583,8 @@ export class HeaderComponent implements OnInit {
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
               const event = this.activeNode[idx].name;
-              this.loadChild(event);
+              this.new_Date = this.filterData(event);
+    this.childrenNode = this.new_Date;
             
 
             }
@@ -604,7 +599,8 @@ export class HeaderComponent implements OnInit {
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
               const event = this.activeNode[idx].name;
-              this.loadChild(event);
+              this.new_Date = this.filterData(event);
+              this.childrenNode = this.new_Date;
              
 
             }
@@ -619,7 +615,8 @@ export class HeaderComponent implements OnInit {
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
               const event = this.activeNode[idx].name;
-              this.loadChild(event);
+              this.new_Date = this.filterData(event);
+              this.childrenNode = this.new_Date;
             
 
             }
@@ -634,7 +631,8 @@ export class HeaderComponent implements OnInit {
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
               const event = this.activeNode[idx].name;
-              this.loadChild(event);
+              this.new_Date = this.filterData(event);
+              this.childrenNode = this.new_Date;
              
 
             }
@@ -650,7 +648,8 @@ export class HeaderComponent implements OnInit {
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
               const event = this.activeNode[idx].name;
-              this.loadChild(event);
+              this.new_Date = this.filterData(event);
+              this.childrenNode = this.new_Date;
              
 
             }
@@ -664,8 +663,8 @@ export class HeaderComponent implements OnInit {
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
               const event = this.activeNode[idx].name;
-              this.loadChild(event);
-            
+              this.new_Date = this.filterData(event);
+              this.childrenNode = this.new_Date;
 
             }
           }
@@ -680,7 +679,8 @@ export class HeaderComponent implements OnInit {
             if (this.activeNode[idx].default === true) {
               const event = this.activeNode[idx].name;
             
-              this.loadChild(event);
+              this.new_Date = this.filterData(event);
+              this.childrenNode = this.new_Date;
 
             }
           }
@@ -689,24 +689,37 @@ export class HeaderComponent implements OnInit {
 
 
     }
-    console.log(this.activeNode);
+    
   }
 
 
 
 
   loadChild(event: any) {
+
     this.new_Date = this.filterData(event);
-
     this.childrenNode = this.new_Date;
-  
+    this.toggle_class = false;
+
+  }
+  toggleChild(event:any):void{
+
     
+    for (let idx = 0; idx < this.activeNode.length; idx++) {
+      if (this.activeNode[idx].default === true) {
+        const event = this.activeNode[idx].name;
+      
+        this.new_Date = this.filterData(event);
+        this.childrenNode = this.new_Date;
 
-
+      }
+    }
+  
   }
   filterData(event: string) {
 
     return this.activeNode.filter(object => {
+      this.toggle_class = true
 
       return object['path'] == event;
 
@@ -714,5 +727,10 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  upsertSearch():void{
 
+  console.log(this.searchForm.value);
+  
+    
+  }
 }

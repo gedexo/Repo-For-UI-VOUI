@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './common/header/header.component';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -20,7 +20,14 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { SwiperModule } from 'swiper/angular';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTreeModule} from '@angular/material/tree';
+import {FooterComponent } from './common/footer/footer.component'
 
+import {MatCardModule} from '@angular/material/card';
+import { DashboardComponent } from './inventory/dashboard/dashboard.component';
+
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 
@@ -31,6 +38,11 @@ import {MatTreeModule} from '@angular/material/tree';
   declarations: [
     MainComponent,
     HeaderComponent,
+    FooterComponent,
+    DashboardComponent,
+    LoginComponent,
+    SignupComponent,
+
 
 
 
@@ -40,7 +52,7 @@ import {MatTreeModule} from '@angular/material/tree';
     MainRoutingModule, MatSidenavModule, MatToolbarModule ,MatMenuModule,
     MatDividerModule, MatListModule ,MatIconModule, MatButtonModule ,MatFormFieldModule,
     MatInputModule, MatSelectModule, MatButtonToggleModule, ReactiveFormsModule, FormsModule,
-    SwiperModule,MatGridListModule, MatTreeModule
+    SwiperModule,MatGridListModule, MatTreeModule, MatCardModule, CarouselModule
  
 
   ]

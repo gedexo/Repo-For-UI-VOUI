@@ -1,10 +1,7 @@
 import {Component, ElementRef, OnInit, } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { ViewChild, AfterViewInit} from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
-import { templateJitUrl } from '@angular/compiler';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+
 
 export interface Tile {
   color: string;
@@ -18,11 +15,9 @@ export interface Tile {
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
- 
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
   beauty = 'nav_link';
   beauty_arrow = 'hide_arrow';
   sports = 'nav_link';
@@ -361,7 +356,4 @@ mouseOver($event:any):void{
       
 
     }
-  }
-
-
-
+}

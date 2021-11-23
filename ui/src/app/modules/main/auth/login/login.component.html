@@ -1,0 +1,46 @@
+<main class="main">
+  <section class='contact_section'>
+    <div class="main_container">
+        <div class="align-items-center">
+            
+            <div class="contact_form">
+             
+                <form [formGroup]="contactForm" (submit)='submitContact()'>
+                  <h1>Log in</h1>
+                <p>
+                    <mat-form-field class="contact">
+                      <mat-label>E-mail</mat-label>
+                        <input type="text" matInput >
+                        <mat-error *ngIf="contactForm.controls['email'].hasError('required')">Email Address is required</mat-error>
+                      
+                    </mat-form-field>
+               </p>
+              <p>
+              <mat-form-field class="contact">
+                    <mat-label>password</mat-label>
+                    <br>
+                    <input type="text" matInput >
+                    <mat-error *ngIf="contactForm.controls['password'].hasError('required')">Password is required</mat-error>
+
+               </mat-form-field>
+               </p>
+               <p *ngIf="error" class="error">
+                {{ error }}
+              </p>
+               <p >
+                <a routerLink="/signup" class="bottom">Forgot password?</a>
+              </p>
+              <p >
+                <button type="submit" mat-button class="submit-container">Log in &nbsp; &nbsp; <mat-icon>trending_flat</mat-icon></button>
+              </p>
+              <p class="bottom">
+                Don't have an account? <a routerLink="/signup">Sign up now</a>
+              </p>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+</main>
