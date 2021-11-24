@@ -362,7 +362,7 @@
     color: var(--black-color);
   }
   :host ::ng-deep.offer_section .owl-next{
-    right: 30%;
+    right: 29.5%;
   }
   :host ::ng-deep.offer_section .owl-prev{
     left: 34.7%;
@@ -551,6 +551,7 @@
     font-size: 16px !important;
     color:#F9F3F1;
   }
+  
   :host ::ng-deep.owl-carousel .owl-stage {
     display: flex;
     align-items: center;

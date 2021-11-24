@@ -2,18 +2,40 @@
   background-color: #fffaf3;
 }
 p{
-  margin-bottom: 0;
+  margin-bottom: 10px;
+}
+.signup_container{
+  padding:50px 3em;
+  background-color: var(--backgroud-color);
+  h1{
+    text-align: center;
+    font-family: Ogg;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 46px;
+letter-spacing: 0.05em;
+
+color: #763301;
+  }
 }
   .main_container{
     padding:100px 3em;
     background-color: var(--backgroud-color);
     h1{
       text-align: center;
-      color: var(--black-color);
+      font-family: Ogg;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 46px;
+letter-spacing: 0.05em;
+
+color: #763301;
     }
   }
 .contact_form{
-    margin: 0 35% !important;
+    margin: 0 34% !important;
 
     span{
       font-family: Poppins;
@@ -39,7 +61,7 @@ color: #B08359;
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 16px;
 
   letter-spacing: 0.05em;
   color: #000000;
@@ -48,10 +70,14 @@ color: #B08359;
   color: #763301;
 }
 :host ::ng-deep .mat-input-element {
-  caret-color: #763301;
+  caret-color: #000000;
+  font-weight: 500;
+  font-size: 14px;
+
 }
 :host ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
    background-color: #AF621A;
+   
  
 }
 :host ::ng-deep.mat-form-field-ripple {
@@ -69,26 +95,47 @@ mat-error{
   text-align: center;
   justify-self: center;
   width: 100%;
-  background-color: #FFFAF3;
+background-color: transparent;
+
 border: 0.2px solid rgba(0,0,0,.12);;
-font-size: 18px;
+font-size: 16px;
 line-height: 33px;
 letter-spacing: 0.05em;
 color: #000000;
+border-radius: 50px;
+}
+.submit-container:hover{
 
+  background: 
+  linear-gradient(0.25turn, #815F46, #ebf8e1, #815F46),
+            linear-gradient(0.25turn, #3f87a6, #ebf8e1, #ebf8e1);
 
-
+color: #000000;
 }
 .bottom{
   font-family: Poppins;
 font-style: normal;
 font-weight: 300;
 font-size: 12px;
-line-height: 33px;
-letter-spacing: 0.05em;
+
+letter-spacing: 0.03em;
 color: #000000;
+p{
+  margin-bottom: 0;
+}
+a{
+  color: #000000;
+}
+a:hover{
+  color: #763301;
+}
 
 
+}
+a:hover{
+  color: #763301;
+  text-decoration: none;
+  font-weight: 500;
 }
 .bottom_new{
   font-family: Poppins;
@@ -96,7 +143,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 14px;
 line-height: 33px;
-letter-spacing: 0.05em;
+letter-spacing: 0.03em;
 color: #000000;
 
 margin-top: 10px;
@@ -104,5 +151,10 @@ text-align: center;
 a{
   color: #000000;
 text-decoration: underline;
+}
+a:hover{
+  color: #763301;
+text-decoration: underline;
+font-weight: 500;
 }
 }

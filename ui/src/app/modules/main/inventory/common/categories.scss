@@ -1,0 +1,190 @@
+
+.main {
+        background-color: #fffaf3;
+        top: 0;
+        padding:var(--section-padding);
+ }
+.align-items-center {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+}
+.banner_curousal{
+  margin: 50px 0;
+}
+      h1 {
+        font-family: Ogg;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 45px;
+        font-weight: 400;
+        color: var(--main-color);
+      }
+      h3 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 37px;
+        font-weight: 400;
+        color: var(--main-color);
+      }
+      span {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 30px;
+    
+        color: #000000;
+      }
+
+  .category_name{
+    background: rgba(196, 196, 196, 0.8);
+    position: absolute;
+    top:83.5%;
+    padding: 15px 20px;
+    width: 100%;
+    font-family: Ogg;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+  
+    color: #000000;
+  } 
+  :host ::ng-deep.offer_section .owl-next, :host ::ng-deep.offer_section .owl-prev{
+    background: none;
+    font-size: 25px;
+    position: absolute;
+    top: 40%;
+    padding: 0;
+    margin: 0;
+    color: var(--black-color);
+  }
+  :host ::ng-deep.offer_section .owl-next{
+    right: 34%;
+  }
+  :host ::ng-deep.offer_section .owl-prev{
+    left: 36%;
+  }
+  :host ::ng-deep.owl-carousel .owl-stage {
+    display: flex;
+    align-items: center;
+  }
+  
+  :host ::ng-deep.owl-carousel .caption {
+    text-align: center;
+  }
+  
+  :host ::ng-deep .owl-carousel .owl-item.center {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+     margin-top: 0 !important;
+     flex: 0 0 auto !important;
+  
+     img{
+     height: 400px;
+
+      
+     }
+     .category_name{
+      background: rgba(196, 196, 196, 0.8);
+      position: absolute;
+      top:88%;
+      padding: 15px 20px;
+      width: 100%;
+      font-family: Ogg;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 25px;
+
+      color: #000000;
+    } 
+    }
+  
+:host ::ng-deep .owl-carousel{
+    justify-content: space-around;
+    padding: 1em;
+    img{
+
+    height: 300px;
+    }
+  }
+    
+:host ::ng-deep.offer_section .owl-next:hover{
+    background-color: #815F46;
+  opacity: 0.8;
+  padding: 10px;
+  border-radius: 50px;
+  font-size: 25px;
+  top: 38%;
+  position: absolute;
+  margin: 0;
+  border-radius: 50px;
+  right: 34%;
+  opacity: 0.5;
+
+
+  }
+:host ::ng-deep.offer_section .owl-prev:hover{
+    background-color: #815F46;
+    opacity: 0.8;
+    padding: 10px;
+    font-size: 25px;
+    position: absolute;
+    top: 38%;
+    margin: 0;
+    border-radius: 50px;
+    left: 36%;
+    opacity: 0.5;
+  }
+.product_section{
+    display: flex;
+  }
+.filter_section{
+  float: left;
+  width: 20%;
+  background-color: tan;
+
+  }
+.preview_section{
+    float: right;
+    width: 80%;
+}
+.nav_path{
+  font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 30px;
+text-transform: capitalize;
+color: #874C20;
+}
+.filter_title{
+  display: inline-flex;
+  padding: 0;
+
+  border: none;
+  background-color: none;
+  font-family: Ogg;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+color: #874C20;
+  
+  mat-icon{
+    vertical-align: middle;
+    color: #874C20;
+  }
+}
+.filter_section{
+  margin-top: 1em;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+
+
+// ============tree section

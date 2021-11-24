@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
 
   });
 
+  
+
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute) { }
@@ -37,20 +39,17 @@ export class LoginComponent implements OnInit {
       console.log(this.contactForm.value);
       
     
-    if (!(/^(?<name>[a-zA-Z0-9_\-\.]+)@(?<domain>[a-zA-Z0-9_\-\.]+)\.(?<extn>[a-zA-Z]{2,5})$/ugm).test(this.contactForm.value.Email)) {
+    if (!(/^(?<name>[a-zA-Z0-9_\-\.]+)@(?<domain>[a-zA-Z0-9_\-\.]+)\.(?<extn>[a-zA-Z]{2,5})$/ugm).test(this.contactForm.value.email)) {
    
      this.error =" * please enter valid email address";
     }
     else{
-      console.log('murugan');
+      console.log('form can proceed');
       this.error ="";
     }
     
     }
-    else{
-      this.error =" * please enter your email address";
 
-    }
   }
 
 }

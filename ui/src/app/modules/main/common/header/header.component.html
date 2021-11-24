@@ -29,7 +29,7 @@
         
         <button type="submit" mat-button class="submit_button"> <mat-icon class="mat-5by1-white">search</mat-icon></button>
       </form>
-      <button mat-button>LOGIN</button>
+      <button mat-button  routerLink="/login">LOGIN</button>
       <button mat-icon-button class="banner_explore_button">
         <mat-icon>favorite_border</mat-icon>
       </button>
@@ -92,7 +92,7 @@
           </div>
           </div>
       
-          <button class="offer_explore_button" *ngIf="activeNode.length !==0">
+          <button mat-button class="offer_explore_button" *ngIf="activeNode.length !==0" [routerLink]="shopAll">
             shop all
             <mat-icon>trending_flat</mat-icon>
           </button>

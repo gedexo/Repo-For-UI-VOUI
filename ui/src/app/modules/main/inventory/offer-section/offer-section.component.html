@@ -1,0 +1,83 @@
+<main class="main">
+
+
+    <section class="offer_section" id="offer_section">
+
+        <div class="align-items-center">
+
+            <div class="banner_title">
+                <h1>Lorem ipsum doler amet</h1>
+                <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut netus convallis ante ut mauris
+                    viverra.</h3>
+            </div>
+
+            <div class="banner_curousal">
+                <owl-carousel-o [options]="offerOptions">
+                    <ng-container *ngFor="let img of offerSale">
+                        <ng-template carouselSlide let-owlItem class="offer_curousal_imgs">
+                            <img src="{{img.imgUrl}}" alt="{{img.alt}}" title=" {{img.imgName}}">
+                            <div class="category_name">
+                                {{img.imgName}}
+                            </div>
+
+                        </ng-template>
+                    </ng-container>
+
+                </owl-carousel-o>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="product_section">
+        <div class="filter_section">
+
+            <div class="nav_path"> Home -> Beauty -> Hair care</div>
+
+            <div>
+                <!-- tree for categories -->
+                <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+                    <!-- This is the tree node template for leaf nodes -->
+                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+                        <!-- use a disabled button to provide padding for tree leaf -->
+                        <button mat-icon-button disabled></button>
+                        <button mat-button>{{node.name}}</button>
+
+                    </mat-tree-node>
+                    <!-- This is the tree node template for expandable nodes -->
+                    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+                        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+                            <mat-icon class="mat-icon-rtl-mirror">
+                                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                            </mat-icon>
+                        </button>
+                        {{node.name}}
+                    </mat-tree-node>
+                </mat-tree>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Brand
+                            </mat-panel-title>
+
+                        </mat-expansion-panel-header>
+                        <!-- <form [formGroup]="myGroup">
+                            <div *ngFor="let category of myGroup.controls['myCategory'].controls; let i = index">
+                                <input type="checkbox" [formControl]="category">
+                            <label>{{ categories[i].name }}</label>
+                            </div>
+                          Selected: <strong>{{ myGroup.get('myCategory') }}</strong>
+                        </form> -->
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+
+        </div>
+
+
+        <div class="preview_section"></div>
+    </section>
+</main>

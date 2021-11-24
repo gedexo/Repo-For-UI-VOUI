@@ -499,6 +499,7 @@ export class HeaderComponent implements OnInit {
 
 
   toggle_class = false;
+  shopAll = '';
 
 
 
@@ -533,6 +534,7 @@ export class HeaderComponent implements OnInit {
     switch (value) {
 
       case 'offer':
+        this.shopAll = '/offer';
 
 
           this.activeNode = BRAND_DATA;
@@ -560,6 +562,7 @@ export class HeaderComponent implements OnInit {
         break;
 
       case 'brand':
+        this.shopAll = '/brand';
           this.activeNode = TREE_DATA;
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
@@ -578,7 +581,7 @@ export class HeaderComponent implements OnInit {
 
       case 'beauty':
   
-
+        this.shopAll = '/beauty';
           this.activeNode = BRAND_DATA;
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
@@ -594,7 +597,7 @@ export class HeaderComponent implements OnInit {
         break;
 
       case 'fashion':
-
+        this.shopAll = '/fashion';
           this.activeNode = TREE_DATA;
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
@@ -610,7 +613,7 @@ export class HeaderComponent implements OnInit {
 
       case 'sports':
 
-
+        this.shopAll = '/sport';
           this.activeNode = BRAND_DATA;
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
@@ -626,7 +629,7 @@ export class HeaderComponent implements OnInit {
 
       case 'electronics':
 
-
+        this.shopAll = '/electronics';
           this.activeNode = TREE_DATA;
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
@@ -643,7 +646,7 @@ export class HeaderComponent implements OnInit {
 
       case 'houshold':
 
-
+        this.shopAll = '/houshold';
           this.activeNode = BRAND_DATA;
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
@@ -658,7 +661,7 @@ export class HeaderComponent implements OnInit {
         break;
 
       case 'petSupplies':
-
+        this.shopAll = '/petsupply';
           this.activeNode = TREE_DATA;
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
@@ -673,7 +676,7 @@ export class HeaderComponent implements OnInit {
 
       case 'autoMoto':
 
-
+        this.shopAll = '/automoto';
           this.activeNode = BRAND_DATA;
           for (let idx = 0; idx < this.activeNode.length; idx++) {
             if (this.activeNode[idx].default === true) {
