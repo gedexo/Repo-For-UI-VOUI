@@ -1,0 +1,60 @@
+h1{
+  font-family: Ogg;
+font-style: normal;
+font-weight: normal;
+font-size:40px;
+line-height: 77px;
+text-transform: capitalize;
+margin-left: 20px;
+color: #000000;
+
+}
+.example-card {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  background-color:#F3EEE9;
+}
+.mat-card-content {
+  display: block;
+  margin-bottom: 16px;
+
+}
+.mat-card-title{
+  font-family: Ogg;
+font-style: normal;
+font-weight: normal;
+font-size: 25px;
+line-height: 39px;
+letter-spacing: 0.05em;
+color: #8B3B00;
+}
+.mat-card-subtitle{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  color: #000000;
+
+}
+
+.info{
+  width: 60%;
+  margin-left: 5%;
+}
+.content{
+  margin-top: 44px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  margin-left: 15px;
+  color: #000000;
+}
+

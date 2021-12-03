@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NguCarouselModule } from '@ngu/carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SwiperModule } from 'swiper/angular';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MainService } from './modules/service/main.service';
 
 
 
@@ -19,9 +21,9 @@ import { SwiperModule } from 'swiper/angular';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NguCarouselModule, CarouselModule,SwiperModule
+    NguCarouselModule, CarouselModule,SwiperModule, MatSidenavModule
   ],
-  providers: [],
+  providers: [MainService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

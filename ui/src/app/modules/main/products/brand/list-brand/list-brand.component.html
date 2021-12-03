@@ -1,0 +1,179 @@
+<main class="main">
+
+
+  <section class="offer_section" id="offer_section">
+
+    <div class="align-items-center">
+
+      <div class="banner_title">
+        <h1>{{offer_title}}</h1>
+        <h3>{{offer_subtitle}}</h3>
+      </div>
+
+      <div class="banner_curousal">
+        <owl-carousel-o [options]="offerOptions">
+          <ng-container *ngFor="let img of offerSale">
+            <ng-template carouselSlide let-owlItem class="offer_curousal_imgs">
+              <img src="{{img.imgUrl}}" alt="{{img.alt}}" title=" {{img.imgName}}">
+              <div class="category_name">
+                {{img.imgName}}
+              </div>
+
+            </ng-template>
+          </ng-container>
+
+        </owl-carousel-o>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="product_section">
+
+    <div class="filter_section">
+
+      <div class="nav_path"> Home<mat-icon>trending_flat</mat-icon> Beauty<mat-icon>trending_flat</mat-icon> Hair
+        care</div>
+
+      <div class="filter_container">
+
+
+
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="isFirst">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="filter_title"> categories</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div *ngFor="let element of TREE_DATA" class="filter_body">
+              <a href=""> {{element.name}} </a><br>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="isFirst">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="filter_title">
+                Brand
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div *ngFor="let subtask of subtasks" class="filter_body">
+              <mat-checkbox [(ngModel)]="subtask.completed">
+                {{subtask.name}}
+              </mat-checkbox>
+            </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="isFirst">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="filter_title">
+                Size
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="toggle_body">
+              <div *ngFor="let subtask of size">
+
+                <mat-button-toggle [checked]="subtask.completed" (change)="subtask.completed = $event.source.checked">
+                  {{subtask.name}}
+                </mat-button-toggle>
+
+              </div>
+
+            </div>
+
+
+          </mat-expansion-panel>
+        </mat-accordion>
+        <form [formGroup]="form" (ngSubmit)="submit()" class="form_container">
+
+
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+              [expanded]="isFirst">
+              <mat-expansion-panel-header>
+                <mat-panel-title class="filter_title">
+                  Price
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="betweenKeyInputs">
+
+
+                <mat-form-field class="inputPrimary">
+                  <input matInput type="number" formControlName="startprice">
+                  <span matSuffix>$</span>
+                </mat-form-field>
+                <span class="betweenlable"> to</span>
+                <mat-form-field class="inputPrimary">
+                  <input matInput type="number" formControlName="endprice">
+                  <span matSuffix>$</span>
+                </mat-form-field>
+
+
+
+              </div>
+
+
+            </mat-expansion-panel>
+          </mat-accordion>
+          <button mat-button type="submit" class="filter_submit_button">apply</button>
+        </form>
+
+      </div>
+
+    </div>
+
+
+    <div class="preview_section">
+      <mat-paginator [length]="200" [pageSize]="0" [pageSizeOptions]="[9, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+
+      <mat-toolbar>
+        <button mat-button class="mat_button">
+          <mat-icon>restore</mat-icon>reset
+        </button>
+
+        <span class="example-spacer"></span>
+        <button mat-button class="mat_button">
+          sort<mat-icon>arrow_downward</mat-icon>
+        </button>
+      </mat-toolbar>
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 col-6" *ngFor="let img of products">
+          <div class="card" (click)="productPreview(img)">
+
+            <img src="{{img.imgUrl}}" alt="Photo of {{img.alt}}" class="" style=" max-height: 300px; width: 100%;">
+            <button mat-icon-button class="banner_explore_button" (click)="openSnackBar(img.alt)">
+              <mat-icon>favorite_border</mat-icon>
+            </button>
+
+            <div class="card-body">
+              <h5 class="card-title">{{img.imgName}}</h5>
+              <h6 class="card-subtitle text-muted">Card subtitle</h6>
+              <b>${{img.price}}</b>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+      <mat-paginator [length]="200" [pageSize]="0" [pageSizeOptions]="[9, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </section>
+
+
+</main>
+

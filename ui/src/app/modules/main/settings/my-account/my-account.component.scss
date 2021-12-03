@@ -1,0 +1,91 @@
+h1{
+  font-family: Ogg;
+font-style: normal;
+font-weight: normal;
+font-size:40px;
+line-height: 77px;
+text-transform: capitalize;
+margin-left: 20px;
+color: #000000;
+
+}
+h2
+{
+  font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 30px;
+text-transform: capitalize;
+
+color: #763301
+
+}
+.address_flex{
+  display: flex;
+  flex:  1 1 auto;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.edit_button{
+  font-family: Poppins;
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+line-height: 22px;
+text-decoration-line: underline;
+text-transform: capitalize;
+color: #763301 !important;
+padding-right: 0;
+padding-left: 5px;
+}
+.personal_details{
+  margin-bottom: 80px;
+  margin-top: 30px;
+}
+.fbo-create-formTwo{
+ margin-left: 5%;
+}
+
+table {
+  width: 100%;
+  background-color: transparent;
+  margin-top: 10px;
+}
+tr.mat-header-row {
+  height: 10px;
+
+}
+tr.mat-row, tr.mat-footer-row {
+  height: 30px;
+}
+.mat-cell, .mat-header-cell {
+  border: none !important;
+  text-align: center;
+}
+
+th{
+  font-family: Poppins;
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+
+text-transform: capitalize;
+color: #000000;
+
+}
+td{
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 27px;
+text-transform: capitalize;
+color: #000000;
+font-weight: 500;
+
+}
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+  padding-left: 0 !important;
+}

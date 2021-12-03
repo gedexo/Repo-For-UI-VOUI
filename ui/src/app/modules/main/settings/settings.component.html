@@ -1,0 +1,33 @@
+
+
+<main class="main">
+  <section class="offer_section" id="offer_section">
+
+    <div class="align-center">
+
+
+
+  <nav class="nav_section">
+
+    <ul>
+      <li  class="nav_list"><a href="" routerLinkActive="active"  [routerLink]="'myaccount'"class="nav_items"  #account="routerLinkActive"> MY ACCOUNT  <mat-icon *ngIf="account.isActive === true">trending_flat</mat-icon></a></li>
+      <li  class="nav_list"><a href="" routerLinkActive="active"  [routerLink]="'orders'"   class="nav_items"  #order="routerLinkActive"> ORDERS  <mat-icon *ngIf="order.isActive === true">trending_flat</mat-icon></a> </li>
+      <li  class="nav_list"><a href="" routerLinkActive="active"  [routerLink]="'wishlist'" class="nav_items"  #wishlist="routerLinkActive"> WISHLIST  <mat-icon *ngIf="wishlist.isActive === true">trending_flat</mat-icon></a> </li>
+      <li  class="nav_list logout"><a href="" routerLinkActive="active"  [routerLink]="'login'"    class="nav_items"> <mat-icon>exit_to_app</mat-icon>LOG OUT</a></li>
+      <li  class='contact_link'>Need help?  <a href="">Contact Us</a></li>
+    </ul>
+
+
+  </nav>
+<div class="content_section">
+
+
+  <router-outlet></router-outlet>
+</div>
+
+</div>
+
+  </section>
+  </main>
+
+

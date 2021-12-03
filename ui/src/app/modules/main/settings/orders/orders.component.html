@@ -1,0 +1,24 @@
+<main class="main">
+  <section class="offer_section" id="offer_section">
+
+    <div class="align-items-center">
+
+      <h1>My Orders</h1>
+      <mat-card class="example-card" *ngFor="let idx of count(2)">
+        <img mat-card-lg-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+        <div class="info">
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Size:  {{size}}</mat-card-subtitle>
+          <mat-card-subtitle>Color: {{color}}</mat-card-subtitle>
+          <mat-card-subtitle>Price:{{price}}</mat-card-subtitle>
+        </div>
+        <div class="content">
+          <mat-card-subtitle>Status</mat-card-subtitle>
+          <mat-card-content>
+            {{longText}}
+          </mat-card-content>
+        </div>
+      </mat-card>
+      </div>
+      </section>
+      </main>

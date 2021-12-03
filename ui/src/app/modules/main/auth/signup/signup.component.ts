@@ -5,13 +5,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['../common/auth.scss']
+  styleUrls: ['./signup.component.scss','../common/auth.scss']
 })
 export class SignupComponent implements OnInit {
 
   error= '';
 
-  loading = false;
+
 
 
   contactForm: FormGroup = new FormGroup({
@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
     email: new FormControl('', [ Validators.required ]),
     password: new FormControl('', [ Validators.required ]),
     cpassword:new FormControl('', [ Validators.required ]),
-  
+
 
   });
 
@@ -28,17 +28,19 @@ export class SignupComponent implements OnInit {
     private readonly router: Router,
     private readonly route: ActivatedRoute) { }
 
-  ngOnInit():void {}
+  ngOnInit():void {
+    console.log('login page');
+  }
 
-  
+
   submitContact():void {
-   
+
 
     if (this.contactForm.valid === true) {
       console.log(this.contactForm.value);
-      
-    
-      if (!(/^(?<name>[a-zA-Z0-9_\-\.]+)@(?<domain>[a-zA-Z0-9_\-\.]+)\.(?<extn>[a-zA-Z]{2,5})$/ugm).test(this.contactForm.value.email)) {
+
+
+      if (!(/^(?<name>[a-zA-Z0-9_\-.]+)@(?<domain>[a-zA-Z0-9_\-.]+)\.(?<extn>[a-zA-Z]{2,5})$/ugm).test(this.contactForm.value.email)) {
 
         this.error = 'Please provide a valid email.';
         return;
@@ -56,7 +58,7 @@ export class SignupComponent implements OnInit {
       console.log("form can proceed");
       this.error ="";
     }
-    
+
     }
 
   }

@@ -1,20 +1,14 @@
-
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-// import {VERSION} from '@angular/material';
+import { MainService } from 'app/modules/service/main.service';
+import { MatSidenav } from '@angular/material/sidenav';
+import 'boxicons';
 
-
-interface currencies {
-  value: string;
-  name: string;
-
-}
 interface childNode {
   path: string;
   name: string;
   icon?: string;
-
 }
 
 interface FooddNode {
@@ -26,8 +20,6 @@ interface FooddNode {
 }
 
 const TREE_DATA: FooddNode[] = [
-
-
   {
     path: 'item',
     name: 'Item',
@@ -36,21 +28,21 @@ const TREE_DATA: FooddNode[] = [
     children: [
       {
         path: 'unit',
-        name: 'Units'
+        name: 'Units',
       },
       {
         path: 'tax',
-        name: 'Taxes'
+        name: 'Taxes',
       },
       {
         path: 'category',
-        name: 'Categories'
+        name: 'Categories',
       },
       {
         path: 'product',
-        name: 'Products'
+        name: 'Products',
       },
-    ]
+    ],
   },
 
   {
@@ -61,17 +53,17 @@ const TREE_DATA: FooddNode[] = [
     children: [
       {
         path: 'invoice',
-        name: 'Invoices'
+        name: 'Invoices',
       },
       {
         path: 'revenue',
-        name: 'Revenues'
+        name: 'Revenues',
       },
       {
         path: 'customer',
-        name: 'Customers'
+        name: 'Customers',
       },
-    ]
+    ],
   },
   {
     path: 'haircare',
@@ -81,17 +73,17 @@ const TREE_DATA: FooddNode[] = [
     children: [
       {
         path: 'hair',
-        name: 'hair'
+        name: 'hair',
       },
       {
         path: 'hair',
-        name: 'hair'
+        name: 'hair',
       },
       {
         path: 'hair',
-        name: 'hair'
+        name: 'hair',
       },
-    ]
+    ],
   },
   {
     path: 'banking',
@@ -101,21 +93,21 @@ const TREE_DATA: FooddNode[] = [
     children: [
       {
         path: 'bank',
-        name: 'Banks'
+        name: 'Banks',
       },
       {
         path: 'hair',
-        name: 'hair'
+        name: 'hair',
       },
       {
         path: 'transfer',
-        name: 'Transfers'
+        name: 'Transfers',
       },
       {
         path: 'transaction',
-        name: 'Transactions'
+        name: 'Transactions',
       },
-    ]
+    ],
   },
   {
     path: 'accounts',
@@ -125,25 +117,25 @@ const TREE_DATA: FooddNode[] = [
     children: [
       {
         path: 'ledgerGroup',
-        name: 'Ledger Group'
+        name: 'Ledger Group',
       },
       {
         path: 'hair',
-        name: 'hair'
+        name: 'hair',
       },
       {
         path: 'ledger',
-        name: 'Ledger'
+        name: 'Ledger',
       },
       {
         path: 'voucher',
-        name: 'Voucher'
+        name: 'Voucher',
       },
       {
         path: 'cost-centre',
-        name: 'Cost Centre'
+        name: 'Cost Centre',
       },
-    ]
+    ],
   },
 
   {
@@ -154,31 +146,29 @@ const TREE_DATA: FooddNode[] = [
     children: [
       {
         path: 'branch',
-        name: 'Branch'
+        name: 'Branch',
       },
       {
         path: 'company',
-        name: 'Company'
+        name: 'Company',
       },
       {
         path: 'fin-year',
-        name: 'Fin Year'
+        name: 'Fin Year',
       },
       {
         path: 'user',
-        name: 'User'
+        name: 'User',
       },
       {
         path: 'hair',
-        name: 'hair'
+        name: 'hair',
       },
-    ]
-  }
+    ],
+  },
 ];
 
 const BRAND_DATA: FooddNode[] = [
-
-
   {
     path: 'item',
     name: 'Item',
@@ -187,63 +177,63 @@ const BRAND_DATA: FooddNode[] = [
     children: [
       {
         path: 'unit',
-        name: 'Units'
+        name: 'Units',
       },
       {
         path: 'tax',
-        name: 'Taxes'
+        name: 'Taxes',
       },
       {
         path: 'Hair Coloring Products',
-        name: 'Hair Coloring Products'
+        name: 'Hair Coloring Products',
       },
-  
+
       {
         path: 'Hair Loss Products',
-        name: 'Hair Loss Products'
+        name: 'Hair Loss Products',
       },
       {
         path: 'Hair Masks-Hair Perms',
-        name: 'Hair Masks-Hair Perms'
+        name: 'Hair Masks-Hair Perms',
       },
       {
         path: 'Relaxers & Texturizerss',
-        name: 'Relaxers & Texturizerss'
+        name: 'Relaxers & Texturizerss',
       },
 
       {
         path: 'Wigs & Accessories',
-        name: 'Wigs & Accessories'
+        name: 'Wigs & Accessories',
       },
       {
         path: 'Hair Loss Products',
-        name: 'Hair Loss Products'
+        name: 'Hair Loss Products',
       },
       {
         path: 'Hair Masks-Hair Perms',
-        name: 'Hair Masks-Hair Perms'
+        name: 'Hair Masks-Hair Perms',
       },
       {
         path: 'Relaxers & Texturizerss',
-        name: 'Relaxers & Texturizerss'
+        name: 'Relaxers & Texturizerss',
       },
       {
         path: 'Hair Treatment Oils',
-        name: 'Hair Treatment Oils'
+        name: 'Hair Treatment Oils',
       },
       {
         path: 'hair',
-        name: 'hair'
+        name: 'hair',
       },
       {
         path: 'category',
-        name: 'Categories'
+        name: 'Categories',
       },
       {
         path: 'product',
-        name: 'Products'
+        name: 'Products',
       },
-    ]
+    ],
   },
 
   {
@@ -254,17 +244,17 @@ const BRAND_DATA: FooddNode[] = [
     children: [
       {
         path: 'invoice',
-        name: 'Invoices'
+        name: 'Invoices',
       },
       {
         path: 'revenue',
-        name: 'Revenues'
+        name: 'Revenues',
       },
       {
         path: 'customer',
-        name: 'Customers'
+        name: 'Customers',
       },
-    ]
+    ],
   },
   {
     path: 'haircare',
@@ -274,62 +264,61 @@ const BRAND_DATA: FooddNode[] = [
     children: [
       {
         path: 'Hair Accessories',
-        name: 'Hair Accessories'
+        name: 'Hair Accessories',
       },
       {
         path: 'Hair Coloring Products',
-        name: 'Hair Coloring Products'
+        name: 'Hair Coloring Products',
       },
       {
         path: 'Hair Cutting Tools',
-        name: 'Hair Cutting Tools'
+        name: 'Hair Cutting Tools',
       },
       {
         path: 'Hair Extensions',
-        name: 'Hair Extensions'
+        name: 'Hair Extensions',
       },
       {
         path: 'Wigs & Accessories',
-        name: 'Wigs & Accessories'
+        name: 'Wigs & Accessories',
       },
       {
         path: 'Hair Loss Products',
-        name: 'Hair Loss Products'
+        name: 'Hair Loss Products',
       },
       {
         path: 'Hair Masks-Hair Perms',
-        name: 'Hair Masks-Hair Perms'
+        name: 'Hair Masks-Hair Perms',
       },
       {
         path: 'Relaxers & Texturizerss',
-        name: 'Relaxers & Texturizerss'
+        name: 'Relaxers & Texturizerss',
       },
       {
         path: 'Hair Treatment Oils',
-        name: 'Hair Treatment Oils'
+        name: 'Hair Treatment Oils',
       },
       {
         path: 'Scalp Treatments',
-        name: 'Scalp Treatments'
+        name: 'Scalp Treatments',
       },
       {
         path: 'Shampoo & Conditioner',
-        name: 'Shampoo & Conditioner'
+        name: 'Shampoo & Conditioner',
       },
       {
         path: 'Styling Products',
-        name: 'Styling Products'
+        name: 'Styling Products',
       },
       {
         path: 'Styling Tools & Appliances',
-        name: 'Styling Tools & Appliances'
+        name: 'Styling Tools & Appliances',
       },
       {
         path: 'Hair Accessories',
-        name: 'Hair Accessories'
+        name: 'Hair Accessories',
       },
-
-    ]
+    ],
   },
   {
     path: 'banking',
@@ -339,49 +328,49 @@ const BRAND_DATA: FooddNode[] = [
     children: [
       {
         path: 'bank',
-        name: 'Banks'
+        name: 'Banks',
       },
       {
         path: 'transfer',
-        name: 'Transfers'
+        name: 'Transfers',
       },
       {
         path: 'Hair Coloring Products',
-        name: 'Hair Coloring Products'
+        name: 'Hair Coloring Products',
       },
       {
         path: 'Hair Cutting Tools',
-        name: 'Hair Cutting Tools'
+        name: 'Hair Cutting Tools',
       },
       {
         path: 'Hair Extensions',
-        name: 'Hair Extensions'
+        name: 'Hair Extensions',
       },
       {
         path: 'Wigs & Accessories',
-        name: 'Wigs & Accessories'
+        name: 'Wigs & Accessories',
       },
       {
         path: 'Hair Loss Products',
-        name: 'Hair Loss Products'
+        name: 'Hair Loss Products',
       },
       {
         path: 'Hair Masks-Hair Perms',
-        name: 'Hair Masks-Hair Perms'
+        name: 'Hair Masks-Hair Perms',
       },
       {
         path: 'Relaxers & Texturizerss',
-        name: 'Relaxers & Texturizerss'
+        name: 'Relaxers & Texturizerss',
       },
       {
         path: 'Hair Treatment Oils',
-        name: 'Hair Treatment Oils'
+        name: 'Hair Treatment Oils',
       },
       {
         path: 'transaction',
-        name: 'Transactions'
+        name: 'Transactions',
       },
-    ]
+    ],
   },
   {
     path: 'accounts',
@@ -391,21 +380,21 @@ const BRAND_DATA: FooddNode[] = [
     children: [
       {
         path: 'ledgerGroup',
-        name: 'Ledger Group'
+        name: 'Ledger Group',
       },
       {
         path: 'ledger',
-        name: 'Ledger'
+        name: 'Ledger',
       },
       {
         path: 'voucher',
-        name: 'Voucher'
+        name: 'Voucher',
       },
       {
         path: 'cost-centre',
-        name: 'Cost Centre'
+        name: 'Cost Centre',
       },
-    ]
+    ],
   },
 
   {
@@ -416,95 +405,108 @@ const BRAND_DATA: FooddNode[] = [
     children: [
       {
         path: 'branch',
-        name: 'Branch'
+        name: 'Branch',
       },
       {
         path: 'company',
-        name: 'Company'
+        name: 'Company',
       },
       {
         path: 'fin-year',
-        name: 'Fin Year'
+        name: 'Fin Year',
       },
       {
         path: 'Hair Coloring Products',
-        name: 'Hair Coloring Products'
+        name: 'Hair Coloring Products',
       },
       {
         path: 'Hair Cutting Tools',
-        name: 'Hair Cutting Tools'
+        name: 'Hair Cutting Tools',
       },
       {
         path: 'Hair Extensions',
-        name: 'Hair Extensions'
+        name: 'Hair Extensions',
       },
       {
         path: 'Wigs & Accessories',
-        name: 'Wigs & Accessories'
+        name: 'Wigs & Accessories',
       },
       {
         path: 'Hair Loss Products',
-        name: 'Hair Loss Products'
+        name: 'Hair Loss Products',
       },
       {
         path: 'Hair Masks-Hair Perms',
-        name: 'Hair Masks-Hair Perms'
+        name: 'Hair Masks-Hair Perms',
       },
       {
         path: 'Relaxers & Texturizerss',
-        name: 'Relaxers & Texturizerss'
+        name: 'Relaxers & Texturizerss',
       },
       {
         path: 'Hair Treatment Oils',
-        name: 'Hair Treatment Oils'
+        name: 'Hair Treatment Oils',
       },
       {
         path: 'user',
-        name: 'User'
+        name: 'User',
       },
-    ]
-  }
+    ],
+  },
 ];
 
-
+export interface subtasks {
+  name: string;
+  completed: boolean;
+}
 
 const Empty_DATA: FooddNode[] = [];
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
   user = 'murugan';
   no_of_items = 5;
   showArrow = false;
 
-  mega_menu = 'hide_mega_menu'
+  showFiller = false;
 
-  offer_button = "nav_link";
-  brand_button = "nav_link";
-  beauty_button = "nav_link";
-  fashion_button = "nav_link";
-  sport_button = "nav_link";
-  electronics_button = "nav_link";
-  household_button = "nav_link";
-  petsupply_button = "nav_link";
-  automoto_button = "nav_link";
+  mega_menu = 'hide_mega_menu';
 
+  offer_button = 'nav_link';
+  brand_button = 'nav_link';
+  beauty_button = 'nav_link';
+  fashion_button = 'nav_link';
+  sport_button = 'nav_link';
+  electronics_button = 'nav_link';
+  household_button = 'nav_link';
+  petsupply_button = 'nav_link';
+  automoto_button = 'nav_link';
 
   activeNode: FooddNode[] = Empty_DATA;
   childrenNode: FooddNode[] = Empty_DATA;
   new_Date: FooddNode[] = [];
 
-
   toggle_class = false;
   shopAll = '';
+  fontStyle?: string;
+
+  size: subtasks[] = [
+    { name: 'FR ', completed: false },
+    { name: 'En', completed: false },
+  ];
+  @ViewChild('rightSidenav', {static: true}) sidenav: MatSidenav | any;
+
+
+  quantity: number;
 
 
 
-
-  constructor(private router: Router) { }
+  constructor(private router: Router,private readonly mainService:MainService,) {
+    this.quantity = 1;
+  }
 
   form: FormGroup = new FormGroup({
     currency: new FormControl('Euro'),
@@ -514,226 +516,188 @@ export class HeaderComponent implements OnInit {
     inputValue: new FormControl(''),
   });
 
-
   ngOnInit(): void {
     this.showArrow = false;
     this.toggle_class = false;
 
+
   }
+
 
   ClosePanel(): void {
     this.activeNode = Empty_DATA;
-   this.childrenNode = Empty_DATA;
-
+    this.childrenNode = Empty_DATA;
   }
 
   openBrandMenu(event: any, value: any): void {
-  
-
-
     switch (value) {
-
       case 'offer':
         this.shopAll = '/offer';
 
+        this.activeNode = BRAND_DATA;
 
-          this.activeNode = BRAND_DATA;
+        for (let idx = 0; idx < this.activeNode.length; idx++) {
+          if (this.activeNode[idx].default === true) {
+            const event = this.activeNode[idx].name;
+            this.new_Date = this.filterData(event);
+            this.childrenNode = this.new_Date;
+            this.toggle_class = true;
 
-          for (let idx = 0; idx < this.activeNode.length; idx++) {
-            if (this.activeNode[idx].default === true) {
-              const event = this.activeNode[idx].name;
-              this.new_Date = this.filterData(event);
-              this.childrenNode = this.new_Date;
-              this.toggle_class = true;
-             
-              
-              break;
-
-
-            }
-            else{
-            
-              this.toggle_class = false;
-            }
-          
-
+            break;
+          } else {
+            this.toggle_class = false;
           }
+        }
 
         break;
 
       case 'brand':
         this.shopAll = '/brand';
-          this.activeNode = TREE_DATA;
-          for (let idx = 0; idx < this.activeNode.length; idx++) {
-            if (this.activeNode[idx].default === true) {
-              const event = this.activeNode[idx].name;
-              this.new_Date = this.filterData(event);
-              this.childrenNode = this.new_Date;
-         
-         
-
-            }
-        
-          
+        this.activeNode = TREE_DATA;
+        for (let idx = 0; idx < this.activeNode.length; idx++) {
+          if (this.activeNode[idx].default === true) {
+            const event = this.activeNode[idx].name;
+            this.new_Date = this.filterData(event);
+            this.childrenNode = this.new_Date;
+          }
         }
 
         break;
 
       case 'beauty':
-  
         this.shopAll = '/beauty';
-          this.activeNode = BRAND_DATA;
-          for (let idx = 0; idx < this.activeNode.length; idx++) {
-            if (this.activeNode[idx].default === true) {
-              const event = this.activeNode[idx].name;
-              this.new_Date = this.filterData(event);
-    this.childrenNode = this.new_Date;
-            
-
-            }
+        this.activeNode = BRAND_DATA;
+        for (let idx = 0; idx < this.activeNode.length; idx++) {
+          if (this.activeNode[idx].default === true) {
+            const event = this.activeNode[idx].name;
+            this.new_Date = this.filterData(event);
+            this.childrenNode = this.new_Date;
           }
-
+        }
 
         break;
 
       case 'fashion':
         this.shopAll = '/fashion';
-          this.activeNode = TREE_DATA;
-          for (let idx = 0; idx < this.activeNode.length; idx++) {
-            if (this.activeNode[idx].default === true) {
-              const event = this.activeNode[idx].name;
-              this.new_Date = this.filterData(event);
-              this.childrenNode = this.new_Date;
-             
-
-            }
+        this.activeNode = TREE_DATA;
+        for (let idx = 0; idx < this.activeNode.length; idx++) {
+          if (this.activeNode[idx].default === true) {
+            const event = this.activeNode[idx].name;
+            this.new_Date = this.filterData(event);
+            this.childrenNode = this.new_Date;
           }
+        }
 
         break;
 
       case 'sports':
-
         this.shopAll = '/sport';
-          this.activeNode = BRAND_DATA;
-          for (let idx = 0; idx < this.activeNode.length; idx++) {
-            if (this.activeNode[idx].default === true) {
-              const event = this.activeNode[idx].name;
-              this.new_Date = this.filterData(event);
-              this.childrenNode = this.new_Date;
-            
-
-            }
+        this.activeNode = BRAND_DATA;
+        for (let idx = 0; idx < this.activeNode.length; idx++) {
+          if (this.activeNode[idx].default === true) {
+            const event = this.activeNode[idx].name;
+            this.new_Date = this.filterData(event);
+            this.childrenNode = this.new_Date;
           }
+        }
 
         break;
 
       case 'electronics':
-
         this.shopAll = '/electronics';
-          this.activeNode = TREE_DATA;
-          for (let idx = 0; idx < this.activeNode.length; idx++) {
-            if (this.activeNode[idx].default === true) {
-              const event = this.activeNode[idx].name;
-              this.new_Date = this.filterData(event);
-              this.childrenNode = this.new_Date;
-             
-
-            }
+        this.activeNode = TREE_DATA;
+        for (let idx = 0; idx < this.activeNode.length; idx++) {
+          if (this.activeNode[idx].default === true) {
+            const event = this.activeNode[idx].name;
+            this.new_Date = this.filterData(event);
+            this.childrenNode = this.new_Date;
           }
-
+        }
 
         break;
 
       case 'houshold':
-
         this.shopAll = '/houshold';
-          this.activeNode = BRAND_DATA;
-          for (let idx = 0; idx < this.activeNode.length; idx++) {
-            if (this.activeNode[idx].default === true) {
-              const event = this.activeNode[idx].name;
-              this.new_Date = this.filterData(event);
-              this.childrenNode = this.new_Date;
-             
-
-            }
+        this.activeNode = BRAND_DATA;
+        for (let idx = 0; idx < this.activeNode.length; idx++) {
+          if (this.activeNode[idx].default === true) {
+            const event = this.activeNode[idx].name;
+            this.new_Date = this.filterData(event);
+            this.childrenNode = this.new_Date;
           }
+        }
 
         break;
 
       case 'petSupplies':
         this.shopAll = '/petsupply';
-          this.activeNode = TREE_DATA;
-          for (let idx = 0; idx < this.activeNode.length; idx++) {
-            if (this.activeNode[idx].default === true) {
-              const event = this.activeNode[idx].name;
-              this.new_Date = this.filterData(event);
-              this.childrenNode = this.new_Date;
-
-            }
+        this.activeNode = TREE_DATA;
+        for (let idx = 0; idx < this.activeNode.length; idx++) {
+          if (this.activeNode[idx].default === true) {
+            const event = this.activeNode[idx].name;
+            this.new_Date = this.filterData(event);
+            this.childrenNode = this.new_Date;
           }
+        }
 
         break;
 
       case 'autoMoto':
-
         this.shopAll = '/automoto';
-          this.activeNode = BRAND_DATA;
-          for (let idx = 0; idx < this.activeNode.length; idx++) {
-            if (this.activeNode[idx].default === true) {
-              const event = this.activeNode[idx].name;
-            
-              this.new_Date = this.filterData(event);
-              this.childrenNode = this.new_Date;
+        this.activeNode = BRAND_DATA;
+        for (let idx = 0; idx < this.activeNode.length; idx++) {
+          if (this.activeNode[idx].default === true) {
+            const event = this.activeNode[idx].name;
 
-            }
+            this.new_Date = this.filterData(event);
+            this.childrenNode = this.new_Date;
           }
+        }
         break;
-
-
-
     }
-    
   }
 
-
-
-
   loadChild(event: any) {
-
     this.new_Date = this.filterData(event);
     this.childrenNode = this.new_Date;
     this.toggle_class = false;
-
   }
-  toggleChild(event:any):void{
-
-    
+  toggleChild(event: any): void {
     for (let idx = 0; idx < this.activeNode.length; idx++) {
       if (this.activeNode[idx].default === true) {
         const event = this.activeNode[idx].name;
-      
+
         this.new_Date = this.filterData(event);
         this.childrenNode = this.new_Date;
-
       }
     }
-  
   }
   filterData(event: string) {
-
-    return this.activeNode.filter(object => {
-      this.toggle_class = true
+    return this.activeNode.filter((object) => {
+      this.toggle_class = true;
 
       return object['path'] == event;
+    });
+  }
 
-    })
+  upsertSearch(): void {
+    console.log(this.searchForm.value);
+  }
+  toggleLanguage(): void {
+    console.log(this.fontStyle);
+  }
+
+	toggleActive = false;
+
+	toggleRightSidenav() {
+console.log('hi');
+
+    this.mainService.toggle();
+	}
+
+  changeCurrency(value:any):void{
+    console.log(value);
 
   }
 
-  upsertSearch():void{
-
-  console.log(this.searchForm.value);
-  
-    
-  }
 }

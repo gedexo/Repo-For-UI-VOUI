@@ -1,11 +1,17 @@
 .main {
   background-color: #fffaf3;
 }
-p{
-  margin-bottom: 10px;
-}
-.signup_container{
-  padding:50px 3em;
+
+.contact_form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+ }
+ .align-items-center{
+  padding:2em 16px;
   background-color: var(--backgroud-color);
   h1{
     text-align: center;
@@ -19,66 +25,89 @@ letter-spacing: 0.05em;
 color: #763301;
   }
 }
-  .main_container{
-    padding:100px 3em;
-    background-color: var(--backgroud-color);
-    h1{
-      text-align: center;
-      font-family: Ogg;
-font-style: normal;
-font-weight: normal;
-font-size: 30px;
-line-height: 46px;
-letter-spacing: 0.05em;
-
-color: #763301;
-    }
-  }
-.contact_form{
-    margin: 0 34% !important;
-
-    span{
-      font-family: Poppins;
-font-style: normal;
-font-weight: 300;
-font-size: 16px;
-line-height: 33px;
-letter-spacing: 0.02em;
-color: #B08359;
-    }
-
-  }
-
-:host ::ng-deep .mat-form-field {
-  display: inline-block;
-  position: relative;
-  text-align: left;
-  width: 100%;
-
+a{
+  color: #000000;
+text-decoration: none;
+}
+a:hover{
+  color: #763301;
+text-decoration: underline;
+font-weight: 500;
 
 }
-:host ::ng-deep mat-label{
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
+.submit-container:hover{
+  background-color: var(--backgroud-color);
+  color: #000000;
+  }
+  .submit-container{
+    border: 1px solid ;
+    text-align: center;
+    justify-self: center;
+    width: 100%;
+  background-color: transparent;
 
+  border: 0.2px solid rgba(0,0,0,.12);;
+  font-size: 16px;
+  line-height: 33px;
   letter-spacing: 0.05em;
   color: #000000;
+  border-radius: 50px;
+  }
+.bottom{
+  margin: 20px 0 10px 0;
 }
 .form_submit_button{
   color: #763301;
 }
+
+ mat-error, .error{
+  color: #763301;
+}
+
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color:#AF621A;
+}
+
+:host ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
+   background-color: #AF621A;
+
+}
+:host ::ng-deep.mat-form-field-ripple {
+  background-color: #AF621A !important;
+}
+
+
+
 :host ::ng-deep .mat-input-element {
   caret-color: #000000;
   font-weight: 500;
   font-size: 14px;
 
 }
+
+@media only screen and (min-width: 769px) {
+
+
+
+  :host ::ng-deep mat-label{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    color: #000000;
+  }
+:host ::ng-deep .mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+
+}
+
+
 :host ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
    background-color: #AF621A;
-   
- 
+
+
 }
 :host ::ng-deep.mat-form-field-ripple {
   background-color: #763301 !important;
@@ -90,53 +119,8 @@ mat-error{
   letter-spacing: 1px;
   margin: 0 0 16px;
 }
-.submit-container{
-  border: 1px solid ;
-  text-align: center;
-  justify-self: center;
-  width: 100%;
-background-color: transparent;
-
-border: 0.2px solid rgba(0,0,0,.12);;
-font-size: 16px;
-line-height: 33px;
-letter-spacing: 0.05em;
-color: #000000;
-border-radius: 50px;
-}
-.submit-container:hover{
-
-  background: 
-  linear-gradient(0.25turn, #815F46, #ebf8e1, #815F46),
-            linear-gradient(0.25turn, #3f87a6, #ebf8e1, #ebf8e1);
-
-color: #000000;
-}
-.bottom{
-  font-family: Poppins;
-font-style: normal;
-font-weight: 300;
-font-size: 12px;
-
-letter-spacing: 0.03em;
-color: #000000;
-p{
-  margin-bottom: 0;
-}
-a{
-  color: #000000;
-}
-a:hover{
-  color: #763301;
-}
 
 
-}
-a:hover{
-  color: #763301;
-  text-decoration: none;
-  font-weight: 500;
-}
 .bottom_new{
   font-family: Poppins;
 font-style: normal;
@@ -148,13 +132,43 @@ color: #000000;
 
 margin-top: 10px;
 text-align: center;
-a{
-  color: #000000;
-text-decoration: underline;
+
 }
-a:hover{
+}
+@media only screen and (max-width: 769px) {
+
+ :host ::ng-deep .mat-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+
+}
+a{
   color: #763301;
-text-decoration: underline;
+text-decoration: none;
 font-weight: 500;
+
+}
+.bottom_new{
+  font-size: 13px;
+  text-align: center;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+    a{
+    color: #763301;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+
+  }
+}
+:host ::ng-deep mat-label{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  color: #000000;
 }
 }

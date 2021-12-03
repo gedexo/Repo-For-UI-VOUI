@@ -2,69 +2,63 @@
     <section class='contact_section'>
       <div class="signup_container">
           <div class="align-items-center">
-              
+
               <div class="contact_form">
-               
-                  <form [formGroup]="contactForm" (submit)='submitContact()'>
+
+                  <form [formGroup]="contactForm" (ngSubmit)='submitContact()'>
                     <h1>Sign up</h1>
 
-                  <p>
+
                       <mat-form-field class="contact">
                         <mat-label>Username</mat-label>
                           <input type="text" matInput formControlName="name" >
                           <mat-error *ngIf="contactForm.controls['name'].hasError('required')">Username is required</mat-error>
-                        
+
                       </mat-form-field>
-                 </p>
-                 <p>
+
                   <mat-form-field class="contact">
                     <mat-label>E-mail</mat-label>
                       <input type="email" matInput formControlName="email">
                       <mat-error *ngIf="contactForm.controls['email'].hasError('required')">Email address is required</mat-error>
-                    
+
                   </mat-form-field>
-             </p>
-                <p>
+
                 <mat-form-field class="contact">
                       <mat-label>password</mat-label>
-    
+
                       <input type="password" matInput  formControlName="password">
                       <mat-error *ngIf="contactForm.controls['password'].hasError('required')">Password is required</mat-error>
-  
+
                  </mat-form-field>
-                 </p>
-                 <p>
+
                     <mat-form-field class="contact" >
                           <mat-label>confirm password</mat-label>
-        
+
                           <input type="password" matInput  formControlName="cpassword">
                           <mat-error *ngIf="contactForm.controls['cpassword'].hasError('required')">Confirm Password is required</mat-error>
-      
+
                      </mat-form-field>
-                     </p>
+
                  <p *ngIf="error" class="error">
                   {{ error }}
                 </p>
-   
+
           <br>
                 <p >
                   <button type="submit" mat-button class="submit-container">Sign up &nbsp;<mat-icon>trending_flat</mat-icon></button>
                 </p>
                 <br>
-                <p >
-                    <button type="button" mat-button class="submit-container"> Sign up with google  &nbsp; <mat-icon>trending_flat</mat-icon></button>
-                  </p>
-          
+
                 <p class="bottom_new">
                   Already have an account? &nbsp; <a routerLink="/login"  >Login </a>
                 </p>
                   </form>
-  
+
               </div>
           </div>
-  
+
       </div>
   </section>
-  </main> 
+  </main>
 
 

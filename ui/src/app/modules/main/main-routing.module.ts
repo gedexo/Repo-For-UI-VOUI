@@ -2,19 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { AutomotoSectionComponent } from './inventory/automoto-section/automoto-section.component';
-import { BeautySectionComponent } from './inventory/beauty-section/beauty-section.component';
-import { BrandSectionComponent } from './inventory/brand-section/brand-section.component';
-import { DashboardComponent } from './inventory/dashboard/dashboard.component';
-import { ElectronicsSectionComponent } from './inventory/electronics-section/electronics-section.component';
-import { FashionSectionComponent } from './inventory/fashion-section/fashion-section.component';
-import { HouseholdSectionComponent } from './inventory/household-section/household-section.component';
-import { OfferSectionComponent } from './inventory/offer-section/offer-section.component';
-import { PetsupplySectionComponent } from './inventory/petsupply-section/petsupply-section.component';
-import { SportSectionComponent } from './inventory/sport-section/sport-section.component';
-
-
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './main.component';
+import { UserInfoComponent } from './common/user-info/user-info.component';
 
 const routes: Routes = [
   {
@@ -40,43 +30,51 @@ const routes: Routes = [
       },
       {
         path: 'offer',
-       component: OfferSectionComponent,
+        loadChildren: () => import('./products/offer/offer.module').then((mod)=>mod.OfferModule)
       },
       {
         path: 'brand',
-       component: BrandSectionComponent,
+        loadChildren: () => import('./products/brand/brand.module').then((mod)=>mod.BrandModule)
       },
       {
         path: 'beauty',
-       component: BeautySectionComponent,
+        loadChildren: () => import('./products/beauty/beauty.module').then((mod)=>mod.BeautyModule)
       },
       {
         path: 'fashion',
-       component: FashionSectionComponent,
+        loadChildren: () => import('./products/fashion/fashion.module').then((mod)=>mod.FashionModule)
       },
       {
         path: 'sport',
-       component: SportSectionComponent,
+        loadChildren: () => import('./products/sport/sport.module').then((mod)=>mod.SportModule)
       },
       {
         path: 'electronics',
-       component: ElectronicsSectionComponent,
+        loadChildren: () => import('./products/electronics/electronics.module').then((mod)=>mod.ElectronicsModule)
       },
       {
         path: 'houshold',
-       component: HouseholdSectionComponent,
+        loadChildren: () => import('./products/household/household.module').then((mod)=>mod.HouseholdModule)
       },
       {
         path: 'petsupply',
-       component: PetsupplySectionComponent,
+        loadChildren: () => import('./products/offer/offer.module').then((mod)=>mod.OfferModule)
       },
       {
         path: 'automoto',
-       component: AutomotoSectionComponent,
+        loadChildren: () => import('./products/automoto/automoto.module').then((mod)=>mod.AutomotoModule)
+      },
+      {
+        path: 'userinfo',
+       component: UserInfoComponent,
+      },
+      {
+        path: 'settings',
+        loadChildren: () => import('./settings/settings.module').then((mod)=>mod.SettingsModule)
       },
     ]
   },
-  
+
 ];
 
 @NgModule({

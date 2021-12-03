@@ -1,0 +1,101 @@
+<main class="main">
+
+
+  <section class="preview_section" id="offer_section">
+
+    <div class="items-center">
+      <!-- <div class="imgShow">
+        <mat-grid-list cols="3" rowHeight="200px" style="text-align: end;" >
+          <mat-grid-tile [colspan]="1" [rowspan]="1" (click)="changelgImage(preview_sm1)" (mouseenter)="changelgImage(preview_sm1)" >
+              <img src="{{preview_sm1}}" class="preview_sm1" >
+
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="2" [rowspan]="3" >
+              <img src="{{preview_lg}}"    class="category_lg">
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1" (click)="changelgImage(preview_sm2)" (mouseenter)="changelgImage(preview_sm2)">
+              <img src="{{preview_sm2}}" class="preview_sm1" >
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1" (click)="changelgImage(preview_sm3)" (mouseenter)="changelgImage(preview_sm3)">
+            <img src="{{preview_sm3}}" class="preview_sm1">
+        </mat-grid-tile>
+      </mat-grid-list>
+      </div> -->
+      <div class="imgdetails">
+        <h1>Lorem ipsum doler amet</h1>
+        <h2>murugan</h2>
+        <h1>€185</h1>
+
+        <mat-tab-group mat-align-tabs="start">
+          <mat-tab label="First">Content 1</mat-tab>
+          <mat-tab label="Second">Content 2</mat-tab>
+          <mat-tab label="Third">Content 3</mat-tab>
+        </mat-tab-group>
+
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <section class="review_section">
+
+    <div class="align-items-center">
+
+        <div class='review_header'>Reviews</div>
+        <owl-carousel-o [options]="customOptions">
+
+          <ng-template carouselSlide *ngFor="let review of reviewS">
+            <mat-card>
+            <mat-card-title> {{review.reviewerName}}</mat-card-title>
+            <mat-card-subtitle>
+              <i *ngFor="let key of counter(review.rating) " class="fa fa-star" style="color: var(--main-color);font-size: 16px; padding-right: 3px;"></i>
+              <i *ngFor="let key of counter(5-(review.rating)) " class="fa fa-star-o"  style="color: var(--main-color);font-size: 16px; padding-right: 3px;"></i></mat-card-subtitle>
+
+            <mat-card-content>
+              <p>
+                {{review.review }}
+              </p>
+            </mat-card-content>
+
+             </mat-card>
+          </ng-template>
+
+      </owl-carousel-o>
+
+    </div>
+
+
+  </section>
+
+
+  <section class="suggestion_section">
+
+    <div class="align-items-center">
+
+        <div class="suggestion_header" >You may also like</div>
+
+        <owl-carousel-o [options]="suggestionOptions" >
+          <ng-container *ngFor="let img of offerSale">
+              <ng-template carouselSlide let-owlItem class="offer_curousal_imgs">
+                  <img src="{{img.imgUrl}}" alt="{{img.alt}}">
+
+                  <div class="offer_details">
+                      <h3>{{img.imgName}}</h3>
+                      <h3>{{img.price}}</h3>
+                  </div>
+              </ng-template>
+          </ng-container>
+
+      </owl-carousel-o>
+
+    </div>
+
+
+  </section>
+</main>
+
+
+
