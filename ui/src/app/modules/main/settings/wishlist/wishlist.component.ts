@@ -14,7 +14,7 @@ products:any = [
   {
     "imgUrl" : '../../../../assets/images/grid1.png',
     "alt": 'offer-1',
-    "imgName": 'Hair Care',
+    "imgName": 'Gold necklaceFaux Pearl Decor Y Lariat Necklace 12 euro',
     "price" : '19.99',
     "secondImage": '../../../../assets/images/grid2.png',
     "thirdImage": '../../../../assets/images/grid3.png',
@@ -165,7 +165,7 @@ products:any = [
   {
     "imgUrl" : '../../../../assets/images/grid9.jpg',
     "alt": 'arrival-2',
-    "imgName": 'Lorem ipsum dolor sit amet',
+    "imgName": 'Lorem ',
     "price" : '19.99',
     "secondImage": '../../../../assets/images/grid2.png',
     "thirdImage": '../../../../assets/images/grid3.png',

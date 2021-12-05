@@ -2,7 +2,20 @@
   .main {
     background: #fffaf3;
   }
-  @media only screen and (min-width: 768px) {
+
+  .offer_explore_button {
+    background:#E6E7EB;
+    border: none;
+    font-weight: normal;
+    line-height: 24px;
+    color:#000000;
+    padding:7px 12px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0;
+  }
+  @media only screen and (min-width: 769px) {
   a {
     text-decoration: none;
     font-weight: 500;
@@ -28,7 +41,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 45px;
-
+    line-height: 70px;
     color: var(--main-color);
   }
   h3 {
@@ -190,13 +203,71 @@ font-weight: normal;
     height: 500px;
 
   }
-.animateIN{
-  // transform: scale(1.2);
-  flex: 0 0 auto;
-  width: 100%;
-  padding: 0 4em;
-  height: 500px;
-  }
+
+:host ::ng-deep.offer_section .owl-next, :host ::ng-deep.offer_section .owl-prev{
+  background: none;
+  font-size: 25px;
+  position: absolute;
+  top: 40%;
+  padding: 0;
+  margin: 0;
+  color: var(--black-color);
+}
+:host ::ng-deep.offer_section .owl-next{
+  right: 30%;
+}
+:host ::ng-deep.offer_section .owl-prev{
+  left: 34.7%;
+}
+:host ::ng-deep.offer_section .owl-next:hover{
+  background-color: #815F46;
+opacity: 0.8;
+padding: 10px;
+border-radius: 50px;
+font-size: 25px;
+position: absolute;
+top: 38%;
+margin: 0;
+right: 29%;
+
+box-shadow: 7px 7px 15px #815F46,
+-7px -7px 20px #815F46,
+inset 0px 0px 4px #815F46,
+inset 7px 7px 15px #815F46,
+inset -7px -7px 20px #815F46,
+0px 0px 4px #815F46;
+border-radius: 50px;
+transition: 0.2s ease;
+}
+:host ::ng-deep.offer_section .owl-prev:hover{
+  background-color: #815F46;
+  opacity: 0.8;
+  padding: 10px;
+  font-size: 25px;
+  position: absolute;
+  top: 38%;
+
+  margin: 0;
+  border-radius: 50px;
+  left: 33.7%;
+
+  box-shadow: 7px 7px 15px #815F46,
+  -7px -7px 20px #815F46,
+  inset 0px 0px 4px #815F46,
+  inset 7px 7px 15px #815F46,
+  inset -7px -7px 20px #815F46,
+  0px 0px 4px #815F46;
+border-radius: 50px;
+transition: 0.2s ease;
+}
+
+// .animateIN{
+//   // transform: scale(1.2);
+//   flex: 0 0 auto;
+//   width: 100%;
+//   padding: 0 4em;
+//   height: 500px;
+//   }
   .collection_title {
     font-family: Ogg;
     font-style: normal;
@@ -233,13 +304,13 @@ font-weight: normal;
     font-size: 16px !important;
   }
 
-  .session_collections_section {
+  .session_collections_section, .free_collections_section {
     padding: var(--section-padding);
 
   }
   .Collections_winter_container {
     text-align: start;
-    margin-left: 5em;
+    margin-left: 5%;
   }
   .Collections_free_container {
     padding-left: 9%;
@@ -248,6 +319,10 @@ font-weight: normal;
   }
 
   // contact-section
+
+.mobile_contact_form{
+    display: none;
+  }
 
 .contact_section{
     padding: var(--section-padding);
@@ -350,63 +425,6 @@ color: #000000;
 }
 
 }
-:host ::ng-deep.offer_section .owl-next, :host ::ng-deep.offer_section .owl-prev{
-  background: none;
-  font-size: 25px;
-  position: absolute;
-  top: 40%;
-  padding: 0;
-  margin: 0;
-  color: var(--black-color);
-}
-:host ::ng-deep.offer_section .owl-next{
-  right: 30%;
-}
-:host ::ng-deep.offer_section .owl-prev{
-  left: 34.7%;
-}
-:host ::ng-deep.offer_section .owl-next:hover{
-  background-color: #815F46;
-opacity: 0.8;
-padding: 10px;
-border-radius: 50px;
-font-size: 25px;
-position: absolute;
-top: 38%;
-margin: 0;
-right: 29%;
-
-box-shadow: 7px 7px 15px #815F46,
--7px -7px 20px #815F46,
-inset 0px 0px 4px #815F46,
-inset 7px 7px 15px #815F46,
-inset -7px -7px 20px #815F46,
-0px 0px 4px #815F46;
-border-radius: 50px;
-transition: 0.2s ease;
-}
-:host ::ng-deep.offer_section .owl-prev:hover{
-  background-color: #815F46;
-  opacity: 0.8;
-  padding: 10px;
-  font-size: 25px;
-  position: absolute;
-  top: 38%;
-
-  margin: 0;
-  border-radius: 50px;
-  left: 33.7%;
-
-  box-shadow: 7px 7px 15px #815F46,
-  -7px -7px 20px #815F46,
-  inset 0px 0px 4px #815F46,
-  inset 7px 7px 15px #815F46,
-  inset -7px -7px 20px #815F46,
-  0px 0px 4px #815F46;
-border-radius: 50px;
-transition: 0.2s ease;
-}
-
 
 .new_arrivals_section{
   padding: var(--section-padding);
@@ -534,17 +552,7 @@ color: #000000;
   }
 
 }
-.offer_explore_button {
-  background:#815F46;
-  border: none;
-  font-weight: normal;
-  line-height: 24px;
-  color:#F9F3F1;
-  padding:7px 12px;
-  font-size: 16px;
-  text-align: center;
-  cursor: pointer;
-}
+
 .offer_explore_button .span {
   font-size: 16px !important;
   color:#F9F3F1;
@@ -623,12 +631,397 @@ color: #000000;
 }
 @media only screen and (max-width: 768px) {
 
-
-
   h1{
-    font-size: 30px;
+    font-family: Ogg;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 39px;
+text-align: center;
+letter-spacing: 0.05em;
+color: #763301;
   }
   h2{
     font-size: 25px;
   }
+h3{
+  font-family: Poppins;
+font-style: normal;
+font-weight: 200;
+font-size: 15px;
+line-height: 24px;
+text-align: center;
+letter-spacing: 0.03em;
+color: #763301;
 }
+span{
+  font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 37px;
+letter-spacing: 0.06em;
+color: #965B24;
+margin-bottom: 0.5em;
+align-items: center;
+justify-content: center;
+display: flex;
+flex-direction: row;
+
+}
+.home_section{
+  padding: 2em 16px;
+
+}
+:host ::ng-deep .home_section .owl-theme .owl-nav {
+  margin-top: 10px;
+  display: none;
+}
+.banner_title{
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.categories_section{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);;
+  padding: 2em 16px;
+  background-color: #FFFAF3;
+}
+.nav_categories{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+mat-icon{
+  display: none;
+}
+
+a{
+  font-family: Ogg;
+font-style: normal;
+font-weight: normal;
+font-size: 22px;
+line-height: 50px;
+letter-spacing: 0.04em;
+color: #000000;
+text-transform: capitalize;
+font-weight: 500;
+
+}
+}
+.img_categories{
+  display: none;
+}
+
+.offer_section{
+  display: flex;
+  flex-direction: column;
+  padding: 2em 16px;
+  background-color: #F3EEE9;
+
+}
+.offer_details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 40px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+margin-bottom: 0;
+    color: #000000;
+  }
+
+
+
+}
+
+:host ::ng-deep.offer_section .owl-next, :host ::ng-deep.offer_section .owl-prev{
+
+  font-size: 20px;
+  position: absolute;
+  top: 42%;
+  padding: 5px;
+  cursor: pointer;
+  color: #2c2b2b;
+  box-shadow: 3px 3px 15px #d1d9e6, -3px -3px 15px white, inset 0 0 15px #d1d9e6, inset 0 0 15px white;
+  text-shadow: 0 0 5px rgb(209 141 77 / 50%), 0 0 15px rgb(94 10 219 / 50%);
+  transition: 0.2s ease;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+:host ::ng-deep.offer_section .owl-next{
+  right: 3%;
+}
+:host ::ng-deep.offer_section .owl-prev{
+  left: 3%;
+
+}
+
+:host ::ng-deep .owl-carousel .owl-item.center {
+
+  margin-top: 0 !important;
+  flex: 0 0 auto !important;
+
+  img{
+  height: 420px;
+
+  }
+}
+.offer_explore_button_div{
+  display: flex;
+  align-items: center;
+justify-content: center;
+margin-top: 2em;
+}
+.offer_explore_button{
+  padding: 8px 22px;
+}
+.collections_section,.session_collections_section{
+  img{
+    height: 600px;
+    object-fit: cover;
+  }
+}
+.collection_explore_button{
+  border: none;
+  background-color: #E6E7EB;
+  font-family: Poppins;
+  font-style: normal;
+  align-items: center;
+  font-weight: normal;
+  font-size: 13px;
+  padding: 8px 20px;
+  line-height: 19px;
+  display: flex;
+  justify-content: center;
+  color: #000000;
+}
+
+.Collections_text_container{
+  background-color: rgba(230, 231, 235, 0.5);
+  font-family: Ogg;
+  padding: 5%;
+  padding-left: 10%;
+  font-style: normal;
+  font-weight: normal;
+  position: absolute;
+  margin-top: 91%;
+  h1{
+    font-size: 45px;
+    line-height: 60px;
+    color: #FFFFFF;
+    text-align: start;
+}
+  h2{
+    font-family: Ogg;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 46px;
+    color: #FFFFFF;
+  }
+
+p{
+  display: none;
+}
+}
+.new_arrivals_section{
+  padding: 2em 16px;
+  h1{
+    color: #000000;
+  }
+p{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #874C20;
+}
+}
+:host ::ng-deep .new_arrivals_section .owl-theme .owl-nav {
+  margin-top: 10px;
+  display: none;
+}
+
+.Collections_winter_container{
+  background-color: rgba(118, 51, 1, 0.5);
+  font-family: Ogg;
+  justify-content: center;
+  padding: 5%;
+  align-items: flex-start;
+  font-style: normal;
+  flex-direction: column;
+  display: flex;
+  font-weight: normal;
+  position: relative;
+  margin-top: -76%;
+  max-height: 300px;
+  h1{
+    font-size: 45px;
+    line-height: 60px;
+    color: #FFFFFF;
+    text-align: start;
+}
+  h2{
+    font-family: Ogg;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 46px;
+    color: #FFFFFF;
+  }
+p{
+  display: none;
+}
+
+}
+.free_collections_section{
+  padding: 10em 16px;
+  background-color:  rgba(230, 231, 235, 0.5);;
+  p{
+    display: block;
+    font-family: Poppins;
+font-style: normal;
+font-weight: 300;
+font-size: 13px;
+line-height: 33px;
+text-align: center;
+letter-spacing: 0.04em;
+color: #B08359;
+  }
+  h2{
+    font-family: Ogg;
+font-style: normal;
+font-weight: normal;
+font-size: 28px;
+line-height: 45px;
+text-align: center;
+color: #000000;
+  }
+  .Collections_img_container{
+    display: none;
+  }
+
+}
+.bags_section{
+  padding: 2em 16px;
+  span{
+    font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0.03em;
+color: #000000;
+  }
+  h1{
+    font-family: Ogg;
+font-style: normal;
+font-weight: normal;
+font-size: 28px;
+line-height: 42px;
+letter-spacing: 0.05em;
+color: #874C20;
+
+  }
+  p{
+    color:#874C20;
+  }
+}
+:host ::ng-deep .bags_section .owl-theme .owl-nav {
+  margin-top: 10px;
+  display: none;
+}
+.contact_section{
+  padding: 5em 16px;
+
+  h1{
+    font-family: Ogg;
+font-style: normal;
+font-weight: normal;
+font-size: 27px;
+line-height: 42px;
+text-align: center;
+color: #000000;
+
+  }
+}
+.contact{
+  display: none;
+}
+.mobile_contact_form{
+  display: flex;
+  flex-direction: column;
+  span{
+    font-family: Poppins;
+font-style: normal;
+font-weight: 200;
+font-size: 12px;
+line-height: 33px;
+letter-spacing: 0.02em;
+color: #B08359;
+justify-content: left;
+  }
+}
+:host ::ng-deep .mat-form-field {
+  width: 100%;
+  margin-bottom: 0;
+
+}
+
+
+:host ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
+   background-color: #AF621A;
+
+
+}
+:host ::ng-deep.mat-form-field-ripple {
+  background-color: #763301 !important;
+}
+mat-error, mat-label{
+  color: #763301;
+  font-family: ogg;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin: 0 0 16px;
+}
+mat-label{
+  font-size: 16px;
+}
+}
+
+
+
+
+
+
+
+
+
+
+

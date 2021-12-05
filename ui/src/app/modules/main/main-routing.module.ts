@@ -53,7 +53,7 @@ const routes: Routes = [
         loadChildren: () => import('./products/electronics/electronics.module').then((mod)=>mod.ElectronicsModule)
       },
       {
-        path: 'houshold',
+        path: 'household',
         loadChildren: () => import('./products/household/household.module').then((mod)=>mod.HouseholdModule)
       },
       {

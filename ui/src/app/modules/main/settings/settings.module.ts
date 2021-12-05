@@ -17,6 +17,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+import {FlexLayoutModule} from '@angular/flex-layout';
 @NgModule({
   declarations: [
     SettingsComponent,
@@ -28,7 +30,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     CommonModule,
     SettingsRoutingModule, MatIconModule, MatButtonModule, MatFormFieldModule,
     MatInputModule, ReactiveFormsModule, FormsModule, MatTableModule, MatCardModule,
-    MatToolbarModule, MatPaginatorModule, MatSnackBarModule
+    MatToolbarModule, MatPaginatorModule, MatSnackBarModule, FlexLayoutModule
 
   ]
 })
