@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['../common/auth.scss']
+  styleUrls: ['./login.component.scss','../common/auth.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -15,22 +15,41 @@ export class LoginComponent implements OnInit {
 
 
 
-  contactForm: FormGroup = new FormGroup({
+  // contactForm: FormGroup = new FormGroup({
 
-    email: new FormControl('', [ Validators.required ]),
-    password: new FormControl('', [ Validators.required ]),
+  //   email: new FormControl('', [ Validators.required ]),
+  //   password: new FormControl('', [ Validators.required ]),
 
 
-  });
-
+  // });
+  contactForm: FormGroup;
 
 
   constructor(
     private readonly router: Router,
-    private readonly route: ActivatedRoute) { }
+    private readonly route: ActivatedRoute) {
+
+
+      this.contactForm= new FormGroup({
+
+        email: new FormControl('', [ Validators.required ]),
+        password: new FormControl('', [ Validators.required ]),
+
+
+      });
+     }
 
   ngOnInit():void {
 console.log('login page');
+
+    this.contactForm= new FormGroup({
+
+  email: new FormControl('', [ Validators.required ]),
+  password: new FormControl('', [ Validators.required ]),
+
+
+});
+
 
   }
 

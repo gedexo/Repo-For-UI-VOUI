@@ -8,9 +8,16 @@ import 'hammerjs';
 })
 export class MainComponent implements OnInit {
 
+    loading = true;
+
   constructor() { }
 
   ngOnInit(): void {
+
+    setTimeout(()=>{
+    this.loading = false
+  }, 5000)
   }
+
 
 }

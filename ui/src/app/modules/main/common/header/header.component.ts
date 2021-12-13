@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from 'app/modules/service/main.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import 'boxicons';
+import * as AOS from 'aos';
+
 
 interface childNode {
   path: string;
@@ -499,6 +501,18 @@ export class HeaderComponent implements OnInit {
   ];
   @ViewChild('rightSidenav', {static: true}) sidenav: MatSidenav | any;
 
+  @ViewChild('drawer') drawer: MatSidenav | any;
+
+  @HostListener('document:click', ['$event']) onDocumentClick(event:any) {
+    if(this.drawer.open()){
+    this.drawer.close();
+    }
+    if(this.mainService.open()){
+      this.mainService.close();
+    }
+
+  }
+
 
   quantity: number;
 
@@ -519,6 +533,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.showArrow = false;
     this.toggle_class = false;
+
+    AOS.init();
 
 
   }
@@ -617,7 +633,7 @@ export class HeaderComponent implements OnInit {
         break;
 
       case 'houshold':
-        this.shopAll = '/houshold';
+        this.shopAll = '/household';
         this.activeNode = BRAND_DATA;
         for (let idx = 0; idx < this.activeNode.length; idx++) {
           if (this.activeNode[idx].default === true) {
@@ -683,8 +699,9 @@ export class HeaderComponent implements OnInit {
   upsertSearch(): void {
     console.log(this.searchForm.value);
   }
-  toggleLanguage(): void {
-    console.log(this.fontStyle);
+  toggleLanguage(language:string): void {
+    console.log(language);
+
   }
 
 	toggleActive = false;
@@ -692,12 +709,15 @@ export class HeaderComponent implements OnInit {
 	toggleRightSidenav() {
 console.log('hi');
 
-    this.mainService.toggle();
+    this.mainService.open();
 	}
 
   changeCurrency(value:any):void{
     console.log(value);
 
   }
+  close(event:any){
+    console.log('closed');
 
+  }
 }

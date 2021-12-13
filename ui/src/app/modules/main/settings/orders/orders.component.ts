@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-orders',
@@ -17,10 +19,19 @@ price = '€68';
  count(idx:any){
   return  new Array(idx);
 }
-  constructor() { }
+  constructor(  public readonly router: Router,) { }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event:any) {
+    AOS.init();
+
+  }
 
   ngOnInit(): void {
 
+}
+navigateToHome():void{
+  this.router.navigate(['/dashboard']);
 }
 
 }

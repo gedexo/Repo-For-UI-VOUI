@@ -20,6 +20,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   imports: [
 
     CommonModule,
-    PetsupplyRoutingModule, MatPaginatorModule, MatGridListModule, MatCheckboxModule, MatExpansionModule,
-    MatSnackBarModule, MatCardModule,MatIconModule, MatButtonModule ,MatFormFieldModule,
-    MatInputModule, MatButtonToggleModule, ReactiveFormsModule, FormsModule,MatToolbarModule, CarouselModule
+    PetsupplyRoutingModule, MatPaginatorModule, MatGridListModule, MatCheckboxModule,
+     MatExpansionModule, MatSnackBarModule, MatCardModule,MatIconModule, MatButtonModule ,
+     MatFormFieldModule, MatInputModule, MatButtonToggleModule, ReactiveFormsModule,
+      FormsModule,MatToolbarModule, CarouselModule, MatTabsModule
   ],
   exports:[
     ListPetsupplyComponent,

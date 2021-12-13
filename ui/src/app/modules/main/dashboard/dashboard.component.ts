@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { OwlOptions  } from 'ngx-owl-carousel-o';
+import {DashboardService } from '../../service/dashboard.service'
+
+import { HttpClient } from '@angular/common/http';
+import * as AOS from 'aos';
+
 
 
 export interface Tile {
@@ -15,10 +20,9 @@ export interface Tile {
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-
 
   beauty = 'nav_link';
   beauty_arrow = 'hide_arrow';
@@ -26,9 +30,9 @@ export class DashboardComponent implements OnInit {
   sports_arrow ="hide_arrow";
   electronics = 'nav_link';
   electronics_arrow = "hide_arrow";
-  fashion = 'active_link';
+  fashion = 'nav_link';
 
-  fashion_arrow= "show_arrow";
+  fashion_arrow= "hide_arrow";
   household = 'nav_link';
   household_arrow= "hide_arrow";
   petsupply = 'nav_link';
@@ -41,18 +45,99 @@ export class DashboardComponent implements OnInit {
 
 
 
+  offerOptions: OwlOptions = {
+
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    center:true,
+    navText: ["<i class='fa fa-long-arrow-left'></i>", "<i class='fa fa-long-arrow-right'></i>"],
+    responsive: {
+          0:{
+              items:1,
+
+          },
+         769:{
+              items:3,
+              margin:40,
+
+          },
+          1000:{
+              items:3,
+
+              loop:true,
+              autoplay :false,
+              margin:40,
+          }
+          },
+
+  }
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    center:true,
+    navSpeed: 700,
+    navText: ["<i class='fa fa-long-arrow-left'></i>", "<i class='fa fa-long-arrow-right'></i>"],
+    responsive: {
+      0:{
+        items:1,
+
+
+
+    },
+   769:{
+        items:3,
+        margin:40,
+
+    },
+    1000:{
+        items:3,
+
+        loop:true,
+        autoplay :false,
+        margin:40,
+    }
+
+    },
+  }
+  normalOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    navText: ["<i class='fa fa-long-arrow-left'></i>", "<i class='fa fa-long-arrow-right'></i>"],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      769: {
+        items: 4,
+        margin:60
+      },
+
+    },
+    nav: true
+  }
+
+
   contactForm:FormGroup = new FormGroup({
     Email: new FormControl('', [Validators.required]),
 });
 
 
 offerSale:any = [
-  {
-    imgUrl : '../../../../assets/images/offer-1.jpg',
-    alt: 'offer-1',
-    imgName: 'Lorem ipsum dolor sit amet',
-    price : '€19.99',
-  },
+
   {
     imgUrl : '../../../../assets/images/offer-2.jpg',
     alt: 'offer-2',
@@ -153,54 +238,83 @@ bagsTrends:any = [
 ]
 // bind category images
    category1 = '../../../../assets/images/category-1.jpg';
+   name1 ="Women's Fashion";
 
-   category2 = '../../../../assets/images/category-2.jpg'
+   category2 = '../../../../assets/images/category-2.jpg';
+   name2 ="Men's Fashion";
 
-   category3 = '../../../../assets/images/category-3.jpg'
+   category3 = '../../../../assets/images/category-3.jpg';
+   name3 ="Kid's Fashion";
 
 
 
-  constructor() {
+  constructor(private http: HttpClient,
+    private dashboardService :DashboardService,
+    private el: ElementRef,) {
 
   }
 
+  data:any;
+
+
+  @HostListener('window:scroll', ['$event'])
+onScroll(event:any) {
+  AOS.init();
+
+}
+
+  carouselWindowWidth= null;
    ngOnInit(): void {
+
+
+
    }
+  onIndexChange($event:any){
+    console.log('log');
+
+  }
 
   hoverBeauty($event:any):void{
     this.beauty = $event.type == 'mouseover' ? 'active_link' : '';
     this.beauty_arrow = $event.type == 'mouseover' ? 'show_arrow' : 'hide_arrow';
-    this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
-    this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
+    // this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
+    // this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
     this.category1 = '../../../../assets/images/arrival-1.png';
-
     this.category2 = '../../../../assets/images/category-2.jpg'
-
-    this.category3 = '../../../../assets/images/arrival-3.png'
+    this.category3 = '../../../../assets/images/arrival-3.png';
+    this.name1 ="Women's Fashion";
+    this.name2 ="Men's Fashion";
+    this.name3 ="Kid's Fashion";
   }
 
   hoverSports($event:any):void{
     this.sports = $event.type == 'mouseover' ? 'active_link' : '';
     this.sports_arrow = $event.type == 'mouseover' ? 'show_arrow' : 'hide_arrow';
-    this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
-    this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
+    // this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
+    // this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
     this.category1 = '../../../../assets/images/offer-1.jpg';
 
     this.category2 = '../../../../assets/images/arrival-2.png'
 
-    this.category3 = '../../../../assets/images/category-1.jpg'
+    this.category3 = '../../../../assets/images/category-1.jpg';
+    this.name1 ="Women's Fashion";
+    this.name2 ="Men's Fashion";
+    this.name3 ="Kid's Fashion";
 
   }
   hoverElectronics($event:any):void{
     this.electronics = $event.type == 'mouseover' ? 'active_link' : '';
     this.electronics_arrow = $event.type == 'mouseover' ? 'show_arrow' : 'hide_arrow';
-    this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
-    this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
+    // this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
+    // this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
     this.category1 = '../../../../assets/images/arrival-1.png';
 
-    this.category2 = '../../../../assets/images/offer-2.jpg'
+    this.category2 = '../../../../assets/images/offer-2.jpg';
 
-    this.category3 = '../../../../assets/images/category-1.jpg'
+    this.category3 = '../../../../assets/images/category-1.jpg';
+    this.name1 ="Women's Fashion";
+    this.name2 ="Men's Fashion";
+    this.name3 ="Kid's Fashion";
 
 
   }
@@ -210,27 +324,30 @@ bagsTrends:any = [
 
     this.category1 = '../../../../assets/images/category-1.jpg';
 
-    this.category2 = '../../../../assets/images/category-2.jpg'
+    this.category2 = '../../../../assets/images/category-2.jpg';
 
-    this.category3 = '../../../../assets/images/category-3.jpg'
+    this.category3 = '../../../../assets/images/category-3.jpg';
   }
 
   hoverHousehold($event:any):void{
     this.household = $event.type == 'mouseover' ? 'active_link' : '';
     this.household_arrow = $event.type == 'mouseover' ? 'show_arrow' : 'hide_arrow';
-    this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
-    this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
+    // this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
+    // this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
     this.category1 = '../../../../assets/images/offer-1.jpg';
 
     this.category2 = '../../../../assets/images/offer-2.jpg'
 
-    this.category3 = '../../../../assets/images/offer-3.jpg'
+    this.category3 = '../../../../assets/images/offer-3.jpg';
+    this.name1 ="Women's Fashion";
+    this.name2 ="Men's Fashion";
+    this.name3 ="Kid's Fashion";
   }
   hoverPetSupplies($event:any):void{
     this.petsupply = $event.type == 'mouseover' ? 'active_link' : '';
     this.petsupply_arrow = $event.type == 'mouseover' ? 'show_arrow' : 'hide_arrow';
-    this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
-    this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
+    // this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
+    // this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
     this.category1 = '../../../../assets/images/bag-1.png';
 
     this.category2 = '../../../../assets/images/arrival-2.png'
@@ -240,25 +357,15 @@ bagsTrends:any = [
   hoverAutoMoto($event:any):void{
     this.auto_moto = $event.type == 'mouseover' ? 'active_link' : '';
     this.auto_moto_arrow = $event.type == 'mouseover' ? 'show_arrow' : 'hide_arrow';
-    this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
-    this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
+    // this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
+    // this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
     this.category1 = '../../../../assets/images/category-1.jpg';
 
     this.category2 = '../../../../assets/images/arrival-2.png'
 
     this.category3 = '../../../../assets/images/arrival-3.png'
   }
-mouseLeave($event:any):void{
-  this.fashion = $event.type == 'mouseleave' ? 'active_link' : '';
-  this.fashion_arrow = $event.type == 'mouseleave' ? 'show_arrow' : 'hide_arrow';
-  this.category1 = '../../../../assets/images/category-1.jpg';
 
-    this.category2 = '../../../../assets/images/category-2.jpg'
-
-    this.category3 = '../../../../assets/images/category-3.jpg'
-
-
-}
 mouseOver($event:any):void{
   this.fashion = $event.type == 'mouseover' ? '' : 'active_link';
   this.fashion_arrow = $event.type == 'mouseover' ? 'hide_arrow' : ' show_arrow';
@@ -267,8 +374,6 @@ mouseOver($event:any):void{
 
 
   submitContact():void {
-
-
     if (this.contactForm.valid === true) {
       console.log(this.contactForm.value);
 
@@ -290,68 +395,35 @@ mouseOver($event:any):void{
   }
 
 
-    offerOptions: OwlOptions = {
 
-      loop:true,
-      margin:10,
-      mouseDrag: true,
-      touchDrag: true,
-      pullDrag: true,
-      dots: false,
-      navSpeed: 500,
-      center:true,
-      navText: ["<i class='fa fa-long-arrow-left'></i>", "<i class='fa fa-long-arrow-right'></i>"],
-      responsive: {
-        0:{
-          items:1,
-          nav:true
-      },
-      600:{
-          items:3,
-          nav:false,
+    // customOptions: any = {
+    //   loop: true,
+    //   mouseDrag: true,
+    //   touchDrag: true,
+    //   pullDrag: true,
+    //   dots: false,
+    //   navSpeed: 700,
+    //   nav:true,
+    //   navText: ["<i class='fa fa-long-arrow-left'></i>", "<i class='fa fa-long-arrow-right'></i>"],
+    //   responsive: {
+    //     0:{
+    //       items:1,
 
-      },
-      1000:{
-          items:3,
-          nav:true,
-          loop:true,
-          autoplay :true,
-          margin:40
-      }
-      },
-      nav: true
-    }
-    customOptions: OwlOptions = {
-      loop: true,
-      mouseDrag: true,
-      touchDrag: true,
-      pullDrag: true,
-      dots: false,
-      navSpeed: 5700,
-      autoplay: true,
-      slideTransition: 'linear',
-      autoplayTimeout: 1000,
-      autoplaySpeed: 1000,
-      autoplayHoverPause: false,
+    //   },
+    //  769:{
+    //       items:3,
+    //       margin:40,
 
-      navText: ["<i class='fa fa-long-arrow-left'></i>", "<i class='fa fa-long-arrow-right'></i>"],
-      responsive: {
-        0: {
-          items: 1
-        },
-        400: {
-          items: 2
-        },
-        740: {
-          items: 3
-        },
-        940: {
-          items: 4,
-          margin:30
-        }
-      },
-      nav: true
-    }
+    //   },
+    //   1000:{
+    //       items:3,
+
+    //       loop:true,
+    //       autoplay :true,
+    //       margin:40,
+    //   }
+    //   },
+    // }
 
     changeCurousal(event:any):void{
       console.log(event);

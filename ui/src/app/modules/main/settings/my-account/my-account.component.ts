@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import * as AOS from 'aos';
 export interface userDetails {
   firstName: string;
   lastName: string;
@@ -50,7 +51,7 @@ export class MyAccountComponent implements OnInit {
 
  @Input() columnHeaders: Record<string, string>;
  @Input() columnAddress: Record<string, string>;
-  constructor() {
+  constructor( public readonly router: Router,) {
     this.columnHeaders = {
       firstName: 'First name',
       lastName: 'Last name',
@@ -66,10 +67,16 @@ export class MyAccountComponent implements OnInit {
     }
    }
 
+   @HostListener('window:scroll', ['$event'])
+   onScroll(event:any) {
+     AOS.init();
+
+   }
+
   ngOnInit(): void {
 
   }
-  upsertBank(): void {}
+
 
 
   findColumnValue = (element:unknown, column:string,
@@ -88,4 +95,9 @@ export class MyAccountComponent implements OnInit {
     return <string> column.split('.').reduce((acc:any, cur) => acc[cur] ?? '', element);
 
   };
+
+  navigateToInfo():void{
+    this.router.navigate(['/userinfo']);
+  }
+
 }

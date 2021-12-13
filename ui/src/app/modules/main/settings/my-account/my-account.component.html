@@ -3,13 +3,16 @@
 
     <div class="align-items-center">
 
-      <h1>My Account</h1>
-      <div class="personal_details">
+      <h1 data-aos="fade-up" data-aos-duration="1000">My Account</h1>
+
+
+
+      <div class="personal_details" style="display: none;">
         <div class="address_flex">
-          <h2>CONTACT INFORMATION</h2>
-          <button mat-button class="edit_button">Edit</button>
+          <h2 data-aos="fade-up" data-aos-duration="1000">CONTACT INFORMATION</h2>
+          <button mat-button class="edit_button" (click)="navigateToInfo()">Edit</button>
         </div>
-<div class="example-container ">
+<div class="example-container " data-aos="fade-down" data-aos-duration="1000">
         <mat-table  #table [dataSource]="dataSourceUser"  multiTemplateDataRows matSort>
           <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
             <mat-header-cell *matHeaderCellDef mat-sort-header> {{columnHeaders[column]}} </mat-header-cell>
@@ -25,13 +28,19 @@
         </div>
 </div>
 
-
-      <div class="address_details">
+<div class="Empty_cart_section">
+  <img src="../../../../../assets/images/undraw_delivery_address_re_cjca.svg" alt="" data-aos="zoom-in-up" data-aos-duration="1000">
+  <div class="undraw_content">
+    <h1>Your delivery Address is empty</h1>
+    <button class="custom-btn btn-11" (click)="navigateToInfo()" data-aos="fade-down" data-aos-duration="1000">Add New<div class="dot"></div></button>
+  </div>
+  </div>
+      <div class="address_details"  style="display: none;">
         <div class="address_flex">
-          <h2>BILLING ADDRESS</h2>
-          <button mat-button class="edit_button">Edit</button>
+          <h2 data-aos="fade-up" data-aos-duration="1000">BILLING ADDRESS</h2>
+          <button mat-button class="edit_button" (click)="navigateToInfo()">Edit</button>
           </div>
-          <div class="example-container">
+          <div class="example-container" data-aos="fade-down" data-aos-duration="1000">
           <mat-table  [dataSource]="dataSourceAddress" multiTemplateDataRows matSort>
             <ng-container [matColumnDef]="column" *ngFor="let column of displayedAddress">
               <mat-header-cell *matHeaderCellDef mat-sort-header> {{columnAddress[column]}} </mat-header-cell>

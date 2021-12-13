@@ -2,6 +2,9 @@
   background: #FFFAF3;
 
 }
+.offer_section{
+  min-height: 100vh;
+}
 @media only screen  and (min-width:769px){
 .offer_section{
   padding: var(--section-padding);

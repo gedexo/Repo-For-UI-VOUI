@@ -23,9 +23,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MainService } from 'app/modules/service/main.service';
-
 import {MatDividerModule} from '@angular/material/divider';
-import {CartModule } from '../../cart/cart.module'
+import {CartModule } from '../../cart/cart.module';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import {CartModule } from '../../cart/cart.module'
     OfferRoutingModule, MatPaginatorModule, MatGridListModule, MatCheckboxModule, MatExpansionModule,
     MatSnackBarModule, MatCardModule,MatIconModule, MatButtonModule ,MatFormFieldModule,
     MatInputModule, MatButtonToggleModule, ReactiveFormsModule, FormsModule,MatToolbarModule,
-     CarouselModule, MatTabsModule, MatSidenavModule, MatDividerModule
+     CarouselModule, MatTabsModule, MatSidenavModule, MatDividerModule,SwiperModule
   ],
   exports:[],
   providers: [MainService],

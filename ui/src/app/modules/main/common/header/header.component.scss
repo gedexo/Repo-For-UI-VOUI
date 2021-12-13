@@ -1,5 +1,9 @@
-
-
+mat-sidenav {
+  transition-duration: 3s;
+}
+.mat-button-toggle-appearance-standard{
+  background-color: transparent;
+}
 :host ::ng-deep.mat-form-field-infix {
   width: 5em;
 }
@@ -10,7 +14,6 @@ display: none;
 :host ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-wrapper {
   padding-bottom: 0 !important;
   font-size: 14px;
-  text-align: end;
   font-family: var(--heading-font-family);
 }
 :host ::ng-deep.mat-select-value {
@@ -20,7 +23,19 @@ color: #965627 !important;
   max-width: none;
   width: auto;
 }
-
+::ng-deep.mat-badge-content {
+  color: #fff;
+  background: #965627;
+}
+::ng-deep.mat-badge-medium.mat-badge-above .mat-badge-content {
+  top: -1px;
+}
+::ng-deep.mat-badge-medium .mat-badge-content {
+  width: 20px;
+  height: 20px;
+  line-height: 21px;
+  font-size: 12px;
+}
 
 input[type="checkbox"] {
   position: relative;
@@ -100,12 +115,12 @@ input:checked[type="checkbox"]:after {
   cursor: pointer;
 }
 .mat-icon-button{
-  color: rgb(190, 27, 60);
-  filter: box-shadow(0 0 0.75rem rgb(190, 27, 60));
+  color: rgb(226, 45, 72);
+  filter: box-shadow(0 0 0.75rem rgb(226, 45, 72));
 
 }
 .mat-icon-button:hover{
-  filter: drop-shadow(0 0 0.75rem rgb(190, 27, 60));
+  filter: drop-shadow(0 0 0.75rem rgb(226, 45, 72));
 }
 img{
   filter: drop-shadow(2px 4px 8px #585858);
@@ -152,9 +167,7 @@ font-weight: 500;
   }
 header {
     background-color: var(--backgroud-color);;
-    position: sticky;
-    top: 0;
-    z-index: 999;
+
     text-transform: uppercase;
 
 
@@ -233,10 +246,15 @@ margin-bottom: 0;
         line-height: 0 !important;
     }
 :host ::ng-deep .mat-button-toggle-checked.mat-button-toggle-appearance-standard {
-      background-color: #ffbd8c;
+      background-color: #FFFFFF;
+      color: #965627;
+      font-weight: 500;
+      font-size: 16px;
   }
 
-
+.mat-button-toggle-group-appearance-standard .mat-button-toggle+.mat-button-toggle {
+    border-left:none;
+}
 
 
 .hide_mega_menu{
@@ -375,6 +393,10 @@ mat-icon{
     mat-icon:active{
         background-color: var(--backgroud-color);
     }
+    mat-icon:hover{
+      color:#965627 !important;
+      vertical-align: text-bottom;
+  }
     .mat-button{
         font-weight: 500;
         font-size: 10px;
@@ -396,14 +418,10 @@ mat-icon{
 
 }
 .mat-toolbar .mat-input-element {
-    caret-color: transparent;
-    background-color: transparent;
-    letter-spacing: 0.5px;
     text-decoration: none;
-    font-weight: 500;
     color: #000000;
-    font: 500 14px/20px Poppins, "Helvetica Neue", sans-serif;
-    letter-spacing: normal;
+    font:14px/20px Poppins, "Helvetica Neue", sans-serif;
+    text-transform: capitalize;
 }
 
 :host ::ng-deep.mat-form-field-infix {
@@ -418,6 +436,7 @@ mat-icon{
     border: none;
     justify-content: end;
 }
+
 ::ng-deep input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -485,7 +504,7 @@ padding: 0;
 
 .example-sidenav {
   width: 60%;
-  height: 100vh;
+  min-height: 100vh;
   position: absolute;
   border: 1px solid rgba(0, 0, 0, 0.5);
   top:0;
@@ -510,9 +529,9 @@ background-color: var(--backgroud-color);
  border-bottom:1px solid  rgba(0,0,0,.12);
 }
 .nav_items{
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   a{
-    font-size: 14px;
+    font-size: 15px;
   }
   .fa{
     margin-right: 10px;
@@ -553,13 +572,24 @@ mat-label{
 
 header {
   background-color: var(--backgroud-color);;
-  position: sticky;
-  top: 0;
-  z-index: 999;
+position: sticky;
+top: 0;
+z-index: 999;
+height: 56px;
   text-transform: uppercase;
 }
+.login_banner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .login_button_nav{
+    font-size: 16px;
+    margin-left: 3%;
+  }
+ .active{
+   margin-top: 2px;
+ }
 
-
-
+}
 
 }

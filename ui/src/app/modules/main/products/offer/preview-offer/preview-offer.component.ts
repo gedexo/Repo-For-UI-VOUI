@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location } from '@angular/common';
-import { OwlOptions } from 'ngx-owl-carousel-o';
-import { MainService } from 'app/modules/service/main.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import * as AOS from 'aos';
+
+
 
 
 export interface subtasks {
@@ -36,6 +36,14 @@ export class PreviewOfferComponent implements OnInit {
   preview_sm3?:any;
   preview_lg?:any;
 
+
+  aboutProduct = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla.Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et.';
+
+
+isFirst = false;
+
+panelOpenState = false;
+
   size: subtasks[] = [
     {name: 'S', completed: false},
     {name: 'M', completed: false},
@@ -53,9 +61,71 @@ color: color[] = [
 
 
 ];
+products:any = [
+  {
+    imgUrl : '../../../../assets/images/grid1.png',
+    alt: 'offer-1',
+    imgName: 'Hair Care',
+    price : '19.99',
+    secondImage: '../../../../assets/images/grid2.png',
+    thirdImage: '../../../../assets/images/grid3.png',
+    review:[
+     {
+       reviewerName:'Murugan',
+       rating :5,
+       review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et.'
+     },
+     {
+      reviewerName:'Akshay',
+      rating :4,
+      review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. '
+    },
+    {
+      reviewerName:'Vishnu',
+      rating :2,
+      review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. '
+    },
+    {
+      reviewerName:'Nandhu',
+      rating :4,
+      review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. '
+    },
+    {
+      reviewerName:'Ajesh',
+      rating :3,
+      review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. '
+    },
+    {
+      reviewerName:'Ajmal',
+      rating :5,
+     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. '
+   },
+    ]
+  }
+
+  ]
+
+  galleryThumbsConfig = {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+  };
+  galleryTopConfig = {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+      swiper: undefined
+    }
+  };
 
 
-  customOptions: OwlOptions = {
+
+  customOptions: any = {
     loop: false,
     mouseDrag: true,
     touchDrag: true,
@@ -66,22 +136,25 @@ color: color[] = [
     navText: ["<i class='fa fa-long-arrow-left'></i>", "<i class='fa fa-long-arrow-right'></i>"],
     responsive: {
       0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 3,
+        items: 1,
         margin:30
+      },
+      500: {
+        items: 2,
+        margin:30
+      },
+      768: {
+        items: 2,
+        margin:30
+      },
+      769: {
+        items: 3,
+        margin:40
       }
     },
     nav: true
   }
-  suggestionOptions: OwlOptions = {
+  suggestionOptions: any = {
     loop: false,
     mouseDrag: true,
     touchDrag: true,
@@ -92,17 +165,24 @@ color: color[] = [
     navText: ["<i class='fa fa-long-arrow-left'></i>", "<i class='fa fa-long-arrow-right'></i>"],
     responsive: {
       0: {
-        items: 1
+        items: 2,
+        margin:10
       },
-      400: {
-        items: 2
+      500: {
+        items: 2,
+        margin:10
       },
-      740: {
-        items: 3
-      },
-      940: {
+      768: {
         items: 3,
-        margin:80
+        margin:40
+      },
+      1000: {
+        items: 4,
+        margin:40
+      },
+      1500: {
+        items: 5,
+        margin:40
       }
     },
     nav: true
@@ -157,6 +237,13 @@ offerSale:any = [
    counter(i: number) {
     return new Array(i);
 }
+
+@HostListener('window:scroll', ['$event'])
+onScroll(event:any) {
+  AOS.init();
+
+}
+
 
 leftMenuDrawerOpened = true;
   ngOnInit(): void {
@@ -221,6 +308,18 @@ addtocart(): void {
 
 gotoCheckout():void{
   this.router.navigate(['userinfo']);
+}
+
+onIndexChange(event:any){
+  console.log(event);
+
+
+}
+changePreviewImage(smImage:any){
+  console.log(smImage);
+
+  this.preview_lg = smImage;
+
 }
 }
 

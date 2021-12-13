@@ -61,4 +61,8 @@ this.mainService.close();
     this.router.navigate(['/userinfo']);
     this.sidenav.toggle();
   }
+
+  navigateToHome():void{
+    this.router.navigate(['/dashboard']);
+  }
 }

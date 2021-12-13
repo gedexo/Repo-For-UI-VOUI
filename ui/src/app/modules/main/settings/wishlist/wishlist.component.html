@@ -2,14 +2,23 @@
   <section class="offer_section" id="offer_section">
 
     <div class="align-items-center">
-      <h1>Wishlist</h1>
-      <div class="preview_section">
+      <h1 data-aos="fade-up" data-aos-duration="1500">Wishlist</h1>
+
+
+<div class="Empty_cart_section" >
+  <img src="../../../../../assets/images/like.jpg" alt="" data-aos="zoom-in-up" data-aos-duration="1500">
+  <div class="undraw_content">
+    <h1 >Your Wishlist is empty..!!</h1>
+    <button class="custom-btn btn-11" (click)="navigateToHome()" data-aos="fade-down" data-aos-duration="1500">Add New<div class="dot"></div></button>
+  </div>
+  </div>
+      <div class="preview_section" style="display: none;">
 
         <div class="row">
-          <div class="col-lg-4 col-sm-6 col-6" *ngFor="let img of products">
+         <div class="col-xl-3 col-lg-4 col-sm-6 col-6" *ngFor="let img of products">
             <div class="card" >
 
-              <img src="{{img.imgUrl}}" alt="Photo of {{img.alt}}" class="" style=" max-height: 300px; width: 100%; min-height: 300px;" (click)="productPreview(img)">
+              <img src="{{img.imgUrl}}" alt="Photo of {{img.alt}}" class=""  (click)="productPreview(img)">
               <button mat-icon-button class="banner_explore_button" (click)="openSnackBar(img.alt)">
                 <mat-icon>clear</mat-icon>
               </button>

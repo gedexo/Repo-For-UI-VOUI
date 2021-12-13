@@ -3,8 +3,8 @@
 
   <section class="preview_section" id="offer_section">
 
-    <div class="items-center">
-      <div class="imgShow">
+    <div class="items-center" >
+      <div class="imgShow product_tap" data-aos="zoom-in-right" data-aos-duration="1000">
         <mat-grid-list cols="3" rowHeight="200px" style="text-align: end;" >
           <mat-grid-tile [colspan]="1" [rowspan]="1" (click)="changelgImage(preview_sm1)" (mouseenter)="changelgImage(preview_sm1)" >
               <img src="{{preview_sm1}}" class="preview_sm1" >
@@ -22,12 +22,26 @@
         </mat-grid-tile>
       </mat-grid-list>
       </div>
+
+      <!-- for mobile -->
+<div class="swiper_slider">
+<div  class="category_lg">
+  <img src="{{preview_lg}}" class="preview_lg" data-aos="fade-down"   data-aos-duration="1000">
+</div>
+<div class="thumb_images">
+  <img src="{{preview_sm1}}" class="preview_sm1" (click)='changePreviewImage(preview_sm1)'data-aos="fade-down"  data-aos-duration="1000">
+  <img src="{{preview_sm2}}" class="preview_sm2" (click)='changePreviewImage(preview_sm2)'>
+  <img src="{{preview_sm3}}" class="preview_sm3" (click)='changePreviewImage(preview_sm3)'  data-aos="fade-up"  data-aos-duration="1000">
+</div>
+
+          </div>
+
       <div class="imgdetails">
         <h1>Gold necklaceFaux Pearl Decor Y Lariat Necklace</h1>
         <h2> <i *ngFor="let key of counter(3) " class="fa fa-star" style="color: var(--main-color);font-size: 16px; padding-right: 3px;"></i>
         <i *ngFor="let key of counter(2) " class="fa fa-star-o"  style="color: var(--main-color);font-size: 16px; padding-right: 3px;"></i>
         </h2>
-        <h1>€12 </h1>
+        <h3>€12 </h3>
 
         <mat-tab-group mat-align-tabs="start" class="product_tap">
           <mat-tab label="First"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -47,7 +61,7 @@
              Elementum augue amet adipiscing in massa nec vel massa in.</p></mat-tab>
         </mat-tab-group>
         <div class="choose_color">
-           <span>Color</span>
+           <span>Color &nbsp; &nbsp;</span>
 
 
             <mat-button-toggle-group class="choose_color">
@@ -68,34 +82,87 @@
           </mat-button-toggle-group>
 
     </div>
-    <div >
-      <button (click)="addtocart()" class="cart_button">ADD TO CART</button>
-      <button (click)="gotoCheckout()" class="buy_button">BUY NOW</button>
+    <div  class="action_button">
+      <button mat-button (click)="addtocart()" class="cart_button" >ADD TO CART</button>
+      <button mat-button (click)="gotoCheckout()" class="buy_button">BUY NOW</button>
 
 </div>
 </div>
 </div>
   </section>
 
+<section class="accordian_section" >
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="isFirst">
 
 
-  <section class="review_section">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="filter_title"> About Product</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="filter_body mat_panel">
+       <p>{{aboutProduct}}</p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="isFirst">
+
+
+      <mat-expansion-panel-header>
+        <mat-panel-title class="filter_title"> Structure</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="filter_body mat_panel">
+       <p>{{aboutProduct}}</p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="isFirst">
+
+
+      <mat-expansion-panel-header>
+        <mat-panel-title class="filter_title"> Delivery & Payments</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="filter_body mat_panel">
+       <p>{{aboutProduct}}</p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+</section>
+
+  <section class="review_section" >
 
     <div class="align-items-center">
 
         <div class='review_header'>Reviews</div>
-        <owl-carousel-o [options]="customOptions">
 
-          <ng-template carouselSlide *ngFor="let review of reviewS">
+        <div *ngFor="let product of products" >
+
+        <owl-carousel-o [options]="customOptions"  >
+
+          <ng-template carouselSlide  *ngFor="let reviewS of product.review" >
+
             <mat-card>
-            <mat-card-title> {{review.reviewerName}}</mat-card-title>
-            <mat-card-subtitle>
-              <i *ngFor="let key of counter(review.rating) " class="fa fa-star" style="color: var(--main-color);font-size: 16px; padding-right: 3px;"></i>
-              <i *ngFor="let key of counter(5-(review.rating)) " class="fa fa-star-o"  style="color: var(--main-color);font-size: 16px; padding-right: 3px;"></i></mat-card-subtitle>
+
+            <mat-card-title> {{reviewS.reviewerName}}</mat-card-title>
+             <mat-card-subtitle>
+              <i *ngFor="let key of counter(reviewS.rating) " class="fa fa-star" style="color: var(--main-color);font-size: 16px; padding-right: 3px;"></i>
+              <i *ngFor="let key of counter(5-(reviewS.rating)) " class="fa fa-star-o"  style="color: var(--main-color);font-size: 16px; padding-right: 3px;"></i>
+            </mat-card-subtitle>
 
             <mat-card-content>
               <p>
-                {{review.review }}
+                {{reviewS.review }}
               </p>
             </mat-card-content>
 
@@ -103,32 +170,33 @@
           </ng-template>
 
       </owl-carousel-o>
-
+</div>
     </div>
 
 
   </section>
 
 
-  <section class="suggestion_section">
+  <section class="suggestion_section" >
 
     <div class="align-items-center">
 
-        <div class="suggestion_header" >You may also like</div>
-
+        <div class="suggestion_header" data-aos="flip-right" data-aos-easing="ease-out-cubic"  data-aos-duration="700" >You may also like</div>
+<div data-aos="fade-down-right"  data-aos-duration="700">
         <owl-carousel-o [options]="suggestionOptions" >
           <ng-container *ngFor="let img of offerSale">
               <ng-template carouselSlide let-owlItem class="offer_curousal_imgs">
                   <img src="{{img.imgUrl}}" alt="{{img.alt}}">
 
                   <div class="offer_details">
-                      <h3>{{img.imgName}}</h3>
-                      <h3>{{img.price}}</h3>
+                      <h4>{{img.imgName}}</h4>
+                      <h4>{{img.price}}</h4>
                   </div>
               </ng-template>
           </ng-container>
 
       </owl-carousel-o>
+      </div>
 
     </div>
 

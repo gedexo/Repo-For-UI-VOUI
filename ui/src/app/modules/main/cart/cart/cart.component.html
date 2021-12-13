@@ -1,4 +1,4 @@
-<mat-sidenav #rightSidenav mode="push" class="rightSidenav" [fixedInViewport]="true" [fixedTopGap]="0" style="right: 0;"
+<mat-sidenav #rightSidenav mode="over" class="rightSidenav" [fixedInViewport]="true" [fixedTopGap]="0" style="right: 0;"
   position="end" class="xxx" hasBackdrop="false">
 
   <main class="main">
@@ -16,8 +16,14 @@
           </button>
         </mat-toolbar>
 
-
-        <div class="product_cart for_desktop">
+<div class="Empty_cart_section">
+<img src="../../../../../assets/images/shoppingCard_s.png" alt="">
+<div class="undraw_content">
+  <h1>Your Cart is Empty Start adding Products</h1>
+  <button class="custom-btn btn-11" (click)="toggleRightSidenav(); navigateToHome()">Add New<div class="dot"></div></button>
+</div>
+</div>
+        <div class="product_cart for_desktop" style="display: none;">
           <div class="product_list ">
 
 
@@ -97,7 +103,7 @@
         </div>
 
 
-        <div class="product_cart for_mobile">
+        <div class="product_cart for_mobile" style="display: none;">
           <div class="product_list">
 
 

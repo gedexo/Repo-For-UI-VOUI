@@ -12,6 +12,10 @@
  }
  .align-items-center{
   padding:2em 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
   background-color: var(--backgroud-color);
   h1{
     text-align: center;
@@ -64,14 +68,7 @@ font-weight: 500;
   color: #763301;
 }
 
-::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
-  background-color:#AF621A;
-}
 
-:host ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
-   background-color: #AF621A;
-
-}
 :host ::ng-deep.mat-form-field-ripple {
   background-color: #AF621A !important;
 }
@@ -97,17 +94,14 @@ font-weight: 500;
     letter-spacing: 0.05em;
     color: #000000;
   }
+
+
 :host ::ng-deep .mat-form-field {
   width: 100%;
   margin-bottom: 20px;
-
 }
-
-
 :host ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
    background-color: #AF621A;
-
-
 }
 :host ::ng-deep.mat-form-field-ripple {
   background-color: #763301 !important;

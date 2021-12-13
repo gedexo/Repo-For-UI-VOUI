@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import {FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import {MainService} from 'app/modules/service/main.service';
+
+import { DOCUMENT } from '@angular/common';
+import { event } from 'jquery';
 export interface subtasks {
   name: string;
   completed: boolean;
@@ -13,7 +17,7 @@ interface FoodNode {
   name: string;
   path: string;
 }
-
+const MOBILE_SCREEN_MAX_WIDTH = 768;
 @Component({
   selector: 'app-list-brand',
   templateUrl: './list-brand.component.html',
@@ -349,7 +353,7 @@ products:any = [
 
 ]
 
-offerOptions: OwlOptions = {
+offerOptions: any = {
 
 loop:true,
 margin:10,
@@ -365,12 +369,8 @@ responsive: {
     items:1,
     nav:true
 },
-600:{
-    items:3,
-    nav:false,
 
-},
-1000:{
+769:{
     items:3,
     nav:true,
     loop:true,
@@ -394,8 +394,10 @@ offer_subtitle ="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut net
 
 
 constructor(private readonly fb: FormBuilder,
-            private _snackBar: MatSnackBar,
-            public readonly router: Router,) {
+            private readonly _snackBar: MatSnackBar,
+            private readonly router: Router,
+            private readonly mainService :MainService,
+            @Inject(DOCUMENT) private document: Document) {
   this.form = this.fb.group({
     startprice: new FormControl(),
     endprice: new FormControl(),
@@ -410,8 +412,41 @@ constructor(private readonly fb: FormBuilder,
 
 nextPageLabel = 'nextTick';
 
+public innerWidth: any;
 
-ngOnInit(): void {}
+
+@HostListener('window:load', ['$event'])
+onLoad(event:any) {
+
+  if(window.innerWidth <=768){
+    this.isFirst = false;
+
+  }
+
+}
+@HostListener('window:resize', ['$event'])
+onResize(event:any) {
+  console.log(event);
+  if(window.innerWidth <=768){
+    this.isFirst = false;
+
+  }
+  else{
+    this.isFirst = true;
+
+  }
+
+}
+
+
+
+ngOnInit(): void {
+
+  this.onLoad(event);
+
+}
+
+
   submit(){
     console.log(this.form.value);
     console.log(this.subtasks);
@@ -434,6 +469,6 @@ ngOnInit(): void {}
   }
   productPreview(event:any):void{
     console.log(event);
-    this.router.navigateByUrl('preview', { state: event });
+    this.router.navigateByUrl('brand/preview', { state: event });
   }
 }

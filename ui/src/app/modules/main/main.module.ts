@@ -25,8 +25,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MainService } from '../service/main.service';
 import {CartModule } from '../main/cart/cart.module';
-
+import {MatBadgeModule} from '@angular/material/badge';
 import { UserInfoComponent } from './common/user-info/user-info.component';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { HttpClientModule , HttpClient } from '@angular/common/http';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
+
+
 
 
 
@@ -50,10 +62,16 @@ import { UserInfoComponent } from './common/user-info/user-info.component';
     MainRoutingModule, MatToolbarModule ,
     MatDividerModule ,MatIconModule, MatButtonModule ,MatFormFieldModule,
     MatInputModule, MatSelectModule, MatButtonToggleModule, ReactiveFormsModule,
-     FormsModule,MatGridListModule, CarouselModule,MatSidenavModule
+     FormsModule,MatGridListModule,MatSidenavModule, SwiperModule,
+     HttpClientModule, MatBadgeModule, CarouselModule
 
 
   ],
-  providers: [MainService],
+  providers: [MainService,HttpClient,
+    {
+    provide: SWIPER_CONFIG,
+    useValue: DEFAULT_SWIPER_CONFIG,
+    }
+  ]
 })
 export class MainModule { }

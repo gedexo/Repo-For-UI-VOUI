@@ -1,11 +1,9 @@
 <header class="for_desktop">
   <mat-toolbar class="toolbar_main">
-    <div class="first_toolbar_left">
+    <div class="first_toolbar_left" data-aos="fade-right"  data-aos-duration="2000">
       <mat-form-field>
           <mat-select value="Euro" (selectionChange) ="changeCurrency($event.value)">
-            <!-- <mat-option *ngFor="let state of states" [value]="state.value">
-              {{ state.viewValue }}
-          </mat-option> -->
+
             <mat-option value="Euro">€ EUR</mat-option>
             <mat-option value="doller">$ USD</mat-option>
             <mat-option value="Sterling">£ pound </mat-option>
@@ -15,21 +13,14 @@
 </mat-form-field>
       <span class="example-spacer"></span>
       <mat-button-toggle-group >
-        <mat-button-toggle value="france"  (click)="toggleLanguage()">FR</mat-button-toggle>
-        <mat-button-toggle value="English"  (click)="toggleLanguage()">EN</mat-button-toggle>
+        <mat-button-toggle value="france"  (click)="toggleLanguage('france')">FR</mat-button-toggle>
+        <mat-button-toggle value="English"  (click)="toggleLanguage('English')">EN</mat-button-toggle>
 
       </mat-button-toggle-group>
-
-
-
-
-
-
-
     </div>
     <span class="example-spacer">
      </span>
-    <div class="first_toolbar_right">
+    <div class="first_toolbar_right" data-aos="fade-left"  data-aos-duration="2000">
 
       <form [formGroup]="searchForm" class="header-search" (submit)="upsertSearch()" >
         <mat-form-field class="input_field">
@@ -39,12 +30,14 @@
         <button type="submit" mat-button class="submit_button"> <mat-icon class="mat-5by1-white">search</mat-icon></button>
       </form>
       <button mat-button  [routerLink]="'/login'">LOGIN</button>
-      <button mat-icon-button class="banner_explore_button"  [routerLink]="'settings/wishlist'">
+      <button mat-icon-button class="banner_explore_button"  [routerLink]="'settings/wishlist'" >
         <mat-icon>favorite</mat-icon>
       </button>
 
-        <button mat-button (click)="toggleRightSidenav()" >CART <button  mat-mini-fab> {{no_of_items}}</button></button>
 
+        <button mat-button  (click)="toggleRightSidenav();$event.stopPropagation();" matBadge="{{no_of_items}}" matBadgePosition="after">
+        CART
+    </button>
 
 
 
@@ -52,11 +45,12 @@
   </mat-toolbar>
   <mat-divider class="header-divider"></mat-divider>
   <mat-toolbar class="toolbar_main">
-    <div class="logo_container" [routerLink]="'dashboard'"><img src="../../../../assets/images/Logo_VOUI.svg" alt="Logo_VOUI"></div>
+    <div class="logo_container" [routerLink]="'dashboard'"  data-aos="zoom-in"  data-aos-duration="2500">
+      <img src="../../../../assets/images/Logo_VOUI.svg" alt="Logo_VOUI"></div>
   </mat-toolbar>
   <mat-divider class="header-divider"></mat-divider>
-  <!-- (click)="ClosePanel()" -->
-  <div class="nav_menu "  (mouseleave)="ClosePanel()">
+
+  <div class="nav_menu "  (mouseleave)="ClosePanel()" data-aos="flip-left"  data-aos-duration="2000">
     <ul class="nav_list " id="nav_menu">
 
 <li class="nav_items"><a  (mouseenter)="openBrandMenu($event,'offer')"  routerLinkActive="active"  [routerLink]="'offer'">OFFERS</a></li>
@@ -71,7 +65,7 @@
 
 <li class="nav_items"><a (mouseenter)="openBrandMenu($event,'electronics')"  routerLinkActive="active"  [routerLink]="'electronics'">ELECTRONICS</a> </li>
 
-<li class="nav_items"><a (mouseenter)="openBrandMenu($event,'houshold')"  routerLinkActive="active"  [routerLink]="'houshold'">HOUSEHOLD</a> </li>
+<li class="nav_items"><a (mouseenter)="openBrandMenu($event,'houshold')"  routerLinkActive="active"  [routerLink]="'household'">HOUSEHOLD</a> </li>
 
 <li class="nav_items"><a (mouseenter)="openBrandMenu($event,'petSupplies')"  routerLinkActive="active"  [routerLink]="'petsupply'">PET SUPPLIES</a> </li>
 
@@ -115,9 +109,9 @@
 
 </header>
 
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container"  (click)="$event.stopPropagation();" >
   <mat-sidenav-content>
-    <app-cart></app-cart>
+    <app-cart ></app-cart>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
@@ -125,21 +119,21 @@
 
   <mat-toolbar class="toolbar_main ">
     <div  class="toggle_side_nav">
-      <button mat-button  class="mobile_menu" (click)="drawer.toggle()">
+      <button mat-button  class="mobile_menu" (click)="drawer.open();$event.stopPropagation();">
         <i class="fa fa-bars"></i>
       </button>
     </div>
 
 
 
-      <mat-drawer #drawer class="example-sidenav" mode="over" hasBackdrop="hasBackdrop.value">
+      <mat-drawer #drawer class="example-sidenav" mode="over" hasBackdrop="hasBackdrop.value" (click)="$event.stopPropagation();" >
 
         <mat-toolbar class="toolbar_main">
-          <div>
+          <div class="login_banner">
             <i class="fa fa-user-circle " aria-hidden="true"></i>
             &nbsp;
-            <button mat-button >
-              <a routerLinkActive="active"  [routerLink]="'login'">login</a>
+            <button mat-button class="login_button_nav">
+              <a routerLinkActive="active"  [routerLink]="'login'" (click)="drawer.close()">Login</a>
 
             </button>
           </div>
@@ -150,25 +144,25 @@
         </mat-toolbar>
         <ul class="nav_list " id="nav_menu">
 
-          <li class="nav_items"><a routerLinkActive="active"  [routerLink]="'dashboard'">Home</a></li>
+          <li class="nav_items"><a routerLinkActive="active"  [routerLink]="'dashboard'" >Home</a></li>
 
-          <li class="nav_items"><a routerLinkActive="active"  [routerLink]="'offer'">Offers</a></li>
+          <li class="nav_items"><a routerLinkActive="active"  [routerLink]="'offer'" >Offers</a></li>
 
-          <li class="nav_items"><a routerLinkActive="active"  [routerLink]="'brand'">Brands</a></li>
+          <li class="nav_items"><a routerLinkActive="active"  [routerLink]="'brand'" >Brands</a></li>
 
-          <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'beauty'">Beauty</a></li>
+          <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'beauty'" >Beauty</a></li>
 
-          <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'fashion'">Fashion</a> </li>
+          <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'fashion'" >Fashion</a> </li>
 
-          <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'sport'">Sport</a></li>
+          <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'sport'" >Sport</a></li>
 
-          <li class="nav_items"><a   routerLinkActive="active"  [routerLink]="'electronics'">Electronics</a> </li>
+          <li class="nav_items"><a   routerLinkActive="active"  [routerLink]="'electronics'" >Electronics</a> </li>
 
-          <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'household'">Household</a> </li>
+          <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'household'" >Household</a> </li>
 
-          <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'petsupply'">Pet supply</a> </li>
+          <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'petsupply'" >Pet supply</a> </li>
 
-          <li class="nav_items"> <a  routerLinkActive="active"  [routerLink]="'automoto'">Auto-moto</a> </li>
+          <li class="nav_items"> <a  routerLinkActive="active"  [routerLink]="'automoto'" >Auto-moto</a> </li>
               </ul>
 
 
@@ -184,7 +178,7 @@
                     <span>Currency</span>
 
                   <mat-form-field>
-                    <mat-select value="Euro" (selectionChange)="changeCurrency($event.value)">
+                    <mat-select value="Euro" (selectionChange)="changeCurrency($event.value);">
                       <!-- <mat-option *ngFor="let state of states" [value]="state.value">
                         {{ state.viewValue }}
                     </mat-option> -->
@@ -203,13 +197,13 @@
               <ul class="nav_list " id="nav_menu">
 
                 <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'settings/myaccount'">
-                  <i class="fa fa-user" aria-hidden="true"></i>My Account</a> </li>
+                  <i class="fa fa-user" aria-hidden="true" ></i>My Account</a> </li>
 
                 <li class="nav_items"><a routerLinkActive="active"  [routerLink]="'settings/orders'">
                   <i class="fa fa-cart-plus" aria-hidden="true"></i>My Orders</a></li>
 
                 <li class="nav_items"><a routerLinkActive="active"  [routerLink]="'settings/wishlist'">
-                  <i class="fa fa-heart" aria-hidden="true"></i>My Wishlist</a></li>
+                  <i class="fa fa-heart" aria-hidden="true" ></i>My Wishlist</a></li>
 
                   <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'login'">
                     <i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a> </li>
@@ -222,7 +216,7 @@
     </div>
 
     <div class="toggle_side_nav">
-      <button mat-button  class="mobile_menu" (click)="toggleRightSidenav()">
+      <button mat-button  class="mobile_menu" (click)="toggleRightSidenav();$event.stopPropagation();">
         <i class="fa fa-shopping-cart"></i>
       </button>
 

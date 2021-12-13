@@ -1,28 +1,41 @@
 import { Injectable } from '@angular/core';
-
+import { DOCUMENT } from '@angular/common';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Inject } from '@angular/core';
 
 
+const MOBILE_SCREEN_MAX_WIDTH = 768;
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MainService {
-  private sidenav: MatSidenav |any;
+  constructor(@Inject(DOCUMENT) private document: Document) {}
 
-	public setSidenav(sidenav: MatSidenav) {
-		this.sidenav = sidenav;
-	}
+  // isMobileView = ():boolean => this.document.defaultView?.innerWidth <= MOBILE_SCREEN_MAX_WIDTH;
 
-	public open() {
-		return this.sidenav.open();
-	}
+  // isMobileView =():boolean => {
+  //   if (this.document.defaultView !== null) {
+  //     this.document.defaultView.innerWidth <= MOBILE_SCREEN_MAX_WIDTH;
+  //     console.log(  this.document.defaultView.innerWidth.valueOf());
 
 
-	public close() {
-		return this.sidenav.close();
-	}
+  //   }
+  // }
+  private sidenav: MatSidenav | any;
 
-	public toggle(): void {
-		this.sidenav.toggle();
-	}
+  public setSidenav(sidenav: MatSidenav) {
+    this.sidenav = sidenav;
+  }
+
+  public open() {
+    return this.sidenav.open();
+  }
+
+  public close() {
+    return this.sidenav.close();
+  }
+
+  public toggle(): void {
+    this.sidenav.toggle();
+  }
 }

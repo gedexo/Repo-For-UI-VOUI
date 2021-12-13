@@ -7,7 +7,7 @@
 
 
 
-  <nav class="nav_section">
+  <nav class="nav_section" data-aos="zoom-in-right" data-aos-duration="1000">
 
     <ul>
       <li  class="nav_list"><a href="" routerLinkActive="active"  [routerLink]="'myaccount'"class="nav_items"  #account="routerLinkActive"> MY ACCOUNT  <mat-icon *ngIf="account.isActive === true">trending_flat</mat-icon></a></li>
@@ -19,7 +19,7 @@
 
 
   </nav>
-<div class="content_section">
+<div class="content_section" >
 
   <router-outlet></router-outlet>
 </div>
