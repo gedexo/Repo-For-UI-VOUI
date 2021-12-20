@@ -426,7 +426,7 @@ mouseOver($event:any):void{
     // }
 
     changeCurousal(event:any):void{
-      console.log(event);
+
 
 
     }

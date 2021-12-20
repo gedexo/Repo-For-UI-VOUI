@@ -28,21 +28,8 @@ import {CartModule } from '../main/cart/cart.module';
 import {MatBadgeModule} from '@angular/material/badge';
 import { UserInfoComponent } from './common/user-info/user-info.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
-import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
-import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+
 import { HttpClientModule , HttpClient } from '@angular/common/http';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
-  direction: 'horizontal',
-  slidesPerView: 'auto'
-};
-
-
-
-
-
-
 
 
 @NgModule({
@@ -63,15 +50,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     MatDividerModule ,MatIconModule, MatButtonModule ,MatFormFieldModule,
     MatInputModule, MatSelectModule, MatButtonToggleModule, ReactiveFormsModule,
      FormsModule,MatGridListModule,MatSidenavModule, SwiperModule,
-     HttpClientModule, MatBadgeModule, CarouselModule
-
-
+     HttpClientModule, MatBadgeModule, CarouselModule,
   ],
-  providers: [MainService,HttpClient,
-    {
-    provide: SWIPER_CONFIG,
-    useValue: DEFAULT_SWIPER_CONFIG,
-    }
-  ]
+
 })
 export class MainModule { }

@@ -2,24 +2,28 @@
   <mat-toolbar class="toolbar_main">
     <div class="first_toolbar_left" data-aos="fade-right"  data-aos-duration="2000">
       <mat-form-field>
-          <mat-select value="Euro" (selectionChange) ="changeCurrency($event.value)">
 
-            <mat-option value="Euro">€ EUR</mat-option>
-            <mat-option value="doller">$ USD</mat-option>
-            <mat-option value="Sterling">£ pound </mat-option>
-            <mat-option value="UAE Dirham">د.إ AED </mat-option>
-            <mat-option value="Saudi Riyal">SR </mat-option>
+          <mat-select value="EUR" (selectionChange) ="changeCurrency($event.value)">
+
+            <mat-option value="EUR">€ EUR</mat-option>
+            <mat-option value="AUD">$ USD</mat-option>
+            <mat-option value="EGP">£ pound </mat-option>
+            <mat-option value="AED">د.إ AED </mat-option>
+            <mat-option value="SAR">SR </mat-option>
           </mat-select>
 </mat-form-field>
+
       <span class="example-spacer"></span>
       <mat-button-toggle-group >
         <mat-button-toggle value="france"  (click)="toggleLanguage('france')">FR</mat-button-toggle>
         <mat-button-toggle value="English"  (click)="toggleLanguage('English')">EN</mat-button-toggle>
 
       </mat-button-toggle-group>
+
     </div>
     <span class="example-spacer">
      </span>
+
     <div class="first_toolbar_right" data-aos="fade-left"  data-aos-duration="2000">
 
       <form [formGroup]="searchForm" class="header-search" (submit)="upsertSearch()" >
@@ -29,7 +33,7 @@
 
         <button type="submit" mat-button class="submit_button"> <mat-icon class="mat-5by1-white">search</mat-icon></button>
       </form>
-      <button mat-button  [routerLink]="'/login'">LOGIN</button>
+      <button mat-button  [routerLink]="'/login'">LOGIN </button>
       <button mat-icon-button class="banner_explore_button"  [routerLink]="'settings/wishlist'" >
         <mat-icon>favorite</mat-icon>
       </button>
@@ -178,15 +182,13 @@
                     <span>Currency</span>
 
                   <mat-form-field>
-                    <mat-select value="Euro" (selectionChange)="changeCurrency($event.value);">
-                      <!-- <mat-option *ngFor="let state of states" [value]="state.value">
-                        {{ state.viewValue }}
-                    </mat-option> -->
-                      <mat-option value="Euro">€ EUR</mat-option>
-                      <mat-option value="doller">$ USD</mat-option>
-                      <mat-option value="Sterling">£ pound </mat-option>
-                      <mat-option value="UAE Dirham">د.إ AED </mat-option>
-                      <mat-option value="Saudi Riyal">SR </mat-option>
+                    <mat-select (selectionChange)="changeCurrency($event.value)">
+
+                      <mat-option value="EUR">EUR</mat-option>
+                      <mat-option value="AUD">AUD</mat-option>
+                      <mat-option value="EGP">EGP</mat-option>
+                      <mat-option value="AED">AED</mat-option>
+                      <mat-option value="SAR">SAR</mat-option>
                     </mat-select>
                   </mat-form-field>
                   </div>
@@ -222,4 +224,7 @@
 
     </div>
   </mat-toolbar>
+
 </header>
+<div id="google_translate_element"></div>
+

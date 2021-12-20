@@ -301,7 +301,7 @@ gotoCheckout():void{
 }
 
 onIndexChange(event:any){
-  console.log(event);
+
 
 
 }

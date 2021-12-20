@@ -10,9 +10,10 @@ const routes: Routes = [
     component:ListOfferComponent,
   },
   {
-    path: 'preview',
+    path: 'preview/:id',
     pathMatch: 'full',
     component:PreviewOfferComponent,
+
   },
 ];
 

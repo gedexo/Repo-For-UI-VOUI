@@ -1,7 +1,10 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import * as AOS from 'aos';
+
+
+
 
 @Component({
   selector: 'app-wishlist',
@@ -299,7 +302,8 @@ products:any = [
 ]
 
   constructor( private _snackBar: MatSnackBar,
-    public readonly router: Router,) { }
+    public readonly router: Router,
+    public el: ElementRef) { }
 
     @HostListener('window:scroll', ['$event'])
     onScroll(event:any) {
@@ -309,6 +313,7 @@ products:any = [
 
 
   ngOnInit(): void {
+  
   }
   openSnackBar( action: string) {
     console.log(action);

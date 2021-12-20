@@ -427,7 +427,7 @@ onLoad(event:any) {
 }
 @HostListener('window:resize', ['$event'])
 onResize(event:any) {
-  console.log(event);
+
   if(window.innerWidth <=768){
     this.isFirst = false;
 
@@ -469,7 +469,7 @@ ngOnInit(): void {
 
   }
   productPreview(event:any):void{
-    console.log(event);
+
     this.router.navigateByUrl('household/preview', { state: event });
   }
 }

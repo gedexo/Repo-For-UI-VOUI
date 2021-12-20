@@ -1,10 +1,22 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as AOS from 'aos';
 
 
 
+export interface productData {
+  id: number;
+  imgUrl: string;
+  alt: string;
+  imgName: string;
+  price:number;
+  secondImage: string;
+  thirdImage: string;
+  Brand:string;
+  size: string;
+
+}
 
 export interface subtasks {
   name: string;
@@ -22,9 +34,13 @@ export interface color {
 @Component({
   selector: 'app-preview-offer',
   templateUrl: './preview-offer.component.html',
-  styleUrls: ['./preview-offer.component.scss','../../stylesheet/preview-style.scss']
+  styleUrls: ['./preview-offer.component.scss','../../stylesheet/preview-style.scss'],
 })
 export class PreviewOfferComponent implements OnInit {
+
+
+  @Input() article: any;
+  articleList: productData[] = [];
 
 
   product:Array<string>=[];
@@ -61,47 +77,244 @@ color: color[] = [
 
 
 ];
-products:any = [
+products:productData[] = [
   {
+    id : 1,
     imgUrl : '../../../../assets/images/grid1.png',
     alt: 'offer-1',
     imgName: 'Hair Care',
-    price : '19.99',
+    price : 10,
     secondImage: '../../../../assets/images/grid2.png',
     thirdImage: '../../../../assets/images/grid3.png',
-    review:[
-     {
-       reviewerName:'Murugan',
-       rating :5,
-       review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et.'
-     },
-     {
-      reviewerName:'Akshay',
-      rating :4,
-      review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. '
-    },
-    {
-      reviewerName:'Vishnu',
-      rating :2,
-      review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. '
-    },
-    {
-      reviewerName:'Nandhu',
-      rating :4,
-      review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. '
-    },
-    {
-      reviewerName:'Ajesh',
-      rating :3,
-      review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. '
-    },
-    {
-      reviewerName:'Ajmal',
-      rating :5,
-     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. '
-   },
-    ]
-  }
+    Brand: 'vivo',
+    size : 's',
+  //   reviewS:[
+  //    {
+  //      review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+  //    },
+  //    {
+  //     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+  //   },
+  //   {
+  //     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+  //   },
+  //   {
+  //     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+  //   },
+  //   {
+  //     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+  //   },
+  //   {
+  //    review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+  //  },
+  //   ]
+  },
+  { id : 2,
+    imgUrl : '../../../../assets/images/grid2.png',
+    alt: 'offer-2',
+    imgName: 'Fragrance',
+    price : 19.99,
+    secondImage: '../../../../assets/images/grid5.jpg',
+    thirdImage: '../../../../assets/images/grid3.png',
+    Brand: 'oppo',
+    size : 'm',
+  //   review:[
+  //     {
+  //       review1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+  //     },
+  //     {
+  //      review2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+  //    },
+  //    {
+  //      review3: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+  //    },
+  //    {
+  //     review4: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+  //   },
+  //   {
+  //    review5: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+  //  },
+
+  //    ]
+
+  },
+  {
+    id : 3,
+    imgUrl : '../../../../assets/images/grid3.png',
+    alt: 'offer-3',
+    imgName: 'Fragrance',
+    price : 50,
+    secondImage: '../../../../assets/images/grid2.png',
+    thirdImage: '../../../../assets/images/grid3.png',
+    Brand: 'realme',
+    size : 'l',
+    // review:[
+    //   {
+    //     review1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //   },
+    //   {
+    //    review2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+    //  {
+    //    review3: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+
+    //  ]
+
+  },
+  {
+    id : 4,
+    imgUrl : '../../../../assets/images/grid4.jpg',
+    alt: 'offer-4',
+    imgName: 'Skin Care',
+    price : 19.99,
+    secondImage: '../../../../assets/images/grid2.png',
+    thirdImage: '../../../../assets/images/grid3.png',
+    Brand: 'realme',
+    size : 'xl',
+    // review:[
+    //   {
+    //     review1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //   },
+    //   {
+    //    review2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+    //  {
+    //    review3: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+
+    //  ]
+
+  },
+  {
+    id : 5,
+    imgUrl : '../../../../assets/images/grid5.jpg',
+    alt: 'arrival-1',
+    imgName: 'Lorem ipsum dolor sit amet',
+    price : 39,
+    secondImage: '../../../../assets/images/grid2.png',
+    thirdImage: '../../../../assets/images/grid3.png',
+    Brand: 'oppo',
+    size : 'xxl',
+    // review:[
+    //   {
+    //     review1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //   },
+    //   {
+    //    review2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+    //  ]
+  },
+  {
+    id : 6,
+    imgUrl : '../../../../assets/images/grid9.jpg',
+    alt: 'arrival-2',
+    imgName: 'Lorem ipsum dolor sit amet',
+    price : 19.99,
+    secondImage: '../../../../assets/images/grid2.png',
+    thirdImage: '../../../../assets/images/grid3.png',
+    Brand: 'vivo',
+    size : 's',
+    // review:[
+    //   {
+    //     review1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //   },
+    //   {
+    //    review2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+    //  {
+    //    review3: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+
+    //  ]
+  },
+  {
+    id : 7,
+    imgUrl : '../../../../assets/images/grid6.jpg',
+    alt: 'arrival-3',
+    imgName: 'Lorem ipsum dolor sit amet',
+    price : 19.99,
+    secondImage: '../../../../assets/images/grid2.png',
+    thirdImage: '../../../../assets/images/grid3.png',
+    Brand: 'realme',
+    size : 'm',
+    // review:[
+    //   {
+    //     review1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //   },
+    //   {
+    //    review2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+    //  {
+    //    review3: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+    //  {
+    //   review4: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    // },
+    // {
+    //   review5: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    // },
+
+    //  ]
+  },
+  {
+    id : 8,
+    imgUrl : '../../../../assets/images/grid7.jpg',
+    alt: 'arrival-4',
+    imgName: 'Lorem ipsum dolor sit amet',
+    price : 19.99,
+    secondImage: '../../../../assets/images/grid2.png',
+    thirdImage: '../../../../assets/images/grid3.png',
+    Brand: 'oppo',
+    size : 'l',
+    // review:[
+    //   {
+    //     review1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //   },
+    //   {
+    //    review2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+    //  {
+    //    review3: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+    //  {
+    //   review4: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    // },
+
+
+    //  ]
+
+  },
+  {
+    id : 9,
+    imgUrl : '../../../../assets/images/grid8.jpg',
+    alt: 'arrival-1',
+    imgName: 'Lorem ipsum dolor sit amet',
+    price : 19.99,
+    secondImage: '../../../../assets/images/grid2.png',
+    thirdImage: '../../../../assets/images/grid3.png',
+    Brand: 'vivo',
+    size : 'xl',
+    // review:[
+    //   {
+    //     review1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //   },
+    //   {
+    //    review2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+    //  {
+    //    review3: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    //  },
+    //  {
+    //   review4: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    // },
+    // {
+    //   review5: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus amet tristique commodo nibh proin. Laoreet integer odio pretium semper posuere in purus tristique fringilla. Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et. Elementum augue amet adipiscing in massa nec vel massa in.'
+    // },
+
+    //  ]
+  },
+
 
   ]
 
@@ -246,42 +459,30 @@ onScroll(event:any) {
 
 
 leftMenuDrawerOpened = true;
+
+value:any = 0;
   ngOnInit(): void {
+this.route.params.subscribe(data =>{
+  for(let idx in data){
+    this.value = data[idx];
+  }
 
-this.preview_sm1 =  '../../../../assets/images/chain3.jpeg';
-this.preview_sm2 =  '../../../../assets/images/chain2.jpeg';
-this.preview_sm3 =  '../../../../assets/images/chain1.jpeg';
+}  );
 
-//     this.route.queryParams.subscribe(items =>{
-//       // console.log(items);
-// const value =Object.entries(items)
-
-// for(let idx=0;idx <value.length;idx++){
+for(let idx in this.products){
 
 
-//   if(value[idx][0] === 'review'){
-//     console.log(value[idx][1], typeof value[idx][1]);
+  if(this.products[idx].id == this.value){
+   console.log(this.products[idx]);
 
-//     this.reviewS = value[idx][1];
-//   }
-//   if(value[idx][0] === 'imgUrl'){
-//     console.log(value[idx][1], typeof value[idx][1]);
-//     this.preview_sm1=value[idx][1]
-//   }
-//   if(value[idx][0] === 'secondImage'){
-//     console.log(value[idx][1], typeof value[idx][1]);
-//     this.preview_sm2=value[idx][1]
-//   }
-//   if(value[idx][0] === 'thirdImage'){
-//     console.log(value[idx][1], typeof value[idx][1]);
-//     this.preview_sm3=value[idx][1]
-//   }
-
-
-// }
-// });
-
+   this.preview_sm1 = this.products[idx].imgUrl;
+this.preview_sm2 = this.products[idx].secondImage;
+this.preview_sm3 =this.products[idx].thirdImage;
 this.preview_lg = this.preview_sm1;
+   return
+
+  }
+}
 
 
 }
@@ -311,7 +512,7 @@ gotoCheckout():void{
 }
 
 onIndexChange(event:any){
-  console.log(event);
+
 
 
 }

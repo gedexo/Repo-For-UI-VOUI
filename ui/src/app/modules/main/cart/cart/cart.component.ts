@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
   }
 
   valueChange(event: any) {
-    console.log(event);
+
   }
   decrementValue(): void {
     if (this.quantity >1) {

@@ -13,6 +13,7 @@ const routes: Routes = [
       {
         path: 'myaccount',
        component: MyAccountComponent,
+
       },
       {
         path: '',
@@ -22,10 +23,12 @@ const routes: Routes = [
       {
         path: 'wishlist',
        component: WishlistComponent,
+
       },
       {
         path: 'orders',
        component: OrdersComponent,
+
       },
     ]
   }

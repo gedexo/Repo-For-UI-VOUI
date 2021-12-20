@@ -1,10 +1,11 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from 'app/modules/service/main.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import 'boxicons';
 import * as AOS from 'aos';
+declare var $:JQueryStatic;
 
 
 interface childNode {
@@ -469,6 +470,8 @@ const Empty_DATA: FooddNode[] = [];
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+
+  loginTitle = "Login"
   user = 'murugan';
   no_of_items = 5;
   showArrow = false;
@@ -499,6 +502,13 @@ export class HeaderComponent implements OnInit {
     { name: 'FR ', completed: false },
     { name: 'En', completed: false },
   ];
+
+  message: string = "Hola Mundo!"
+
+
+
+  @Output() messageEvent = new EventEmitter<string>();
+
   @ViewChild('rightSidenav', {static: true}) sidenav: MatSidenav | any;
 
   @ViewChild('drawer') drawer: MatSidenav | any;
@@ -518,8 +528,10 @@ export class HeaderComponent implements OnInit {
 
 
 
-  constructor(private router: Router,private readonly mainService:MainService,) {
+  constructor(private router: Router,
+    private readonly mainService:MainService,) {
     this.quantity = 1;
+
   }
 
   form: FormGroup = new FormGroup({
@@ -536,8 +548,8 @@ export class HeaderComponent implements OnInit {
 
     AOS.init();
 
-
   }
+
 
 
   ClosePanel(): void {
@@ -713,11 +725,13 @@ console.log('hi');
 	}
 
   changeCurrency(value:any):void{
-    console.log(value);
+this.mainService.currencyType = value;
 
   }
   close(event:any){
     console.log('closed');
 
   }
+
+
 }

@@ -41,10 +41,6 @@ export class MyAccountComponent implements OnInit {
 
   displayedAddress: string[] = [ 'country', 'city', 'address', 'zipCode' ];
 
-
-
-
-
  dataSourceUser = USER_DATA;
  dataSourceAddress = ADDRESS_DATA;
 

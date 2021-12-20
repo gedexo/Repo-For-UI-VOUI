@@ -7,7 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MainService } from './modules/service/main.service';
 import { HttpClientModule , HttpClient } from '@angular/common/http';
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 
 
 @NgModule({

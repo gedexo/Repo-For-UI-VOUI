@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Inject } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import {Currency } from 'app/modules/models/currency'
 
 
 const MOBILE_SCREEN_MAX_WIDTH = 768;
@@ -9,18 +11,16 @@ const MOBILE_SCREEN_MAX_WIDTH = 768;
   providedIn: 'root',
 })
 export class MainService {
-  constructor(@Inject(DOCUMENT) private document: Document) {}
-
-  // isMobileView = ():boolean => this.document.defaultView?.innerWidth <= MOBILE_SCREEN_MAX_WIDTH;
-
-  // isMobileView =():boolean => {
-  //   if (this.document.defaultView !== null) {
-  //     this.document.defaultView.innerWidth <= MOBILE_SCREEN_MAX_WIDTH;
-  //     console.log(  this.document.defaultView.innerWidth.valueOf());
 
 
-  //   }
-  // }
+  constructor(@Inject(DOCUMENT) private document: Document) {
+
+  }
+
+  @Output() fire: EventEmitter<any> = new EventEmitter();
+
+  @Output() dataChangeObserver: EventEmitter<any>=new EventEmitter();
+
   private sidenav: MatSidenav | any;
 
   public setSidenav(sidenav: MatSidenav) {
@@ -38,4 +38,9 @@ export class MainService {
   public toggle(): void {
     this.sidenav.toggle();
   }
+  currencyType = 'EUR';
+
+
+
+
 }
