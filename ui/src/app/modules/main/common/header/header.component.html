@@ -43,8 +43,6 @@
         CART
     </button>
 
-
-
     </div>
   </mat-toolbar>
   <mat-divider class="header-divider"></mat-divider>
@@ -54,60 +52,39 @@
   </mat-toolbar>
   <mat-divider class="header-divider"></mat-divider>
 
-  <div class="nav_menu "  (mouseleave)="ClosePanel()" data-aos="flip-left"  data-aos-duration="2000">
+  <div class="nav_menu "  data-aos="flip-left"  data-aos-duration="2000" (mouseleave)="ClosePanel()" >
     <ul class="nav_list " id="nav_menu">
 
-<li class="nav_items"><a  (mouseenter)="openBrandMenu($event,'offer')"  routerLinkActive="active"  [routerLink]="'offer'">OFFERS</a></li>
+      <li class="nav_items" *ngFor="let catogeory of mainCategory" >
+        <a routerLinkActive="active"  [routerLink]="['listProduct', catogeory.id]" [queryParams]="{category:'mainCategories',id:catogeory.id, sectionId:catogeory.id}" routerLinkActive="active" (mouseenter)="openSubCategories(catogeory.subcategories,catogeory.id)" >{{catogeory.name }} </a>
+      </li>
 
-<li class="nav_items"><a routerLinkActive="active"  [routerLink]="'brand'">BRANDS</a></li>
-
-<li class="nav_items"><a (mouseenter)="openBrandMenu($event,'beauty')"  routerLinkActive="active"  [routerLink]="'beauty'">BEAUTY</a></li>
-
-<li class="nav_items"><a (mouseenter)="openBrandMenu($event,'fashion')"  routerLinkActive="active"  [routerLink]="'fashion'">FASHION</a> </li>
-
-<li class="nav_items"><a (mouseenter)="openBrandMenu($event,'sports')"  routerLinkActive="active"  [routerLink]="'sport'">SPORT</a></li>
-
-<li class="nav_items"><a (mouseenter)="openBrandMenu($event,'electronics')"  routerLinkActive="active"  [routerLink]="'electronics'">ELECTRONICS</a> </li>
-
-<li class="nav_items"><a (mouseenter)="openBrandMenu($event,'houshold')"  routerLinkActive="active"  [routerLink]="'household'">HOUSEHOLD</a> </li>
-
-<li class="nav_items"><a (mouseenter)="openBrandMenu($event,'petSupplies')"  routerLinkActive="active"  [routerLink]="'petsupply'">PET SUPPLIES</a> </li>
-
-<li class="nav_items"> <a (mouseenter)="openBrandMenu($event,'autoMoto')"  routerLinkActive="active"  [routerLink]="'automoto'">AUTO-MOTO</a> </li>
     </ul>
     <mat-divider class="header-divider" ></mat-divider>
 
 
-      <div  Class="show_mega_menu"  *ngIf="activeNode.length !==0">
-        <div class="parent_sub_menu" >
-
-          <div *ngFor="let element of activeNode">
-           <button mat-button [routerLink]="element.path" class="nav_link" value="{{element.path}}"
-                (mouseenter)="loadChild(element.path)"     [ngClass]="element.default && toggle_class == true ? 'red' : 'blue'" >{{element.path}}
-                <mat-icon class="icon">arrow_forward</mat-icon>
-                <mat-icon  *ngIf="element.default && toggle_class == true">arrow_forward</mat-icon>
-              </button>
-
+      <div Class="show_mega_menu" *ngIf="subCategories.length !==0">
+        <div class="parent_sub_menu">
+          <div *ngFor="let element of subCategories">
+            <button mat-button [routerLink]="['listProduct', element.id]" [queryParams]="{category:'subCategories',id:element.id, sectionId:shopAll}"  class="nav_link" (mouseenter)="openSubSubCategories(element.subsubcategories)"
+              [ngClass]="element.default && toggle_class == true ? 'red' : 'blue'">
+              {{element.name}}
+              <mat-icon class="icon">arrow_forward</mat-icon>
+              <mat-icon *ngIf="element.default && toggle_class == true">arrow_forward</mat-icon>
+            </button>
           </div>
         </div>
         <div class="child_sub_menu">
-          <div  *ngFor="let child of childrenNode" >
-          <div *ngFor="let children of child.children" class="column_allign">
-
-            <button mat-button [routerLink]="child.path" class="nav_link ">{{children.name}}
-              <mat-icon class="icon">arrow_forward</mat-icon>
-            </button>
+          <div *ngFor="let child of subsubCategories">
+              <button mat-button  [routerLink]="['listProduct', child.id]" [queryParams]="{category:'subsubCategories',id:child.id, sectionId:shopAll}"  class="nav_link ">{{child.name}}
+                <mat-icon class="icon">arrow_forward</mat-icon>
+              </button>
           </div>
-          </div>
-
-          <button mat-button class="offer_explore_button" *ngIf="activeNode.length !==0" [routerLink]="shopAll">
+          <button mat-button class="offer_explore_button" *ngIf="subCategories.length !==0"  [routerLink]="[shopAll,'']">
             shop all<mat-icon>trending_flat</mat-icon>
           </button>
         </div>
-
-
-
-    </div>
+      </div>
 
   </div>
 
@@ -147,8 +124,11 @@
 
         </mat-toolbar>
         <ul class="nav_list " id="nav_menu">
+          <li class="nav_items" *ngFor="let catogeory of mainCategory" >
+            <a routerLinkActive="active"  [routerLink]="catogeory.name" >{{catogeory.name}}</a>
+          </li>
 
-          <li class="nav_items"><a routerLinkActive="active"  [routerLink]="'dashboard'" >Home</a></li>
+          <!-- <li class="nav_items"><a routerLinkActive="active"  [routerLink]="'dashboard'" >Home</a></li>
 
           <li class="nav_items"><a routerLinkActive="active"  [routerLink]="'offer'" >Offers</a></li>
 
@@ -166,7 +146,7 @@
 
           <li class="nav_items"><a  routerLinkActive="active"  [routerLink]="'petsupply'" >Pet supply</a> </li>
 
-          <li class="nav_items"> <a  routerLinkActive="active"  [routerLink]="'automoto'" >Auto-moto</a> </li>
+          <li class="nav_items"> <a  routerLinkActive="active"  [routerLink]="'automoto'" >Auto-moto</a> </li> -->
               </ul>
 
 

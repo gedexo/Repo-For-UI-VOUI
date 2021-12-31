@@ -5,6 +5,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './main.component';
 import { UserInfoComponent } from './common/user-info/user-info.component';
+import { ListProductComponent } from './list-product/list-product.component';
 
 const routes: Routes = [
   {
@@ -29,39 +30,44 @@ const routes: Routes = [
        component: SignupComponent,
       },
       {
-        path: 'offer',
+        path: 'listProduct/:id',
+       component: ListProductComponent,
+      },
+
+      {
+        path: 'offer/category:id',
         loadChildren: () => import('./products/offer/offer.module').then((mod)=>mod.OfferModule)
       },
       {
-        path: 'brand',
+        path: 'brand/:id',
         loadChildren: () => import('./products/brand/brand.module').then((mod)=>mod.BrandModule)
       },
       {
-        path: 'beauty',
+        path: 'beauty/:id',
         loadChildren: () => import('./products/beauty/beauty.module').then((mod)=>mod.BeautyModule)
       },
       {
-        path: 'fashion',
+        path: 'fashion/:id',
         loadChildren: () => import('./products/fashion/fashion.module').then((mod)=>mod.FashionModule)
       },
       {
-        path: 'sport',
+        path: 'sport/:id',
         loadChildren: () => import('./products/sport/sport.module').then((mod)=>mod.SportModule)
       },
       {
-        path: 'electronics',
+        path: 'electronics/:id',
         loadChildren: () => import('./products/electronics/electronics.module').then((mod)=>mod.ElectronicsModule)
       },
       {
-        path: 'household',
+        path: 'household/:id',
         loadChildren: () => import('./products/household/household.module').then((mod)=>mod.HouseholdModule)
       },
       {
-        path: 'petsupply',
+        path: 'petsupply/:id',
         loadChildren: () => import('./products/offer/offer.module').then((mod)=>mod.OfferModule)
       },
       {
-        path: 'automoto',
+        path: 'automoto/:id',
         loadChildren: () => import('./products/automoto/automoto.module').then((mod)=>mod.AutomotoModule)
       },
       {

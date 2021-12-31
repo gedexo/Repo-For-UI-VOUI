@@ -21,6 +21,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MatTabsModule} from '@angular/material/tabs';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     FashionRoutingModule, MatPaginatorModule, MatGridListModule, MatCheckboxModule,
     MatExpansionModule, MatSnackBarModule, MatCardModule,MatIconModule, MatButtonModule ,
     MatFormFieldModule,MatInputModule, MatButtonToggleModule, ReactiveFormsModule, FormsModule,
-    MatToolbarModule, CarouselModule, MatTabsModule
+    MatToolbarModule, CarouselModule, MatTabsModule, NgxSkeletonLoaderModule, MatSelectModule
   ]
 })
 export class FashionModule { }

@@ -22,7 +22,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     ListAutomotoComponent,
@@ -33,7 +34,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     AutomotoRoutingModule, MatPaginatorModule, MatGridListModule, MatCheckboxModule, MatExpansionModule,
     MatSnackBarModule, MatCardModule,MatIconModule, MatButtonModule ,MatFormFieldModule,
     MatInputModule, MatButtonToggleModule, ReactiveFormsModule, FormsModule,MatToolbarModule,
-    CarouselModule, MatTabsModule
+    CarouselModule, MatTabsModule, NgxSkeletonLoaderModule, MatSelectModule
   ]
 })
 export class AutomotoModule { }

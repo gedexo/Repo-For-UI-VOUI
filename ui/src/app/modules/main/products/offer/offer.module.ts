@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { OfferRoutingModule } from './offer-routing.module';
@@ -25,15 +25,14 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MainService } from 'app/modules/service/main.service';
 import {MatDividerModule} from '@angular/material/divider';
 import {CartModule } from '../../cart/cart.module';
-import { SwiperModule } from 'ngx-swiper-wrapper';
-
-
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
     ListOfferComponent,
     PreviewOfferComponent,
-    // CartComponent
+
 
   ],
   imports: [
@@ -41,7 +40,8 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
     OfferRoutingModule, MatPaginatorModule, MatGridListModule, MatCheckboxModule, MatExpansionModule,
     MatSnackBarModule, MatCardModule,MatIconModule, MatButtonModule ,MatFormFieldModule,
     MatInputModule, MatButtonToggleModule, ReactiveFormsModule, FormsModule,MatToolbarModule,
-     CarouselModule, MatTabsModule, MatSidenavModule, MatDividerModule,SwiperModule
+     CarouselModule, MatTabsModule, MatSidenavModule, MatDividerModule,
+     NgxSkeletonLoaderModule, MatSelectModule,
   ],
   exports:[],
   providers: [MainService],

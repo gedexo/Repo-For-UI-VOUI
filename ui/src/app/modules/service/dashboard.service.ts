@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,10 @@ export class DashboardService {
 
   constructor(private http: HttpClient) { }
 
-      url ='http://192.168.1.58:8000/api/categories/';
+      url ='https://voui.geany.website/api/categories/1/';
 
       data:any;
-  getData(){
+  getData():any{
 
     return this.http.get(this.url);
 }

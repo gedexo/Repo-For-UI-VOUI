@@ -102,23 +102,6 @@ products:any = [
 
   ]
 
-  galleryThumbsConfig = {
-    spaceBetween: 10,
-    slidesPerView: 4,
-    freeMode: true,
-    watchSlidesVisibility: true,
-    watchSlidesProgress: true,
-  };
-  galleryTopConfig = {
-    spaceBetween: 10,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    thumbs: {
-      swiper: undefined
-    }
-  };
 
 
 

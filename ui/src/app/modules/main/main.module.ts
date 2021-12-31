@@ -21,15 +21,17 @@ import {FooterComponent } from './common/footer/footer.component'
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { MainService } from '../service/main.service';
 import {CartModule } from '../main/cart/cart.module';
 import {MatBadgeModule} from '@angular/material/badge';
 import { UserInfoComponent } from './common/user-info/user-info.component';
-import { SwiperModule } from 'ngx-swiper-wrapper';
+import { HttpClientModule  } from '@angular/common/http';
 
-import { HttpClientModule , HttpClient } from '@angular/common/http';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ListProductComponent } from './list-product/list-product.component';
 
 
 @NgModule({
@@ -41,7 +43,7 @@ import { HttpClientModule , HttpClient } from '@angular/common/http';
     SignupComponent,
     DashboardComponent,
     UserInfoComponent,
-
+    ListProductComponent,
 
   ],
   imports: [
@@ -49,8 +51,8 @@ import { HttpClientModule , HttpClient } from '@angular/common/http';
     MainRoutingModule, MatToolbarModule ,
     MatDividerModule ,MatIconModule, MatButtonModule ,MatFormFieldModule,
     MatInputModule, MatSelectModule, MatButtonToggleModule, ReactiveFormsModule,
-     FormsModule,MatGridListModule,MatSidenavModule, SwiperModule,
-     HttpClientModule, MatBadgeModule, CarouselModule,
+    FormsModule,MatGridListModule,MatSidenavModule,HttpClientModule, MatBadgeModule,
+    CarouselModule,NgxSkeletonLoaderModule, MatPaginatorModule, MatExpansionModule, MatSnackBarModule
   ],
 
 })

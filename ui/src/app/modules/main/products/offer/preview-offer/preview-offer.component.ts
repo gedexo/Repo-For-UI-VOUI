@@ -318,25 +318,6 @@ products:productData[] = [
 
   ]
 
-  galleryThumbsConfig = {
-    spaceBetween: 10,
-    slidesPerView: 4,
-    freeMode: true,
-    watchSlidesVisibility: true,
-    watchSlidesProgress: true,
-  };
-  galleryTopConfig = {
-    spaceBetween: 10,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    thumbs: {
-      swiper: undefined
-    }
-  };
-
-
 
   customOptions: any = {
     loop: false,
@@ -462,27 +443,32 @@ leftMenuDrawerOpened = true;
 
 value:any = 0;
   ngOnInit(): void {
-this.route.params.subscribe(data =>{
-  for(let idx in data){
-    this.value = data[idx];
-  }
+// this.route.params.subscribe(data =>{
+//   for(let idx in data){
+//     this.value = data[idx];
+//   }
 
-}  );
+// }  );
+this.preview_sm1 = "../../../../assets/images/chain3.jpeg";
+this.preview_sm2 = "../../../../assets/images/chain2.jpeg";
+this.preview_sm3 ="../../../../assets/images/chain1.jpeg";
+this.preview_lg = "../../../../assets/images/chain3.jpeg";
 
-for(let idx in this.products){
+
+// for(let idx in this.products){
 
 
-  if(this.products[idx].id == this.value){
-   console.log(this.products[idx]);
+//   if(this.products[idx].id == this.value){
+//    console.log(this.products[idx]);
 
-   this.preview_sm1 = this.products[idx].imgUrl;
-this.preview_sm2 = this.products[idx].secondImage;
-this.preview_sm3 =this.products[idx].thirdImage;
-this.preview_lg = this.preview_sm1;
-   return
+//    this.preview_sm1 = this.products[idx].imgUrl;
+// this.preview_sm2 = this.products[idx].secondImage;
+// this.preview_sm3 =this.products[idx].thirdImage;
+// this.preview_lg = this.preview_sm1;
+//    return
 
-  }
-}
+//   }
+// }
 
 
 }

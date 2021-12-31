@@ -319,14 +319,23 @@ onScroll(event:any) {
 
   }
   hoverFashion($event:any):void{
+    console.log("fashion");
+
     this.fashion = $event.type == 'mouseover' ? 'active_link' : '';
     this.fashion_arrow = $event.type == 'mouseover' ? 'show_arrow' : 'hide_arrow';
+    this.dashboardService.getData().subscribe((data: any) =>{
+      console.log(data);
 
-    this.category1 = '../../../../assets/images/category-1.jpg';
+      this.category1 = data.subcategories[0].image['medium_square_crop'];
+    })
 
     this.category2 = '../../../../assets/images/category-2.jpg';
 
     this.category3 = '../../../../assets/images/category-3.jpg';
+
+    this.name1 ="Women's Fashion";
+    this.name2 ="Men's Fashion";
+    this.name3 ="Kid's Fashion";
   }
 
   hoverHousehold($event:any):void{

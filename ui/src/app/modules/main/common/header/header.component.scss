@@ -159,6 +159,16 @@ color:#965627 !important;
 font-weight: 500;
 }
 
+::ng-deep.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: #874c20;
+}
+:host ::ng-deep .mat-select-arrow{
+  color: #874c20;
+}
+:host ::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: #874c20;
+}
+
 @media only screen and (min-width: 769px) {
 
 
@@ -287,19 +297,16 @@ display: none;
     font-family: Poppins;
 font-style: normal;
 font-weight: 500;
-font-size: 22px;
-
+font-size: 18px;
 margin: 8px 0;
 letter-spacing: 0.05em;
 text-transform: uppercase;
-
 color: #000000;
     }
     .nav_link:hover{
         font-family: ogg;
         color: #763301;
         background-color: transparent;
-        font-size: 24px;
         border-bottom: 1px solid #815F46;
 
     }
@@ -326,22 +333,22 @@ mat-icon {
 
     text-transform: uppercase;
     .nav_link{
-        font-family: Poppins;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    margin: 5px 0;
-    padding: 0;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: #000000;
-    text-align: initial;
-        }
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      margin: 5px 0;
+      padding-left: 20px;
+
+       text-transform: capitalize;
+      color: #000000;
+      text-align: initial;
+
+    }
         .nav_link:hover{
           font-family: ogg;
           color: #763301;
           background-color: transparent;
-
           border-bottom: 1px solid #815F46;
 
       }
