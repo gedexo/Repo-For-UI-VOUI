@@ -1,4 +1,4 @@
-<mat-sidenav #rightSidenav mode="over" class="rightSidenav" [fixedInViewport]="true" [fixedTopGap]="0" style="right: 0;"
+<mat-sidenav #rightSidenav mode="over" class="rightSidenav" [fixedInViewport]="true" [fixedTopGap]="0"
   position="end" class="xxx" hasBackdrop="false">
 
   <main class="main">
@@ -23,7 +23,7 @@
   <button class="custom-btn btn-11" (click)="toggleRightSidenav(); navigateToHome()">Add New<div class="dot"></div></button>
 </div>
 </div>
-        <div class="product_cart for_desktop" >
+        <div class="product_cart for_desktop" style="display: none;" >
           <div class="product_list ">
 
 
@@ -102,7 +102,7 @@
           </div>
         </div>
 
-
+<div style="display: none;">
         <div class="product_cart for_mobile" style="display: none;">
           <div class="product_list">
 
@@ -157,7 +157,7 @@
         </div>
         <mat-divider class="header-divider"></mat-divider>
 
-        <div class="additional_details for_mobile">
+        <div class="additional_details for_mobile" style="display: none;">
           <div class="sub_total">
             <h2>Subtotal</h2>
             <h4>€136</h4>
@@ -182,6 +182,7 @@
           <button mat-button class="checkout_button" (click)="gotoUserinfo()">CHECKOUT</button>
         </div>
 
+      </div>
       </div>
     </section>
   </main>

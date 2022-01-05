@@ -5,16 +5,19 @@
 
     <div class="items-center" >
       <div class="imgShow product_tap" data-aos="zoom-in-right" data-aos-duration="1000">
-        <mat-grid-list cols="3" rowHeight="200px" style="text-align: end;" >
-          <mat-grid-tile [colspan]="1" [rowspan]="1" (click)="changelgImage(preview_sm1)" (mouseenter)="changelgImage(preview_sm1)" >
+        <mat-grid-list cols="3" rowHeight="188px" style="text-align: end;" >
+          <mat-grid-tile [colspan]="1" [rowspan]="1" (click)="changelgImage(preview_sm1)" (mouseenter)="changelgImage(preview_sm1)">
               <img src="{{preview_sm1}}" class="preview_sm1" >
 
           </mat-grid-tile>
           <mat-grid-tile [colspan]="2" [rowspan]="3" >
               <img src="{{preview_lg}}"    class="category_lg">
+              <button mat-icon-button class="banner_explore_button" (click)="openSnackBar()">
+                <mat-icon>favorite_border</mat-icon>
+              </button>
           </mat-grid-tile>
 
-          <mat-grid-tile [colspan]="1" [rowspan]="1" (click)="changelgImage(preview_sm2)" (mouseenter)="changelgImage(preview_sm2)">
+          <mat-grid-tile [colspan]="1" [rowspan]="1" (click)="changelgImage(preview_sm2)" (mouseenter)="changelgImage(preview_sm2)" >
               <img src="{{preview_sm2}}" class="preview_sm1" >
           </mat-grid-tile>
           <mat-grid-tile [colspan]="1" [rowspan]="1" (click)="changelgImage(preview_sm3)" (mouseenter)="changelgImage(preview_sm3)">
@@ -26,38 +29,37 @@
       <!-- for mobile -->
 <div class="swiper_slider">
 <div  class="category_lg">
-  <img src="{{preview_lg}}" class="preview_lg" data-aos="fade-down"   data-aos-duration="1000">
+  <img src="{{preview_lg}}"  alt="preview-lg" class="preview_lg" data-aos="fade-down"   data-aos-duration="1000">
 </div>
 <div class="thumb_images">
-  <img src="{{preview_sm1}}" class="preview_sm1" (click)='changePreviewImage(preview_sm1)'data-aos="fade-down"  data-aos-duration="1000">
-  <img src="{{preview_sm2}}" class="preview_sm2" (click)='changePreviewImage(preview_sm2)'>
-  <img src="{{preview_sm3}}" class="preview_sm3" (click)='changePreviewImage(preview_sm3)'  data-aos="fade-up"  data-aos-duration="1000">
+  <img src="{{preview_sm1}}" alt="preview-1" class="preview_sm1" (click)='changePreviewImage(preview_sm1)'data-aos="fade-down"  data-aos-duration="1000">
+  <img src="{{preview_sm2}}"  alt="preview-2" class="preview_sm1" (click)='changePreviewImage(preview_sm2)'>
+  <img src="{{preview_sm3}}"  alt="preview-3" class="preview_sm1" (click)='changePreviewImage(preview_sm3)'  data-aos="fade-up"  data-aos-duration="1000">
 </div>
 
           </div>
 
       <div class="imgdetails">
-        <h1>Gold necklaceFaux Pearl Decor Y Lariat Necklace</h1>
+        <h1>{{product_name}}</h1>
         <h2> <i *ngFor="let key of counter(3) " class="fa fa-star" style="color: var(--main-color);font-size: 16px; padding-right: 3px;"></i>
         <i *ngFor="let key of counter(2) " class="fa fa-star-o"  style="color: var(--main-color);font-size: 16px; padding-right: 3px;"></i>
         </h2>
-        <h3>€12 </h3>
+        <div class="pricing" >
+        <h3 class='item '>€{{offer_price}}</h3>
+        <span class='offer_price item '>€{{product_price}}</span>
+        <span class='offer_percentage item '>{{offer_percentage}}off</span>
+        </div>
 
         <mat-tab-group mat-align-tabs="start" class="product_tap">
           <mat-tab label="First"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
              Nullam faucibus amet tristique commodo nibh proin.
-             Laoreet integer odio pretium semper posuere in purus tristique fringilla.
-             Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et.
-             Elementum augue amet adipiscing in massa nec vel massa in.</p></mat-tab>
+             Laoreet integer odio pretium semper posuere in purus </p></mat-tab>
           <mat-tab label="Second"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
              Nullam faucibus amet tristique commodo nibh proin.
-              Laoreet integer odio pretium semper posuere in purus tristique fringilla.
-              Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et.
-              Elementum augue amet adipiscing in massa nec vel massa in.</p></mat-tab>
+
+           </p></mat-tab>
           <mat-tab label="Third"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Nullam faucibus amet tristique commodo nibh proin.
-             Laoreet integer odio pretium semper posuere in purus tristique fringilla.
-             Suspendisse nibh massa malesuada tristique posuere. Enim ac tempus interdum egestas justo et.
+             Suspendisse nibh massa malesuada tristique posuere.
              Elementum augue amet adipiscing in massa nec vel massa in.</p></mat-tab>
         </mat-tab-group>
         <div class="choose_color">
@@ -65,19 +67,21 @@
 
 
             <mat-button-toggle-group class="choose_color">
-              <mat-button-toggle *ngFor="let op of color"
-                [value]="op" [style.background] ="op.color">
+              <mat-button-toggle *ngFor="let color of colors"
+                [value]="color" [style.background] ="color" (change)="changeColor(color)" class="xxx" title="{{color }}">
+
               </mat-button-toggle>
             </mat-button-toggle-group>
 
       </div>
 
       <div class="choose_size">
-        <span>Size</span>
+        <span>Size &nbsp;</span>
 
-          <mat-button-toggle-group>
-          <mat-button-toggle *ngFor="let subtask of size">
-            {{subtask.name}}
+          <mat-button-toggle-group [(ngModel)]="sizeValue">
+          <mat-button-toggle  *ngFor="let subtask of size" (click)="changed()">
+            {{subtask.size}}
+
           </mat-button-toggle>
           </mat-button-toggle-group>
 
@@ -140,7 +144,7 @@
 
 </section>
 
-   <!-- <section class="review_section" >
+ <section class="review_section" >
 
     <div class="align-items-center">
 
@@ -162,6 +166,7 @@
 
             <mat-card-content>
               <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod aliquid obcaecati officia pariatur corrupti repellendus qui. Laborum, dignissimos maiores. Omnis atque aliquam sequi repudiandae consequuntur voluptate quia vero nisi magnam.
                 {{reviewS.review }}
               </p>
             </mat-card-content>
@@ -174,7 +179,7 @@
     </div>
 
 
-  </section> -->
+  </section>
 
 
   <section class="suggestion_section" >
@@ -186,10 +191,10 @@
         <owl-carousel-o [options]="suggestionOptions" >
           <ng-container *ngFor="let img of offerSale">
               <ng-template carouselSlide let-owlItem class="offer_curousal_imgs">
-                  <img src="{{img.imgUrl}}" alt="{{img.alt}}">
+                  <img src="{{img.image['original']}}" alt="{{img.alt}}">
 
                   <div class="offer_details">
-                      <h4>{{img.imgName}}</h4>
+                      <h4>{{img.name}}</h4>
                       <h4>{{img.price}}</h4>
                   </div>
               </ng-template>
@@ -203,6 +208,7 @@
 
   </section>
 </main>
+
 
 
 

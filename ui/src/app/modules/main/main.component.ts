@@ -15,8 +15,8 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
 
     setTimeout(()=>{
-    this.loading = false
-  }, 5000)
+    this.loading = false;
+  }, 3000)
   }
 
 

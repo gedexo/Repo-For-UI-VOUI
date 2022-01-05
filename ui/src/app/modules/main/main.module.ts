@@ -32,6 +32,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ListProductComponent } from './list-product/list-product.component';
+import { PreviewProductComponent } from './preview-product/preview-product.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -44,6 +47,7 @@ import { ListProductComponent } from './list-product/list-product.component';
     DashboardComponent,
     UserInfoComponent,
     ListProductComponent,
+    PreviewProductComponent,
 
   ],
   imports: [
@@ -52,7 +56,8 @@ import { ListProductComponent } from './list-product/list-product.component';
     MatDividerModule ,MatIconModule, MatButtonModule ,MatFormFieldModule,
     MatInputModule, MatSelectModule, MatButtonToggleModule, ReactiveFormsModule,
     FormsModule,MatGridListModule,MatSidenavModule,HttpClientModule, MatBadgeModule,
-    CarouselModule,NgxSkeletonLoaderModule, MatPaginatorModule, MatExpansionModule, MatSnackBarModule
+    CarouselModule,NgxSkeletonLoaderModule, MatPaginatorModule, MatExpansionModule, MatSnackBarModule,
+    MatTabsModule, MatCardModule
   ],
 
 })

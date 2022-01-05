@@ -13,13 +13,12 @@
 
       <div class="banner_curousal"   data-aos="fade-up"  data-aos-duration="1500">
 
-        <!-- (initialized)="onIndexChange($event)" -->
-     <owl-carousel-o [options]="offerOptions" let i="index" startPosition=1 (translated)="onIndexChange($event)" >
-          <ng-container *ngFor="let img of offerSale; let i = index">
-            <ng-template carouselSlide  class="offer_curousal_imgs" [id]="img.id">
-                <img src="{{img.image['original']}}" alt="{{img.name}}" title=" {{img.name}}">
+     <owl-carousel-o [options]="offerOptions" let i = "index" (initialized)="onIndexChange($event)"  (translated)="onIndexChange($event)" >
+          <ng-container *ngFor="let element of mainCategory; let i = index" >
+            <ng-template carouselSlide   class="offer_curousal_imgs" [id]="element.id" [dataHash]= element.name >
+                <img src="{{element.image['original']}}" alt="{{element.name}}" title=" {{element.name}}">
                 <div class="category_name">
-                  {{img.name}}
+                  {{element.name}}
                 </div>
             </ng-template>
           </ng-container>
@@ -38,11 +37,11 @@
     <div class="filter_section" data-aos="zoom-in-right" data-aos-duration="1000">
 
       <div class="nav_path">
-        <button mat-button [routerLink]="'/dashboard'">Home</button>
-        <mat-icon  *ngIf=" sectionName !== '' ">trending_flat</mat-icon>
-        <button mat-button (click)="resetCarousal()">{{sectionName}} </button>
-        <mat-icon  *ngIf=" sectionName !== '' ">trending_flat</mat-icon>
-        <button mat-button> {{subCategoryName}} </button>
+        <a mat-button [routerLink]="'/dashboard'">Home</a>
+        <mat-icon  *ngIf=" section_title !== '' ">trending_flat</mat-icon>
+        <button mat-button (click)="resetCarousal()" >{{section_title}} </button>
+        <mat-icon  *ngIf="subCategoryName">trending_flat</mat-icon>
+        <button mat-button > {{subCategoryName}} </button>
 </div>
 
       <div class="filter_container">
@@ -61,9 +60,9 @@
               <mat-panel-title class="filter_title"> categories</mat-panel-title>
             </mat-expansion-panel-header>
 
-            <div *ngFor="let element of TREE_DATA" class="filter_body mat_panel">
+            <div *ngFor="let category of filterCategory" class="filter_body mat_panel">
 
-              <a (click)="innerCategoryRoute(element.id)" style="cursor: pointer;" class="nav_items" > {{element.name}} </a><br>
+              <a (click)="innerCategoryRoute(category.id)" style="cursor: pointer;" class="nav_items" routerLinkActive="active" [routerLink]="['../'+ category.name]" [queryParams] =hparam > {{category.name}} </a><br>
             </div>
           </mat-expansion-panel>
         </mat-accordion>
@@ -160,8 +159,8 @@
             <mat-option value="lable" disabled="">sort by preference</mat-option>
             <mat-option value="LowToHigh">Price: Low to High</mat-option>
             <mat-option value="HighToLow">Price: High to Low</mat-option>
-            <mat-option value="rating">Customer Review</mat-option>
             <mat-option value="latest">Latest Arrivals</mat-option>
+            <mat-option value="rating">Customer Review</mat-option>
 
           </mat-select>
         </mat-form-field>
@@ -176,15 +175,15 @@
     Please try something else</h2>
 </div>
         <div class="row">
-          <div class="col-xl-3 col-lg-4 col-sm-6 col-6" *ngFor="let img of dataSource$ | async">
+          <div class="col-xl-3 col-md-4 col-lg-4 col-sm-4 col-6" *ngFor="let img of dataSource$ | async">
             <div class="card" >
 
-              <img src="{{img.image['original']}}" alt="Photo of {{img.name}}" class=""  (click)="productPreview(img)">
+              <img src="{{img.image['original']}}" alt="Photo of {{img.name}}" class=""  (click)="productPreview(img.id)">
               <button mat-icon-button class="banner_explore_button" (click)="openSnackBar(img.alt)">
                 <mat-icon>favorite_border</mat-icon>
               </button>
 
-              <div class="card-body" (click)="productPreview(img)">
+              <div class="card-body" (click)="productPreview(img.id)">
                 <div class="card-title">{{img.name}}</div>
                 <div class="card-subtitle text-muted">Card subtitle</div>
                 <b>{{img.price | currency:currencyType}}</b>

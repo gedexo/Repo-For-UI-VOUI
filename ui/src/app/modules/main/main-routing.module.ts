@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './main.component';
 import { UserInfoComponent } from './common/user-info/user-info.component';
 import { ListProductComponent } from './list-product/list-product.component';
+import { PreviewProductComponent } from './preview-product/preview-product.component';
 
 const routes: Routes = [
   {
@@ -30,45 +31,12 @@ const routes: Routes = [
        component: SignupComponent,
       },
       {
-        path: 'listProduct/:id',
+        path: 'listProduct/:id/:product',
        component: ListProductComponent,
       },
-
       {
-        path: 'offer/category:id',
-        loadChildren: () => import('./products/offer/offer.module').then((mod)=>mod.OfferModule)
-      },
-      {
-        path: 'brand/:id',
-        loadChildren: () => import('./products/brand/brand.module').then((mod)=>mod.BrandModule)
-      },
-      {
-        path: 'beauty/:id',
-        loadChildren: () => import('./products/beauty/beauty.module').then((mod)=>mod.BeautyModule)
-      },
-      {
-        path: 'fashion/:id',
-        loadChildren: () => import('./products/fashion/fashion.module').then((mod)=>mod.FashionModule)
-      },
-      {
-        path: 'sport/:id',
-        loadChildren: () => import('./products/sport/sport.module').then((mod)=>mod.SportModule)
-      },
-      {
-        path: 'electronics/:id',
-        loadChildren: () => import('./products/electronics/electronics.module').then((mod)=>mod.ElectronicsModule)
-      },
-      {
-        path: 'household/:id',
-        loadChildren: () => import('./products/household/household.module').then((mod)=>mod.HouseholdModule)
-      },
-      {
-        path: 'petsupply/:id',
-        loadChildren: () => import('./products/offer/offer.module').then((mod)=>mod.OfferModule)
-      },
-      {
-        path: 'automoto/:id',
-        loadChildren: () => import('./products/automoto/automoto.module').then((mod)=>mod.AutomotoModule)
+        path: 'previewProduct/:id',
+       component: PreviewProductComponent,
       },
       {
         path: 'userinfo',

@@ -214,7 +214,7 @@ text-align: initial;
 }
 .items-center {
   text-align: center;
-  justify-content: center;
+  justify-content: space-between;
 
   display: flex;
 }
@@ -226,7 +226,7 @@ text-align: initial;
   padding: var(--section-padding);
 }
 .imgShow{
-  width: 50%;
+  width: 45%;
   float: left;
   background-color: transparent;
 
@@ -235,7 +235,7 @@ text-align: initial;
   width: 50%;
   float: right;
   text-align: initial;
-  padding-left: 3em;
+
 
 }
 .suggestion_header{
@@ -260,17 +260,59 @@ h3{
 }
 
 }
-
+.mat-button-toggle-disabled.mat-button-toggle-appearance-standard {
+   background: transparent;
+  opacity: 0.5;
+}
 .preview_sm1{
-  width: 245px;
-  height: 230px;
+  height: 100%;
+  width: 100%;
+cursor: pointer;
 
-  margin-right: 5px;
+}
+.preview_sm1:hover{
+  padding: 3%;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #874C20;
+cursor: pointer;
 }
 .category_lg{
-  width:calc(245px*2);
-  height: calc(245px*3);
+height: 100%;
+  width: 100%;
   margin-left: 5px;
+
+}
+
+.banner_explore_button{
+  position: absolute;
+right: 0;
+top: 0;
+mat-icon{
+  font-size: 18px;
+    background-color:#FFFAF3;
+    border-radius: 69px;
+    padding-top: 1px;
+}
+}
+
+.banner_explore_button:focus, .banner_explore_button:visited, .banner_explore_button:active {
+  position: absolute;
+right: 0;
+mat-icon{
+  color: rgb(226, 45, 72);
+  transition-delay: 3ms;
+  text-shadow: 0 0 5px rgb(226, 45, 72), 0 0 15px rgb(226, 45, 72);
+}
+}
+.banner_explore_button::after{
+  position: absolute;
+right: 0;
+mat-icon{
+  color: rgb(226, 45, 72);
+  transition-delay: 3ms;
+  text-shadow: 0 0 5px rgb(226, 45, 72), 0 0 15px rgb(226, 45, 72);
+}
 }
 
 ::ng-deep.mat-tab-labels {
@@ -297,11 +339,24 @@ h1{
   line-height: 52px;
   letter-spacing: 0.05em;
   color: #874C20;
+  text-transform: capitalize;
 }
 h2{
   color: #874C20;
-  line-height: 50px;
+  margin-top: 3px;
 
+}
+.offer_price{
+  color: #874C20;
+  margin-top: 3px;
+  text-decoration: line-through;
+}
+.offer_percentage{
+  color: #26a541;
+  margin-top: 3px;
+}
+.item{
+  margin: 0 5px 0;
 }
 span{
   font-family: Poppins;
@@ -332,13 +387,16 @@ h3{
 font-family: Ogg;
 font-style: normal;
 font-weight: normal;
-font-size: 50px;
-line-height: 60px;
+font-size: 32px;
+line-height: 26px;
 letter-spacing: 0.05em;
 color: #763301;
 margin-bottom: 0;
 }
-
+.title{
+  text-transform: lowercase;
+  color: #26a541;
+}
 .review_header{
 
   margin-bottom: 1em;
@@ -354,12 +412,33 @@ color: #874C20;
 
 margin-bottom: 0;
 }
+.pricing{
+  display: flex;
+   align-items:center;
+   margin: 2em 0;
+}
 }
 @media only screen and (max-width:768px){
+  .pricing{
+    display: flex;
+     align-items:center;
+     margin:0
+  }
+  .item{
+    margin: 0 5px 0;
+  }
+  .offer_price{
+    color: #874C20;
 
+    text-decoration: line-through;
+  }
+  .offer_percentage{
+    color: #26a541;
+
+  }
   .swiper_slider{
     display: block;
-    min-height: calc(100vh - 56px);
+    max-height: calc(100vh - 56px);
   }
 
   .preview_section {
@@ -376,6 +455,7 @@ line-height: 31px;
 letter-spacing: 0.05em;
 color: #874C20;
 margin: 0;
+text-transform: capitalize;
 
 }
 
@@ -543,7 +623,8 @@ text-align: center;
   img{
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  // object-fit: cover;
+  max-height: 400px;
   object-position: center center;
   }
 }
@@ -556,7 +637,6 @@ text-align: center;
   margin-top: 0.5em;
   img{
 width: 33%;
-height: 100%;
 object-fit: cover;
 object-position: center center;
 display: flex;

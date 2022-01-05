@@ -79,6 +79,8 @@ export class HeaderComponent implements OnInit {
   }
 
   quantity: number;
+  SSId:any;
+  ssName :any;
 
 
 
@@ -111,27 +113,33 @@ export class HeaderComponent implements OnInit {
     this.subCategories =[];
   }
   openSubCategories(event: any, value: any): void {
+
+
     this.shopAll = value;
+
     this.subCategories = event;
     this.subsubCategories = [];
   }
-  openSubSubCategories(event: any) {
+  openSubSubCategories(event: any, id:number, name:string) {
+
+    this.SSId = id;
+    this.ssName = name;
     this.subsubCategories = event;
 
   }
 
   upsertSearch(): void {
-    console.log(this.searchForm.value);
+
   }
   toggleLanguage(language:string): void {
-    console.log(language);
+
 
   }
 
 	toggleActive = false;
 
 	toggleRightSidenav() {
-console.log('hi');
+
     this.mainService.open();
 	}
   changeCurrency(value:any):void{
@@ -139,7 +147,7 @@ this.mainService.currencyType = value;
 
   }
   close(event:any){
-    console.log('closed');
+
 
   }
 
