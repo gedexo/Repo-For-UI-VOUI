@@ -10,7 +10,8 @@ export class DashboardService {
   constructor(private http: HttpClient) { }
 
       url ='https://voui.geany.website/api/categories/1/';
-   offerSalesUrl='https://voui.geany.website/api/offersale/';
+      offerSalesUrl='https://voui.geany.website/api/offersale/';
+       newArrivalsUrl='https://voui.geany.website/api/newarrivals/';
 
       data:any;
   getData():any{
@@ -19,6 +20,8 @@ export class DashboardService {
 getOfferSales():any{
   return this.http.get(this.offerSalesUrl);
 }
-
+getNewArrivals():any{
+  return this.http.get(this.newArrivalsUrl);
+}
 
 }

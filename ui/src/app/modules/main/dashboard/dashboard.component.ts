@@ -138,7 +138,7 @@ export class DashboardComponent implements OnInit {
       },
       769: {
         items: 4,
-        margin:60
+        margin:40
       },
 
     },
@@ -173,45 +173,7 @@ banner:any = [
   }
 ]
 
-newArraivals:any = [
-  {
-    imgUrl : '../../../../assets/images/arrival-1.png',
-    alt: 'arrival-1',
-    imgName: 'Lorem ipsum dolor sit amet',
-    price : '€19.99',
-  },
-  {
-    imgUrl : '../../../../assets/images/arrival-2.png',
-    alt: 'arrival-2',
-    imgName: 'Lorem ipsum dolor sit amet',
-    price : '€19.99',
-  },
-  {
-    imgUrl : '../../../../assets/images/arrival-3.png',
-    alt: 'arrival-3',
-    imgName: 'Lorem ipsum dolor sit amet',
-    price : '€19.99',
-  },
-  {
-    imgUrl : '../../../../assets/images/arrival-4.png',
-    alt: 'arrival-4',
-    imgName: 'Lorem ipsum dolor sit amet',
-    price : '€19.99',
-  },
-  {
-    imgUrl : '../../../../assets/images/arrival-1.png',
-    alt: 'arrival-1',
-    imgName: 'Lorem ipsum dolor sit amet',
-    price : '€19.99',
-  },
-  {
-    imgUrl : '../../../../assets/images/arrival-2.png',
-    alt: 'arrival-2',
-    imgName: 'Lorem ipsum dolor sit amet',
-    price : '€19.99',
-  }
-]
-
+newArraivals:any[]=[];
 
 bagsTrends:any = [
   {
@@ -280,8 +242,11 @@ onScroll(event:any) {
     this.dashboardService.getOfferSales().subscribe((data: any) =>{
        this.offerSale = data;
        console.log(data);
-
     })
+    this.dashboardService.getNewArrivals().subscribe((data: any) =>{
+      this.newArraivals = data;
+      console.log(data);
+   })
 
 
    }

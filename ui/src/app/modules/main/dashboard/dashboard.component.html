@@ -107,8 +107,8 @@
                       <div class="offer_details">
                           <p>{{img.name}}</p>
                           <div class="pricing"  style="display: flex; justify-content: center; align-items: baseline;">
-                            <h3 class='item '>€{{img.price}}</h3>
-                            <span class='offer_price item '>€{{img.offerPrice}}</span>
+                            <h3 class='item '>€{{img.offerPrice}}</h3>
+                            <span class='offer_price item '>€{{img.price}}</span>
                             <span class='offer_percentage item '>{{img.offerPercentage}}off</span>
                             </div>
                       </div>
@@ -165,10 +165,10 @@
 
               <ng-template carouselSlide *ngFor="let img of newArraivals">
 
-                  <img src="{{img.imgUrl}}" alt="{{img.alt}}" class="inner-image arrival_img">
+                  <img src="{{img.image['original']}}" alt="{{img.alt}}" class="inner-image arrival_img">
 
                   <div class="offer_details">
-                      <p>{{img.imgName}}</p>
+                      <p>{{img.name}}</p>
                       <b>{{img.price}}</b>
                   </div>
               </ng-template>
