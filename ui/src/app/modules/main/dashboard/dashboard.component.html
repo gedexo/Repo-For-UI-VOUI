@@ -5,7 +5,7 @@
       <div class="main_container">
           <div class="align-items-center" >
               <div class="banner_title" data-aos="fade-down" data-aos-duration="3000">
-                  <h1  >Lorem ipsum doler amet</h1>
+                  <h1  >Lorem ipsum doler </h1>
                   <h3 >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut netus convallis ante ut mauris
                       viverra.</h3>
               </div>
@@ -39,21 +39,15 @@
           <div class="align-categories">
               <div class="nav_categories">
                   <span>OUR CATEGORIES</span>
-
                   <div class="categories_links" data-aos="zoom-in-right" data-aos-duration="1000">
-
                     <ul class="nav_list " id="nav_menu">
-
                       <li class="nav_items" *ngFor="let catogeory of mainCategory" >
                         <a   [routerLink]="['/listProduct', catogeory.id, catogeory.name]"
                         [queryParams]="{category:'mainCategories',id:catogeory.id}" fragment={{catogeory.id}} routerLinkActive="active"
                          (mouseover)="openSubCategories(catogeory.subcategories,catogeory.id)" >{{catogeory.name }} </a>
                       </li>
-
                     </ul>
                   </div>
-
-
               </div>
 
               <div class="img_categories" data-aos="zoom-in-left"  data-aos-duration="1000">
@@ -101,6 +95,7 @@
 <div data-aos="fade-right"  data-aos-duration="1000">
          <owl-carousel-o [options]="offerOptions">
               <ng-container *ngFor="let img of offerSale">
+
                   <ng-template carouselSlide class="offer_curousal_imgs" >
                       <img src="{{img.image['original']}}" alt="{{img.name}}" (click)="productPreview(img.id)">
 
@@ -109,7 +104,7 @@
                           <div class="pricing"  style="display: flex; justify-content: center; align-items: baseline;">
                             <h3 class='item '>€{{img.offerPrice}}</h3>
                             <span class='offer_price item '>€{{img.price}}</span>
-                            <span class='offer_percentage item '>{{img.offerPercentage}}off</span>
+                            <span class='offer_percentage item '>{{img.offerPercentage}}%off</span>
                             </div>
                       </div>
                   </ng-template>
@@ -120,7 +115,7 @@
 
 
           <div class='' data-aos="fade-right" data-aos-duration="1200">
-            <button mat-button class="explore_button_offer">
+            <button mat-button class="explore_button_offer" (click)="productPreview(0)">
               Explore all &nbsp;<mat-icon>trending_flat</mat-icon>
             </button>
           </div>
@@ -161,7 +156,7 @@
       <div class="main_container">
           <h1 data-aos="flip-left" data-aos-easing="ease-out-cubic"  data-aos-duration="1000">New Arrivals</h1>
           <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
-          <owl-carousel-o [options]="normalOptions">
+          <owl-carousel-o [options]="suggestionOptions">
 
               <ng-template carouselSlide *ngFor="let img of newArraivals">
 
@@ -241,7 +236,7 @@
           <span>WE RECCOMENDED</span>
           <h1 data-aos="flip-right" data-aos-easing="ease-out-cubic"  data-aos-duration="1000">Bags on Trend</h1>
           <div data-aos="fade-down-right"  data-aos-duration="1000">
-          <owl-carousel-o [options]="normalOptions">
+          <owl-carousel-o [options]="suggestionOptions">
 
               <ng-template carouselSlide *ngFor="let img of bagsTrends">
 

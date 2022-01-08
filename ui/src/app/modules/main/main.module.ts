@@ -35,6 +35,7 @@ import { ListProductComponent } from './list-product/list-product.component';
 import { PreviewProductComponent } from './preview-product/preview-product.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
+import { OfferSalesComponent } from './offer-sales/offer-sales.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import {MatCardModule} from '@angular/material/card';
     UserInfoComponent,
     ListProductComponent,
     PreviewProductComponent,
+    OfferSalesComponent,
 
   ],
   imports: [

@@ -106,7 +106,7 @@ colors: any[] =[];
         margin:40
       },
       1000: {
-        items: 4,
+        items: 5,
         margin:40
       },
       1500: {
@@ -146,7 +146,7 @@ value:any = 0;
 
     this.dashboardService.getOfferSales().subscribe((data: any) =>{
       this.offerSale = data;
-      console.log(data);
+
 
    })
     this.activatedRoute.params.subscribe(params =>{
@@ -199,32 +199,15 @@ changePreviewImage = (smImage: any) => this.preview_lg = smImage;
 
 
 changeColor(color:string){
-  console.log(color);
-
-
   this.product_options.forEach(element => {
-
-
-
     if(element['color'] === color){
       this.setSize(element.sizes);
       this.size = element.sizes;
-
-
-
-     var image1 =element['image_one'];
-      var image2 = element['image_two'];
-      var image3 = element['image_three'];
-      var result1 = Object.keys(image1).map((key) => [image1[key]]);
-      var result2 = Object.keys(image2).map((key) => [image2[key]]);
-      var result3 = Object.keys(image3).map((key) => [image3[key]]);
-      this.preview_sm1=result1[1][0];
-      this.preview_sm2=result2[1][0];
-      this.preview_sm3 =result3[1][0];
+      this.preview_sm1=element['image_one']['original'];
+      this.preview_sm2=element['image_two']['original'];
+      this.preview_sm3 =element['image_three']['original'];
       this.preview_lg =this.preview_sm1;
-
     }
-
 });
 
 }
@@ -240,11 +223,14 @@ openSnackBar(){
 }
 setSize(data:any){
   console.log(data);
-
-
 }
 changed(){
 
+}
+productPreview(id: number): void {
+
+  let link = ['previewProduct', id];
+  this.router.navigate(link);
 }
 
 }

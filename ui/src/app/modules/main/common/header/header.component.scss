@@ -269,6 +269,7 @@ margin-bottom: 0;
 
 .hide_mega_menu{
 display: none;
+transition-delay: 2s;
 
 }
 
@@ -276,6 +277,7 @@ display: none;
 .hide_mega_menu{
    display: none;
    content: '';
+   transition-delay: 2s;
 }
 .show_mega_menu{
     padding:3em 3%;
@@ -284,11 +286,11 @@ display: none;
     width: 100%;
     justify-content: center;
     transform: all 2s ease;
-
     margin: 0;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: rgba(0,0,0,.12);;
+    border-bottom-color: rgba(0,0,0,.12);
+
 }
 
 .parent_sub_menu{

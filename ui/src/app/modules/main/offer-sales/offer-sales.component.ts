@@ -1,24 +1,10 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  Inject,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import {
-  CarouselComponent,
-  OwlOptions,
-  SlidesOutputData,
+import {Component,HostListener, Inject, OnInit, ViewChild,} from '@angular/core';
+import { OwlOptions, SlidesOutputData,
 } from 'ngx-owl-carousel-o';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
-  ActivatedRoute,
-  NavigationExtras,
-  Params,
-  Router,
+  ActivatedRoute,Router,
 } from '@angular/router';
 import { MainService } from 'app/modules/service/main.service';
 import { DOCUMENT } from '@angular/common';
@@ -26,13 +12,14 @@ import * as AOS from 'aos';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ListBeautyService } from 'app/modules/service/productServices/list-beauty.service';
+import { DashboardService } from 'app/modules/service/dashboard.service';
 
 @Component({
-  selector: 'app-list-product',
-  templateUrl: './list-product.component.html',
-  styleUrls: ['./list-product.component.scss'],
+  selector: 'app-offer-sales',
+  templateUrl: './offer-sales.component.html',
+  styleUrls: ['./offer-sales.component.scss']
 })
-export class ListProductComponent implements OnInit {
+export class OfferSalesComponent implements OnInit {
   form: FormGroup;
   section_title?: string;
   section_subtitle?: string;
@@ -112,6 +99,7 @@ export class ListProductComponent implements OnInit {
     private readonly mainService: MainService,
     private readonly listBeautyService: ListBeautyService,
     private readonly activatedRoute: ActivatedRoute,
+    private dashboardService :DashboardService,
     @Inject(DOCUMENT) private document: Document
   ) {
     this.form = this.fb.group({
@@ -130,6 +118,9 @@ export class ListProductComponent implements OnInit {
   onLoad(event: any) {
     if (window.innerWidth <= 768) {
       this.isFirst = false;
+    }else {
+      this.isFirst = true;
+      this.pageSize = 12;
     }
   }
   @HostListener('window:resize', ['$event'])
@@ -142,88 +133,17 @@ export class ListProductComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.loading = true;
-    this.products = [];
 
-    this.activatedRoute.queryParams.subscribe((params) => {
-
-      this.hparam = params;
-      this.subsubId = Number.parseInt(params['subsubId']);
-      this.subsubId = params['subsubId'];
-      this.setdefaultData(params['id']);
-    });
-    this.dataSource = new MatTableDataSource(this.products);
-    this.dataSource$ = this.dataSource.connect();
-    this.loading = false;
-  }
-
-  setdefaultData(id: number) {
-    this.listBeautyService.getDataofMainCategory(id).subscribe((data) => {
-console.log(data);
-
-
-      this.section_title = data.name;
-      this.mainCategory = data.subcategories;
-    });
-  }
-
-  onIndexChange(data: SlidesOutputData) {
-
-
-    if (data.slides == undefined) {
-      return;
-    } else {
-
-      if(this.isFirst === false){
-        var subId = Number.parseInt(data.slides[0].id);
-      }
-      else{
-        var subId = Number.parseInt(data.slides[1].id);
-      }
-
-      if (subId === undefined) {
-        return;
-      } else {
-        this.getProductData(subId);
-      }
-    }
-  }
-
-  getProductData(subId: number) {
-    this.loading = true;
-
-    this.listBeautyService.getDataofSubCategory(subId).subscribe((data) => {
-      this.subCategoryName = data.name;
-      this.filterCategory = data.subsubcategories;
-      if (this.subsubId !== undefined) {
-        this.innerCategoryRoute(this.subsubId);
-      } else {
-        this.products = [];
-
-        this.filterCategory.forEach((element) => {
-          for (let index = 0; index < element.products.length; index++) {
-            this.products.push(element.products[index]);
-          }
-        });
-      }
-
+    this.dashboardService.getOfferSales().subscribe((data: any) =>{
+      this.products  = data;
       this.dataSource = new MatTableDataSource(this.products);
       this.dataSource$ = this.dataSource.connect();
       this.dataSource.paginator = this.paginator;
-    });
-    this.loading = false;
-  }
 
-  innerCategoryRoute(subsubId: number) {
-    this.products = [];
-    this.listBeautyService
-      .getDataofSubSubCategory(subsubId)
-      .subscribe((data) => {
-        this.products = data['products'];
-        this.dataSource = new MatTableDataSource(this.products);
-        this.dataSource$ = this.dataSource.connect();
-        this.dataSource.paginator = this.paginator;
-      });
+   })
+
+
+
   }
   changeSorting(value: string): void {
     this.sortingArray = [...this.dataSource.data];
@@ -236,12 +156,12 @@ console.log(data);
         break;
       case 'LowToHigh':
         this.sortingArray.sort(function (a: any, b: any) {
-          return a.price - b.price;
+          return a.offerPercentage - b.offerPercentage;
         });
         break;
       case 'HighToLow':
         this.sortingArray.sort(function (a: any, b: any) {
-          return b.price - a.price;
+          return b.offerPercentage - a.offerPercentage;
         });
         break;
       case 'latest':
@@ -275,51 +195,6 @@ console.log(data);
     setTimeout(() => {
       this._snackBar.dismiss();
     }, 700);
-  }
-
-  filterbySize(params: string) {
-    params = params.toLowerCase();
-    var questionS: any = [];
-    var question: any = [];
-    this.products.forEach((element: { [x: string]: any }) => {
-
-      if (params === element['options'][0].size) {
-        questionS.push(element);
-        question = questionS;
-      }
-    });
-
-    if (question.length === 0) {
-      this.nonAvailableProducts = true;
-    } else {
-      this.nonAvailableProducts = false;
-    }
-
-    for (let idx in this.size) {
-      this.size[idx].completed = false;
-    }
-
-
-    this.dataSource.data = question;
-    this.dataSource$ = this.dataSource.connect();
-    this.dataSource.paginator = this.paginator;
-
-  }
-
-  resetCarousal() {}
-
-  filterbyBrand(params: string) {}
-
-  submit() {
-    const minimumPrice = this.form.get('startprice')?.value;
-    const maximumPrice = this.form.get('endprice')?.value;
-    this.sortingArray = [...this.dataSource.data];
-    this.sortingArray = this.sortingArray.filter((product) => {
-      return product.price >= minimumPrice && product.price <= maximumPrice;
-    });
-
-    this.dataSource.data = this.sortingArray;
-    this.dataSource$ = this.dataSource.connect();
   }
 
   productPreview(id: number): void {

@@ -7,6 +7,7 @@
     margin-top: 3px;
     text-decoration: line-through;
   }
+
   .offer_percentage{
     color: #26a541 !important;
     margin-top: 3px;
@@ -14,6 +15,17 @@
   .item{
     margin-left: 5px;
   }
+//   .price{
+
+// font-family: Poppins;
+// font-style: normal;
+// font-weight: 500;
+// font-size: 20px;
+// line-height: 30px;
+// letter-spacing: 0.1em;
+// text-transform: uppercase;
+// color: #000000;
+//   }
   .offer_explore_button {
     background:#E6E7EB;
     border: none;
@@ -271,60 +283,11 @@ content: '→' ;
   // color: var(--black-color);
 }
 :host ::ng-deep.offer_section .owl-next{
-  right: 30%;
+  right: 34%;
 }
 :host ::ng-deep.offer_section .owl-prev{
-  left: 34.7%;
+  left: 34%;
 }
-// :host ::ng-deep.offer_section .owl-next:hover{
-//   background-color: #815F46;
-// opacity: 0.8;
-// padding: 10px;
-// border-radius: 50px;
-// font-size: 25px;
-// position: absolute;
-// top: 38%;
-// margin: 0;
-// right: 29%;
-
-// box-shadow: 7px 7px 15px #815F46,
-// -7px -7px 20px #815F46,
-// inset 0px 0px 4px #815F46,
-// inset 7px 7px 15px #815F46,
-// inset -7px -7px 20px #815F46,
-// 0px 0px 4px #815F46;
-// border-radius: 50px;
-// transition: 0.2s ease;
-// }
-// :host ::ng-deep.offer_section .owl-prev:hover{
-//   background-color: #815F46;
-//   opacity: 0.8;
-//   padding: 10px;
-//   font-size: 25px;
-//   position: absolute;
-//   top: 38%;
-
-//   margin: 0;
-//   border-radius: 50px;
-//   left: 33.7%;
-
-//   box-shadow: 7px 7px 15px #815F46,
-//   -7px -7px 20px #815F46,
-//   inset 0px 0px 4px #815F46,
-//   inset 7px 7px 15px #815F46,
-//   inset -7px -7px 20px #815F46,
-//   0px 0px 4px #815F46;
-// border-radius: 50px;
-// transition: 0.2s ease;
-// }
-
-// .animateIN{
-//   // transform: scale(1.2);
-//   flex: 0 0 auto;
-//   width: 100%;
-//   padding: 0 4em;
-//   height: 500px;
-//   }
   .collection_title {
     font-family: Ogg;
     font-style: normal;
@@ -532,7 +495,18 @@ font-size: 15px;
   padding: 2em;
 }
 // new Arrival curosal
+:host ::ng-deep.new_arrivals_section .owl-carousel .owl-item img {
+  display: block;
+  width: 100%;
+  height: 300px !important;
+}
+:host ::ng-deep.review_section .owl-next{
+  right: 0%;
+}
+:host ::ng-deep.review_section .owl-prev{
+  margin-right: 10%;
 
+}
 :host ::ng-deep.new_arrivals_section .owl-next, :host ::ng-deep.new_arrivals_section .owl-prev{
   font-size: 20px;
   position: absolute;
@@ -623,6 +597,7 @@ top: 50%;
 :host ::ng-deep.owl-carousel .owl-stage {
   display: flex;
   align-items: center;
+  margin-left:-35px;
 }
 
 :host ::ng-deep.owl-carousel .caption {
@@ -631,11 +606,13 @@ top: 50%;
 :host ::ng-deep .owl-carousel .owl-item {
   img{
     height: 300px;
+    object-fit: cover;
     }
   }
 :host ::ng-deep .owl-carousel .owl-item.active {
   img{
     height: 300px;
+
     }
   }
 :host ::ng-deep .owl-carousel .owl-item.center {
@@ -643,9 +620,14 @@ top: 50%;
    margin-top: 0 !important;
    flex: 0 0 auto !important;
 
-   img{
-   height: 420px;
 
+   img{
+     width: 90%;
+     margin: 0 5%;
+   height: 450px;
+transition-duration: 0.7s;
+border-radius: 15px;
+ transition-delay: 0.3s;
 
    }
 

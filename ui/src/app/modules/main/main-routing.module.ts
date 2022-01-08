@@ -7,6 +7,7 @@ import { MainComponent } from './main.component';
 import { UserInfoComponent } from './common/user-info/user-info.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { PreviewProductComponent } from './preview-product/preview-product.component';
+import { OfferSalesComponent } from './offer-sales/offer-sales.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'userinfo',
        component: UserInfoComponent,
+      },
+      {
+        path: 'offersales',
+       component: OfferSalesComponent,
       },
       {
         path: 'settings',

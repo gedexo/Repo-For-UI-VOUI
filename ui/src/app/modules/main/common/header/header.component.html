@@ -136,9 +136,6 @@
 
       </mat-toolbar>
       <ul class="nav_list " id="nav_menu">
-        <!-- <li class="nav_items" *ngFor="let catogeory of mainCategory">
-          <a routerLinkActive="active" [routerLink]="catogeory.name">{{catogeory.name}}</a>
-        </li> -->
         <li class="nav_items" *ngFor="let catogeory of mainCategory">
           <a [routerLink]="['listProduct', catogeory.id, catogeory.name]"
             [queryParams]="{category:'mainCategories',id:catogeory.id}" fragment={{catogeory.id}}
